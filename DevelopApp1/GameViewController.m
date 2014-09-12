@@ -9,8 +9,11 @@
 #import "GameViewController.h"
 #import "CameraViewController.h"
 #import "AppDelegate.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
-@interface GameViewController ()
+@interface GameViewController (){
+    ALAssetsLibrary *takenPhotolibrary;
+}
 
 @end
 
@@ -29,10 +32,8 @@
 {
     [super viewDidLoad];
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.takenPhoto.image = app.FaceImage.image;
-    if (self.takenPhoto.image == nil) {
-        NSLog(@"akan");
-    }
+
+    [self showPhoto:app.FaceImage];
     
 }
 
@@ -40,8 +41,43 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+    
 }
+//assetsから取得した画像を表示する
+-(void)showPhoto:(NSString *)url
+{
+    //URLからALAssetを取得
+    takenPhotolibrary = [[ALAssetsLibrary alloc] init];
+    [takenPhotolibrary assetForURL:[NSURL URLWithString:url]
+                resultBlock:^(ALAsset *asset) {
+                    
+                    //画像があればYES、無ければNOを返す
+                    if(asset){
+                        NSLog(@"データがあります");
+                        //ALAssetRepresentationクラスのインスタンスの作成
+                        ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+                        
+                        //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
+                        //fullScreenImageで元画像と同じ解像度の写真を取得する。
+                        UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+                        
+                        UIImage *thumbnailImage = [UIImage imageWithCGImage:[asset thumbnail]];
+                        
+                        self.takenPhoto.image = fullscreenImage; //イメージをセット
+                        self.takenPhoto.image = thumbnailImage; //イメージをセット
+                        
+                        UICollectionViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlbumViewController"];
+                        [self presentViewController:mycontroller animated:YES completion:nil];
+                        
+                    }else{
+                        NSLog(@"データがありません");
+                    }
+                    
+                } failureBlock: nil];
+}
+
+
 
 /*
 #pragma mark - Navigation

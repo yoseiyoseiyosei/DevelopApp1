@@ -11,9 +11,10 @@
 #import "WemanGameViewController.h"
 #import "OthersGameViewController.h"
 #import "AppDelegate.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CameraViewController (){
-
+    ALAssetsLibrary *takenPhoto;
 }
 
 @end
@@ -32,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
 
@@ -89,17 +90,21 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:^{
         self.ImageView.image = image;}];
-    
+    //カメラライブラリから選んだ写真のURLを取得。
+    app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
+    //カメラで撮影したときだけ保存
+    if (app.FaceImage == nil) {
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    }
 
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    app.FaceImage.image = self.ImageView.image;
+    
     switch (buttonIndex) {
         case 0:{
             NSLog(@"man");
@@ -136,6 +141,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     
 }
+
+
 
 
 @end

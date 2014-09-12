@@ -12,6 +12,7 @@
 		8EA57E7519BDA15700B6B853 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA57E7419BDA15700B6B853 /* GameViewController.m */; };
 		8EA57E7819BDACA400B6B853 /* WemanGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA57E7719BDACA400B6B853 /* WemanGameViewController.m */; };
 		8EA57E7B19BDACC300B6B853 /* OthersGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA57E7A19BDACC300B6B853 /* OthersGameViewController.m */; };
+		8EA57EBE19C0496700B6B853 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA57EBD19C0496700B6B853 /* AssetsLibrary.framework */; };
 		8EB45F2019BC417200F03297 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB45F1F19BC417200F03297 /* Foundation.framework */; };
 		8EB45F2219BC417200F03297 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB45F2119BC417200F03297 /* CoreGraphics.framework */; };
 		8EB45F2419BC417200F03297 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB45F2319BC417200F03297 /* UIKit.framework */; };
@@ -50,6 +51,7 @@
 		8EA57E7719BDACA400B6B853 /* WemanGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WemanGameViewController.m; sourceTree = "<group>"; };
 		8EA57E7919BDACC300B6B853 /* OthersGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthersGameViewController.h; sourceTree = "<group>"; };
 		8EA57E7A19BDACC300B6B853 /* OthersGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthersGameViewController.m; sourceTree = "<group>"; };
+		8EA57EBD19C0496700B6B853 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		8EB45F1C19BC417200F03297 /* DevelopApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevelopApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB45F1F19BC417200F03297 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8EB45F2119BC417200F03297 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -77,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA57EBE19C0496700B6B853 /* AssetsLibrary.framework in Frameworks */,
 				8EB45F9619BC708300F03297 /* SpriteKit.framework in Frameworks */,
 				8EB45F2219BC417200F03297 /* CoreGraphics.framework in Frameworks */,
 				8EB45F2419BC417200F03297 /* UIKit.framework in Frameworks */,
@@ -119,6 +122,7 @@
 		8EB45F1E19BC417200F03297 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EA57EBD19C0496700B6B853 /* AssetsLibrary.framework */,
 				8EB45F9519BC708300F03297 /* SpriteKit.framework */,
 				8EB45F1F19BC417200F03297 /* Foundation.framework */,
 				8EB45F2119BC417200F03297 /* CoreGraphics.framework */,

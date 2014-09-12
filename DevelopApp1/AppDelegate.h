@@ -11,6 +11,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIImageView *FaceImage;
+@property (strong, nonatomic) NSString *FaceImage;
 
 @end
