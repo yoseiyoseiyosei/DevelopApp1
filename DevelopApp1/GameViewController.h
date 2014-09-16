@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GameViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *takenPhoto;
 
 @end

@@ -10,9 +10,11 @@
 #import "CameraViewController.h"
 #import "AppDelegate.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "manResultViewController.h"
 
 @interface GameViewController (){
     ALAssetsLibrary *takenPhotolibrary;
+    UIImageView *takenPhoto;
 }
 
 @end
@@ -34,6 +36,26 @@
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
     [self showPhoto:app.FaceImage];
+    
+    //takenPhotoをallocしてサイズを変更する
+    UIImage* myimage =[[UIImage alloc] init];
+    takenPhoto =[[UIImageView alloc]initWithImage:myimage];
+    CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    takenPhoto.frame = rect;
+    
+    //スーツのボディーを表示
+    UIImage *image = [UIImage imageNamed:@"surts.jpeg"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    
+    //imageView.frame = [[UIScreen mainScreen] bounds];
+    
+    [self.view addSubview:imageView];
+    [imageView setUserInteractionEnabled:YES];
+    
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(DownSwipeHandle:)];
+    [recognizer setNumberOfTouchesRequired:1];
+    recognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    [imageView addGestureRecognizer:recognizer];
     
 }
 
@@ -64,11 +86,11 @@
                         
                         UIImage *thumbnailImage = [UIImage imageWithCGImage:[asset thumbnail]];
                         
-                        self.takenPhoto.image = fullscreenImage; //イメージをセット
-                        self.takenPhoto.image = thumbnailImage; //イメージをセット
+                        self->takenPhoto.image = fullscreenImage; //イメージをセット
+                        self->takenPhoto.image = thumbnailImage; //イメージをセット
                         
-                        UICollectionViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlbumViewController"];
-                        [self presentViewController:mycontroller animated:YES completion:nil];
+                      //  UICollectionViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlbumViewController"];
+                      //  [self presentViewController:mycontroller animated:YES completion:nil];
                         
                     }else{
                         NSLog(@"データがありません");
@@ -77,7 +99,12 @@
                 } failureBlock: nil];
 }
 
-
+- (void)DownSwipeHandle:(UISwipeGestureRecognizer*)gestureRecognizer {
+    NSLog(@"right swipe");
+    manResultViewController *ManResultViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"manResultViewController"];
+    [self presentViewController:ManResultViewController animated:YES completion:nil];
+    
+}
 
 /*
 #pragma mark - Navigation

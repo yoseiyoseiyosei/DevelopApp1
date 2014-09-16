@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
+@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *ImageView;
 - (IBAction)AccessLibraay:(id)sender;
 - (IBAction)TakePhoto:(id)sender;

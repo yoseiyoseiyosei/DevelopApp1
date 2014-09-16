@@ -33,18 +33,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 
 }
-
-
 
 - (IBAction)AccessLibraay:(id)sender {
     UIImagePickerControllerSourceType sourceType
@@ -91,16 +87,19 @@
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.ImageView.image = image;}];
-    //カメラライブラリから選んだ写真のURLを取得。
-    app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
+    
     //カメラで撮影したときだけ保存
     if (app.FaceImage == nil) {
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     }
-
+    
+    //カメラライブラリから選んだ写真のURLを取得。
+    app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.ImageView.image = image;}];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
