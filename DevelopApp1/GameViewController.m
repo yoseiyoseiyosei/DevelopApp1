@@ -15,6 +15,8 @@
 @interface GameViewController (){
     ALAssetsLibrary *takenPhotolibrary;
     UIImageView *takenPhoto;
+    int takeoffnumber;
+    int swipecount;
 }
 
 @end
@@ -33,24 +35,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //乱数値の範囲
+    int max =1;
+    int min =20;
+    //乱数値の決定
+    takeoffnumber = [self randxy:min:max];
+    //カウント初期化
+    swipecount =0;
+    //スーツのボディーを表示
+    UIImage *image = [UIImage imageNamed:@"surts.jpeg"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    
+    imageView.frame = [[UIScreen mainScreen] bounds];
+    
+    [self.view addSubview:imageView];
+    [imageView setUserInteractionEnabled:YES];
 
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self showPhoto:app.FaceImage];
     
     //takenPhotoをallocしてサイズを変更する
     UIImage* myimage =[[UIImage alloc] init];
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
-    CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    CGRect rect = CGRectMake(self.view.frame.size.width/4, 0, self.view.frame.size.width/2, self.view.frame.size.height/2);
     takenPhoto.frame = rect;
-    
-    //スーツのボディーを表示
-    UIImage *image = [UIImage imageNamed:@"surts.jpeg"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    
-    //imageView.frame = [[UIScreen mainScreen] bounds];
-    
-    [self.view addSubview:imageView];
-    [imageView setUserInteractionEnabled:YES];
+    [self.view addSubview:takenPhoto];
     
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(DownSwipeHandle:)];
     [recognizer setNumberOfTouchesRequired:1];
@@ -100,10 +109,35 @@
 }
 
 - (void)DownSwipeHandle:(UISwipeGestureRecognizer*)gestureRecognizer {
-    NSLog(@"right swipe");
+    
+    //何回スワイプしたかのカウント
+    swipecount++;
+    NSLog(@"%d",swipecount);
+    
+    //乱数値とカウントが等しくなると結果の画面に画面遷移
+    if (takeoffnumber == swipecount) {
+    
+    
+    NSLog(@"down swipe");
     manResultViewController *ManResultViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"manResultViewController"];
     [self presentViewController:ManResultViewController animated:YES completion:nil];
-    
+    }
+}
+
+-(float)randxy:(int)min :(int)max{
+    float rn;
+    rn=(float)([self getRandamInt:min max:max]);
+    return rn;
+}
+
+
+-(int)getRandamInt:(int)min max:(int)max {
+    static int initFlag;
+    if (initFlag == 0) {
+        srand((unsigned int)time(NULL));
+        initFlag = 1;
+    }
+    return min + (int)(rand()*(max-min+1.0)/(1.0+RAND_MAX));
 }
 
 /*
