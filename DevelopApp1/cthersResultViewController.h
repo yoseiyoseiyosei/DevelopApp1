@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface cthersResultViewController : UIViewController
+@interface cthersResultViewController : UIViewController<ADBannerViewDelegate>
 
 @end

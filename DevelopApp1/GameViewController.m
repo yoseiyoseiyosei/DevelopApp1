@@ -17,6 +17,8 @@
     UIImageView *takenPhoto;
     int takeoffnumber;
     int swipecount;
+    ADBannerView *_adView;//広告を入れる変数
+    BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
 }
 
 @end
@@ -35,9 +37,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
+    
     //乱数値の範囲
     int max =1;
-    int min =20;
+    int min =15;
     //乱数値の決定
     takeoffnumber = [self randxy:min:max];
     //カウント初期化
@@ -50,7 +55,8 @@
     
     [self.view addSubview:imageView];
     [imageView setUserInteractionEnabled:YES];
-
+    
+    //グローバルから取った写真のアドレスを取得
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self showPhoto:app.FaceImage];
     
@@ -65,6 +71,19 @@
     [recognizer setNumberOfTouchesRequired:1];
     recognizer.direction = UISwipeGestureRecognizerDirectionDown;
     [imageView addGestureRecognizer:recognizer];
+    
+    //バーナーオブジェクト生成
+    _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
+    
+    _adView.delegate = self;
+    
+    [self.view addSubview:_adView];//表示させる
+    _adView.alpha = 0,0;//透明
+    
+    //最初は表示されていないのでno
+    _isVisible = NO;
+    
+    
     
 }
 
@@ -138,6 +157,38 @@
         initFlag = 1;
     }
     return min + (int)(rand()*(max-min+1.0)/(1.0+RAND_MAX));
+}
+//バーナーが表示される時発動する
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner{//barnner = adview
+    if (!_isVisible) {//NOの場合
+        //バーナーが表示されるアニメーション
+        [UIView beginAnimations:@"animateADBannerOn" context:nil];//アニメーション始まるよバナーをだすよ広告を指定するよ
+        
+        [UIView setAnimationDuration:0.3];//始まり　秒数間隔
+        
+        banner.frame= CGRectOffset(banner.frame, 0, self.view.frame.size.height-self.view.frame.size.height/11.5);//上に隠れているバナーを出す バーナーを指定 x軸　y軸
+        
+        banner.alpha = 1.0;
+        
+        [UIView commitAnimations];//終わり
+        
+        //表示したのでinVisibleをYESにする
+        _isVisible = YES;
+    }
+}
+
+//バナー表示でエラーが発生した場合
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    //エラーが発生いるのにバーナーが表示されている場合非表示にする
+    if (_isVisible) {
+        [UIView beginAnimations:@"animateAdBannerOff" context:nil];
+        [UIView setAnimationDuration:0.3];
+        banner.frame = CGRectOffset(banner.frame,0,-CGRectGetHeight(banner.frame));
+        //バナーの形　x軸そのもの　x軸　y軸
+        banner.alpha = 0.0;
+        [UIView commitAnimations];
+        _isVisible = NO;
+    }
 }
 
 /*

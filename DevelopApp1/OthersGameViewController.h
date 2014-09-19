@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface OthersGameViewController : UIViewController
+@interface OthersGameViewController : UIViewController<ADBannerViewDelegate>
 
 @end

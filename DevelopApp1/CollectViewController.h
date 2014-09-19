@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface CollectViewController : UIViewController<UIGestureRecognizerDelegate>
+@interface CollectViewController : UIViewController<UIGestureRecognizerDelegate,ADBannerViewDelegate>
 
 @end

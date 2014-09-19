@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface WemanGameViewController : UIViewController
+@interface WemanGameViewController : UIViewController<ADBannerViewDelegate>
 
 @end
