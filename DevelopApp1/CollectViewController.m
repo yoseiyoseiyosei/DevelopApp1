@@ -7,10 +7,15 @@
 //
 
 #import "CollectViewController.h"
+#import "ViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 
 @interface CollectViewController (){
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
+    ALAssetsLibrary *takenPhotolibrary;
+    UIImageView *takenPhoto;
 }
 
 
@@ -30,6 +35,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //takenPhotoをallocしてサイズを変更する
+    UIImage* myimage =[[UIImage alloc] init];
+    takenPhoto =[[UIImageView alloc]initWithImage:myimage];
+
+    
     // Do any additional setup after loading the view.
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
@@ -41,6 +51,55 @@
     
     //最初は表示されていないのでno
     _isVisible = NO;
+    
+    //スタートリターンボタン
+    UIButton *startreturnButton =[[UIButton alloc] initWithFrame:CGRectMake(30,540, 70, 30)];//位置x、y　画像h、w
+    [startreturnButton setTitle:@"restart" forState:UIControlStateNormal];
+    [startreturnButton setTitleColor:[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1.0] forState:UIControlStateNormal];//ボタンが青
+    [self.view addSubview:startreturnButton];
+    
+    //関連付け
+    [startreturnButton addTarget:self action:@selector(restarttapBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *imagedictionary =[NSDictionary new];
+    imagedictionary =[defaults objectForKey:@"historyData"];
+    
+    //NSMutableArray *takenphotos = [NSMutableArray new];
+
+    //画像の位置
+    CGFloat xposition =0,yposition =0,wimage =40,himage =40;
+   
+    
+    for (id atekenphoto in [imagedictionary keyEnumerator]) {
+        //[takenphotos addObject:atekenphoto];
+        
+        //撮った画像をとってくる
+        [self showPhoto:[NSString stringWithFormat:@"%@",[imagedictionary objectForKey:atekenphoto]]];
+
+        //画像の位置
+        takenPhoto.frame =CGRectMake(xposition, yposition, wimage, himage);
+        //画像を乗せるview
+        UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
+        //_skyViewに画像を乗せる
+        [_skyView addSubview:takenPhoto];
+        //self.viewに画像の乗った_skyViewを表示
+        [self.view addSubview:_skyView];
+        
+        //
+        if (xposition != 280) {
+            xposition += 40;
+        }else{
+            xposition =0;
+            yposition +=40;
+        }
+        
+
+    }
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,6 +138,48 @@
         [UIView commitAnimations];
         _isVisible = NO;
     }
+}
+
+//ボタンがタップされたと時に呼び出されるメッソド
+-(void)restarttapBtn:(UIButton *)myButton_tmp{
+    ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [self presentViewController:ViewController animated:YES completion:nil];
+    
+    
+}
+
+//assetsから取得した画像を表示する
+-(void)showPhoto:(NSString *)url
+{
+    //URLからALAssetを取得
+    takenPhotolibrary = [[ALAssetsLibrary alloc] init];
+    [takenPhotolibrary assetForURL:[NSURL URLWithString:url]
+                       resultBlock:^(ALAsset *asset) {
+                           
+                           //画像があればYES、無ければNOを返す
+                           if(asset){
+                               NSLog(@"データがあります");
+                               //ALAssetRepresentationクラスのインスタンスの作成
+                               ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+                               
+                               //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
+                               //fullScreenImageで元画像と同じ解像度の写真を取得する。
+                               UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+                               
+                               UIImage *thumbnailImage = [UIImage imageWithCGImage:[asset thumbnail]];
+                               
+                               self->takenPhoto.image = fullscreenImage; //イメージをセット
+                               self->takenPhoto.image = thumbnailImage; //イメージをセット
+                               
+                               //  UICollectionViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlbumViewController"];
+                               //  [self presentViewController:mycontroller animated:YES completion:nil];
+                               
+                           }else{
+                               NSLog(@"データがありません");
+                           }
+                           
+                       } failureBlock: nil];
+    
 }
 
 

@@ -13,10 +13,10 @@
 
 @interface manResultViewController (){
     ALAssetsLibrary *takenPhotolibrary;
-        UIImageView *takenPhoto;
+    UIImageView *takenPhoto;
     UIButton *_myButton;
     UIButton *startreturnButton;
-        NSDictionary *historyData;
+    NSDictionary *historyData;
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
     UIView *_skyView;
@@ -41,14 +41,11 @@
     _skyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,self.view.bounds.size.width, self.view.bounds.size.height-self.view.bounds.size.height/11.5)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
     _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:0];
     
-    [self.view addSubview:_skyView];
-    
-    
     //むきむきの画像
     UIImage *resultimage = [UIImage imageNamed:@"むきむき.jpeg"];
     UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
     resultimageView.frame = [[UIScreen mainScreen] bounds];
-    [self.view addSubview:resultimageView];
+    [_skyView addSubview:resultimageView];
     
     //グローバルから画像のアドレスを取得
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -59,7 +56,12 @@
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
     CGRect rect = CGRectMake(self.view.frame.size.width/4, 0, self.view.frame.size.width/2, self.view.frame.size.height/3);
     takenPhoto.frame = rect;
-    [self.view addSubview:takenPhoto];
+    [_skyView addSubview:takenPhoto];
+
+    //ヴューに表示
+    [self.view addSubview:_skyView];
+    
+    
     
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
@@ -174,30 +176,32 @@ UIImage *mapPic = [self screenshotWithView:_skyView];
 //スクリーンショットを保存する
 UIImageWriteToSavedPhotosAlbum(mapPic, nil, nil, nil);
 
-// PNGの場合（view.alphaで指定した透明度も維持されるみたい）
-NSData *dataSaveImage = UIImagePNGRepresentation(mapPic);
 
+//現在日時のデータ取得
 NSDate *now = [NSDate date];
-NSDateFormatter *df = [[NSDateFormatter alloc] init];
-[df setDateFormat:@"yyyyMMdd_HHmmss"];
-NSString *strNow = [df stringFromDate:now];
-
+////フォーマットの用意
+//NSDateFormatter *df = [[NSDateFormatter alloc] init];
+////フォーマットのセット
+//[df setDateFormat:@"yyyyMMdd_HHmmss"];
+////文字列化
+//NSString *strNow = [df stringFromDate:now];
+//フォーマットの用意
 NSDateFormatter *dfkey = [[NSDateFormatter alloc] init];
+//フォーマットのセット
 [dfkey setDateFormat:@"yyyy/MM/dd_HH:mm:ss"];
+//文字列化
 NSString *strNowKey = [dfkey stringFromDate:now];
-
-NSString *FileName = [NSString stringWithFormat:@"%@.png",strNow];
-// Documentsディレクトリに保存
-NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-NSLog(@"%@",path);
-//dataSaveImageをファイルに保存
-[dataSaveImage writeToFile:[path stringByAppendingPathComponent:FileName] atomically:YES];
+//ファイル名を時刻で表す
+//NSString *FileName = [NSString stringWithFormat:@"%@.png",strNow];
+    
+    
+    //グローバルから画像のアドレスを取得
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //[self showPhoto:app.FaceImage];
 
 NSMutableDictionary *ret_dictionary = [[NSMutableDictionary alloc] initWithDictionary:historyData];
-
 //現在時刻をキーに指定し、Historyデータに保存
-
-[ret_dictionary setObject:FileName forKey:strNowKey];
+[ret_dictionary setObject:app.FaceImage forKey:strNowKey];
 
 historyData = ret_dictionary;
 

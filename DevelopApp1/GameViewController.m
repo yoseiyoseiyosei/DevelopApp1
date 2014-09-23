@@ -84,7 +84,6 @@
     _isVisible = NO;
     
     
-    
 }
 
 - (void)didReceiveMemoryWarning

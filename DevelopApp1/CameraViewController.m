@@ -45,6 +45,9 @@
     
     //最初は表示されていないのでno
     _isVisible = NO;
+    takenPhoto =[[ALAssetsLibrary alloc] init];
+    
+    
     
 }
 
@@ -108,7 +111,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
     //カメラで撮影したときだけ保存
     if (app.FaceImage == nil) {
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        [takenPhoto writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
+            if(error ){
+                NSLog(@"Ooops!");
+            }
+            else{
+                NSLog(@"save");
+                app.FaceImage = [(NSURL *)assetURL absoluteString];
+            }
+        }];
     }
     
     [self dismissViewControllerAnimated:YES completion:^{
