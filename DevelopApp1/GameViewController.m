@@ -50,9 +50,7 @@
     //スーツのボディーを表示
     UIImage *image = [UIImage imageNamed:@"surts.jpeg"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    
     imageView.frame = [[UIScreen mainScreen] bounds];
-    
     [self.view addSubview:imageView];
     [imageView setUserInteractionEnabled:YES];
     
