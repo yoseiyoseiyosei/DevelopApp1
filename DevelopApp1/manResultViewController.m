@@ -16,10 +16,12 @@
     UIImageView *takenPhoto;
     UIButton *_myButton;
     UIButton *startreturnButton;
-    NSDictionary *historyData;
+    UIButton *shareButton;
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
     UIView *_skyView;
+    
+    
 }
 
 @end
@@ -84,15 +86,25 @@
     [startreturnButton setTitle:@"restart" forState:UIControlStateNormal];
     [startreturnButton setTitleColor:[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1.0] forState:UIControlStateNormal];//ボタンが青
     [self.view addSubview:startreturnButton];
-    
     //関連付け
     [startreturnButton addTarget:self action:@selector(restarttapBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //シェアボタン
+    shareButton =[[UIButton alloc] initWithFrame:CGRectMake(160,540, 70, 30)];//位置x、y　画像h、w
+    [shareButton setTitle:@"share" forState:UIControlStateNormal];
+    [shareButton setTitleColor:[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1.0] forState:UIControlStateNormal];//ボタンが青
+    [self.view addSubview:shareButton];
+    //関連付け
+    [shareButton addTarget:self action:@selector(sharetapBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     
     //最初は表示されていないのでno
     _isVisible = NO;
     
+    
 
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,46 +178,46 @@
 
 //スクリーンショットボタンがタップされたと時に呼び出されるメッソド
 -(void)tapBtn:(UIButton *)myButton_tmp{
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    
-NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //ユーザーデフォルト
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
 //現在作成した地図のスクリーンショットを作成
-UIImage *mapPic = [self screenshotWithView:_skyView];
+UIImage *allPic = [self screenshotWithView:_skyView];
     
-//スクリーンショットを保存する
-UIImageWriteToSavedPhotosAlbum(mapPic, nil, nil, nil);
+        [takenPhotolibrary writeImageToSavedPhotosAlbum:allPic.CGImage orientation:(ALAssetOrientation)allPic.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
+            if(error ){
+                NSLog(@"Ooops!");
+            }
+            else{
+                NSLog(@"save");
+                app.FaceImage = [(NSURL *)assetURL absoluteString];
+            }
+        }];
+
 
 
 //現在日時のデータ取得
 NSDate *now = [NSDate date];
-////フォーマットの用意
-//NSDateFormatter *df = [[NSDateFormatter alloc] init];
-////フォーマットのセット
-//[df setDateFormat:@"yyyyMMdd_HHmmss"];
-////文字列化
-//NSString *strNow = [df stringFromDate:now];
 //フォーマットの用意
 NSDateFormatter *dfkey = [[NSDateFormatter alloc] init];
 //フォーマットのセット
 [dfkey setDateFormat:@"yyyy/MM/dd_HH:mm:ss"];
 //文字列化
 NSString *strNowKey = [dfkey stringFromDate:now];
-//ファイル名を時刻で表す
-//NSString *FileName = [NSString stringWithFormat:@"%@.png",strNow];
-    
-    
-    //グローバルから画像のアドレスを取得
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //[self showPhoto:app.FaceImage];
 
-NSMutableDictionary *ret_dictionary = [[NSMutableDictionary alloc] initWithDictionary:historyData];
+    
+    NSMutableDictionary *ret_dictionary =[NSMutableDictionary new];
+    NSDictionary *tempdictionary =[defaults objectForKey:@"historyData"];
+    ret_dictionary = tempdictionary.mutableCopy;
 //現在時刻をキーに指定し、Historyデータに保存
+    if(ret_dictionary == nil){
+        ret_dictionary= [NSMutableDictionary new];
+    }
 [ret_dictionary setObject:app.FaceImage forKey:strNowKey];
 
-historyData = ret_dictionary;
-
-[defaults setObject:historyData forKey:@"historyData"];
+[defaults setObject:ret_dictionary forKey:@"historyData"];
 [defaults synchronize];
 }
 
@@ -250,6 +262,16 @@ historyData = ret_dictionary;
     }
 }
 
+- (void)sharetapBtn:(id)sender {
+    NSLog(@"77");
+    //アクティビティーに渡す情報を配列に格納//nsArray,nsdictionary中身の型を気にしなくていい
+    NSArray *actItems = @[takenPhoto];
+    //アクティビティービューの生成
+    UIActivityViewController *activityView=[[UIActivityViewController alloc]initWithActivityItems:actItems applicationActivities:nil];
+    //モーダル処理でアクティビティービューを表示//モーダル：親の上にかぶさっている子
+    [self presentViewController:activityView animated:YES completion:nil];
+    
+}
 /*
 #pragma mark - Navigation
 

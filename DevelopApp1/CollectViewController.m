@@ -64,39 +64,46 @@
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *imagedictionary =[NSDictionary new];
-    imagedictionary =[defaults objectForKey:@"historyData"];
-    
+    NSMutableDictionary *imagedictionary =[NSMutableDictionary new];
+    NSDictionary *tempimagedictionary =[defaults objectForKey:@"historyData"];
+    imagedictionary = tempimagedictionary.mutableCopy;
     //NSMutableArray *takenphotos = [NSMutableArray new];
 
     //画像の位置
-    CGFloat xposition =0,yposition =0,wimage =40,himage =40;
+    CGFloat xposition =0,yposition =0,wimage =80,himage =80;
+    int count =0;
    
     
     for (id atekenphoto in [imagedictionary keyEnumerator]) {
-        //[takenphotos addObject:atekenphoto];
-        
+        //[defaults removeObjectForKey:atekenphoto];
         //撮った画像をとってくる
-        [self showPhoto:[NSString stringWithFormat:@"%@",[imagedictionary objectForKey:atekenphoto]]];
-
-        //画像の位置
-        takenPhoto.frame =CGRectMake(xposition, yposition, wimage, himage);
-        //画像を乗せるview
-        UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
-        //_skyViewに画像を乗せる
-        [_skyView addSubview:takenPhoto];
-        //self.viewに画像の乗った_skyViewを表示
-        [self.view addSubview:_skyView];
+        [self showPhoto:[imagedictionary objectForKey:atekenphoto]];
         
-        //
-        if (xposition != 280) {
-            xposition += 40;
-        }else{
-            xposition =0;
-            yposition +=40;
+        if (takenPhoto != nil) {
+            
+            //画像の位置
+            count+=1;
+            NSLog(@"%d %f",count,self.view.bounds.size.width/4);
+//            NSString *iti = [NSString stringWithString:@"%d",count];
+            //画像を乗せるview
+            UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
+            _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
+            //takenPhoto.frame = [[UIScreen mainScreen] bounds];
+            takenPhoto.frame =CGRectMake(xposition, yposition, wimage, himage);
+            //_skyViewに画像を乗せる
+            [_skyView addSubview:takenPhoto];
+            //self.viewに画像の乗った_skyViewを表示
+            [self.view addSubview:_skyView];
+        
+            if (xposition  < 240) {
+                xposition += 80;
+            }else{
+                xposition =0;
+                yposition +=80;
+            }
+        
+
         }
-        
-
     }
     
 
