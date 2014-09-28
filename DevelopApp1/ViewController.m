@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-
+#import "CameraViewController.h"
+#import "CollectViewController.h"
 @interface ViewController (){
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
@@ -31,6 +32,41 @@
     
     //最初は表示されていないのでno
     _isVisible = NO;
+    
+    //titlの画像を入れる
+    UIImage *titleimage = [UIImage imageNamed:@"title.jpg"];
+    UIImageView *titleimageView=[[UIImageView alloc]initWithImage:titleimage];
+    titleimageView.frame=[[UIScreen mainScreen] bounds];
+    titleimageView.alpha=1.0;
+    [self.view addSubview:titleimageView];
+    
+    
+    
+    //startボタンの画像を入れる
+    UIImage *image = [UIImage imageNamed:@"start.gif"];
+    UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+    imageView.frame= CGRectMake(120,400, 80, 60);
+    imageView.alpha=1.0;
+    [self.view addSubview:imageView];
+    [imageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *recognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startBtn:)];
+    [recognizer setNumberOfTapsRequired:1];
+    [imageView addGestureRecognizer:recognizer];
+    
+    UIImage *collectionimage = [UIImage imageNamed:@"collect.gif"];
+    UIImageView *collectionimageView=[[UIImageView alloc]initWithImage:collectionimage];
+    collectionimageView.frame= CGRectMake(120,480, 80, 60);
+    collectionimageView.alpha=1.0;
+    [self.view addSubview:collectionimageView];
+    [collectionimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *collectionrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collectionBtn:)];
+    [recognizer setNumberOfTapsRequired:1];
+    [collectionimageView addGestureRecognizer:collectionrecognizer];
+    
+    
+    
     
 
 }
@@ -73,9 +109,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)StartCamera:(id)sender {
+-(void)startBtn:(UIButton *)startbutton{
+    CameraViewController *cameraViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
+    [self presentViewController:cameraViewController animated:YES completion:nil];
 
 }
+
+-(void)collectionBtn:(UIButton *)collectionbutton{
+    CollectViewController *collectViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectViewController"];
+    [self presentViewController:collectViewController animated:YES completion:nil];
+    
+}
+
+
+
 
 
 @end

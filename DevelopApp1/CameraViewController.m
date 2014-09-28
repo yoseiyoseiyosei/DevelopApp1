@@ -11,12 +11,15 @@
 #import "WemanGameViewController.h"
 #import "OthersGameViewController.h"
 #import "AppDelegate.h"
+#import "ViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CameraViewController (){
     ALAssetsLibrary *takenPhoto;
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
+    
+    UIImageView *showPhoto;//撮った写真のview
 }
 
 @end
@@ -45,11 +48,61 @@
     
     //最初は表示されていないのでno
     _isVisible = NO;
-    takenPhoto =[[ALAssetsLibrary alloc] init];
+    
+    //取った写真を表示
+    showPhoto =[UIImageView new];
     
     
     
+    //cameraボタンの画像を入れる
+    UIImage *cameraimage = [UIImage imageNamed:@"camara.gif"];
+    UIImageView *cameraimageView=[[UIImageView alloc]initWithImage:cameraimage];
+    cameraimageView.frame= CGRectMake(120,450, 80, 60);
+    cameraimageView.alpha=1.0;
+    [self.view addSubview:cameraimageView];
+    [cameraimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *recognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cameraBtn:)];
+    [recognizer setNumberOfTapsRequired:1];
+    [cameraimageView addGestureRecognizer:recognizer];
+    
+    //libraryボタンの画像を入れる
+    UIImage *libraryimage = [UIImage imageNamed:@"library.gif"];
+    UIImageView *libraryimageView=[[UIImageView alloc]initWithImage:libraryimage];
+    libraryimageView.frame= CGRectMake(40,450, 80, 60);
+    libraryimageView.alpha=1.0;
+    [self.view addSubview:libraryimageView];
+    [libraryimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *libraryrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(libraryBtn:)];
+    [libraryrecognizer setNumberOfTapsRequired:1];
+    [libraryimageView addGestureRecognizer:libraryrecognizer];
+    
+    //nextボタンの画像を入れる
+    UIImage *nextimage = [UIImage imageNamed:@"next.gif"];
+    UIImageView *nextimageView=[[UIImageView alloc]initWithImage:nextimage];
+    nextimageView.frame= CGRectMake(240,450, 80, 60);
+    nextimageView.alpha=1.0;
+    [self.view addSubview:nextimageView];
+    [nextimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *nextrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextBtn:)];
+    [nextrecognizer setNumberOfTapsRequired:1];
+    [nextimageView addGestureRecognizer:nextrecognizer];
+    
+    //retuernボタンの画像を入れる
+    UIImage *returnimage = [UIImage imageNamed:@"start.gif"];
+    UIImageView *returnimageView=[[UIImageView alloc]initWithImage:returnimage];
+    returnimageView.frame= CGRectMake(10,10, 80, 30);
+    returnimageView.alpha=1.0;
+    [self.view addSubview:returnimageView];
+    [returnimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *returnrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(returnBtn:)];
+    [returnrecognizer setNumberOfTapsRequired:1];
+    [returnimageView addGestureRecognizer:returnrecognizer];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -57,49 +110,7 @@
 
 }
 
-- (IBAction)AccessLibraay:(id)sender {
-    UIImagePickerControllerSourceType sourceType
-    = UIImagePickerControllerSourceTypePhotoLibrary;
-    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.sourceType = sourceType;
-        picker.delegate = self;
-        
-        [self presentViewController:picker animated:YES completion:NULL];
-    }
-    
-}
 
-- (IBAction)TakePhoto:(id)sender {
-    
-    UIImagePickerControllerSourceType sourceType
-    = UIImagePickerControllerSourceTypeCamera;
-    
-    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.sourceType = sourceType;
-        picker.delegate = self;
-        //トリミングを行う
-        [picker setAllowsEditing:YES];
-        [self presentViewController:picker animated:YES completion:NULL];
-    }
-}
-
-- (IBAction)Next:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    actionSheet.title = @"Your sex?";
-    actionSheet.delegate = self;
-    
-    [actionSheet addButtonWithTitle:@"Man"];
-    [actionSheet addButtonWithTitle:@"Weman"];
-    [actionSheet addButtonWithTitle:@"The others"];
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setDestructiveButtonIndex:3];//赤文字で目立たせれる
-    [actionSheet setCancelButtonIndex:3];//分けて表示
-    [actionSheet showInView:self.view];
-    
-    
-}
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -111,6 +122,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
     //カメラで撮影したときだけ保存
     if (app.FaceImage == nil) {
+        
+        takenPhoto =[[ALAssetsLibrary alloc] init];
         [takenPhoto writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
             if(error ){
                 NSLog(@"Ooops!");
@@ -122,8 +135,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }];
     }
     
+    showPhoto.frame= CGRectMake(10,20, 300, 400);
+    
     [self dismissViewControllerAnimated:YES completion:^{
-        self.ImageView.image = image;}];
+        self->showPhoto.image = image;}];
+    [self.view addSubview:showPhoto];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -131,7 +147,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     switch (buttonIndex) {
         case 0:{
             NSLog(@"man");
-            if (self.ImageView.image != nil) {
+            if (self->showPhoto.image != nil) {
             GameViewController *gameViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
             [self presentViewController:gameViewController animated:YES completion:nil];
             }
@@ -139,7 +155,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         break;
         case 1:{
             NSLog(@"weman");
-            if (self.ImageView.image != nil) {
+            if (self->showPhoto.image != nil) {
             WemanGameViewController *wemanViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WemanGameViewController"];
             [self presentViewController:wemanViewController animated:YES completion:nil];
             }
@@ -147,7 +163,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             break;
         case 2:{
             NSLog(@"others");
-            if (self.ImageView.image != nil) {
+            if (self->showPhoto.image != nil) {
             OthersGameViewController *othersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OthersGameViewController"];
             [self presentViewController:othersViewController animated:YES completion:nil];
             }
@@ -164,6 +180,55 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     
 }
+
+-(void)cameraBtn:(UIButton *)camerabutton{
+    UIImagePickerControllerSourceType sourceType
+    = UIImagePickerControllerSourceTypeCamera;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = sourceType;
+        picker.delegate = self;
+        //トリミングを行う
+        [picker setAllowsEditing:YES];
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+}
+
+-(void)libraryBtn:(UIButton *)librarybutton{
+    UIImagePickerControllerSourceType sourceType
+    = UIImagePickerControllerSourceTypePhotoLibrary;
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = sourceType;
+        picker.delegate = self;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+}
+
+-(void)nextBtn:(UIButton *)nextbutton{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+    actionSheet.title = @"Your sex?";
+    actionSheet.delegate = self;
+    
+    [actionSheet addButtonWithTitle:@"Man"];
+    [actionSheet addButtonWithTitle:@"Weman"];
+    [actionSheet addButtonWithTitle:@"The others"];
+    [actionSheet addButtonWithTitle:@"Cancel"];
+    [actionSheet setDestructiveButtonIndex:3];//赤文字で目立たせれる
+    [actionSheet setCancelButtonIndex:3];//分けて表示
+    [actionSheet showInView:self.view];
+    
+}
+
+-(void)returnBtn:(UIButton *)returnbutton{
+     ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [self presentViewController:ViewController animated:YES completion:nil];
+
+    
+}
+
 
 //バーナーが表示される時発動する
 -(void)bannerViewDidLoadAd:(ADBannerView *)banner{//barnner = adview

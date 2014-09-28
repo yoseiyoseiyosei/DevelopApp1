@@ -62,7 +62,6 @@
     [startreturnButton addTarget:self action:@selector(restarttapBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *imagedictionary =[NSMutableDictionary new];
     NSDictionary *tempimagedictionary =[defaults objectForKey:@"historyData"];

@@ -11,9 +11,7 @@
 
 @interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,ADBannerViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *ImageView;
-- (IBAction)AccessLibraay:(id)sender;
-- (IBAction)TakePhoto:(id)sender;
-- (IBAction)Next:(id)sender;
+
+
 
 @end

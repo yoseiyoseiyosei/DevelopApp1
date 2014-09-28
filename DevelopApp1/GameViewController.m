@@ -81,6 +81,18 @@
     //最初は表示されていないのでno
     _isVisible = NO;
     
+//     //ボタンの画像を入れる（これによって人の写真が入れれる）
+//        UIImage *image = [UIImage imageNamed:@"man44.png"];
+//        UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+//        imageView.frame= CGRectMake(30,40, 50, 50);
+//        imageView.alpha=1.0;
+//        [mapView addSubview:imageView];
+//        [imageView setUserInteractionEnabled:YES];
+//    
+//        UITapGestureRecognizer *recognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBtn:)];
+//        [recognizer setNumberOfTapsRequired:1];
+//        [imageView addGestureRecognizer:recognizer];
+    
     
 }
 

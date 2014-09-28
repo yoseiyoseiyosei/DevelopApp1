@@ -74,28 +74,44 @@
     _adView.alpha = 0,0;//透明
     
     //スクリーンショットボタン
-    _myButton =[[UIButton alloc] initWithFrame:CGRectMake(260,540, 70, 30)];//位置x、y　画像h、w
-    [_myButton setTitle:@"shot" forState:UIControlStateNormal];
-    [_myButton setTitleColor:[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1.0] forState:UIControlStateNormal];//ボタンが青
-    [self.view addSubview:_myButton];
-    //関連付け
-    [_myButton addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *shotimage = [UIImage imageNamed:@"shot.gif"];
+    UIImageView *shotimageView=[[UIImageView alloc]initWithImage:shotimage];
+    shotimageView.frame= CGRectMake(120,400, 80, 60);
+    shotimageView.alpha=1.0;
+    [self.view addSubview:shotimageView];
+    [shotimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *shotrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shotBtn:)];
+    [shotrecognizer setNumberOfTapsRequired:1];
+    [shotimageView addGestureRecognizer:shotrecognizer];
+
     
     //スタートリターンボタン
-    startreturnButton =[[UIButton alloc] initWithFrame:CGRectMake(30,540, 70, 30)];//位置x、y　画像h、w
-    [startreturnButton setTitle:@"restart" forState:UIControlStateNormal];
-    [startreturnButton setTitleColor:[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1.0] forState:UIControlStateNormal];//ボタンが青
-    [self.view addSubview:startreturnButton];
-    //関連付け
-    [startreturnButton addTarget:self action:@selector(restarttapBtn:) forControlEvents:UIControlEventTouchUpInside];
+    //restsrtボタンの画像を入れる
+    UIImage *restsrtimage = [UIImage imageNamed:@"start.gif"];
+    UIImageView *restsrtimageView=[[UIImageView alloc]initWithImage:restsrtimage];
+    restsrtimageView.frame= CGRectMake(40,450, 80, 60);
+    restsrtimageView.alpha=1.0;
+    [self.view addSubview:restsrtimageView];
+    [restsrtimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *restsrtrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(restartBtn:)];
+    [restsrtrecognizer setNumberOfTapsRequired:1];
+    [restsrtimageView addGestureRecognizer:restsrtrecognizer];
+
+
     
     //シェアボタン
-    shareButton =[[UIButton alloc] initWithFrame:CGRectMake(160,540, 70, 30)];//位置x、y　画像h、w
-    [shareButton setTitle:@"share" forState:UIControlStateNormal];
-    [shareButton setTitleColor:[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1.0] forState:UIControlStateNormal];//ボタンが青
-    [self.view addSubview:shareButton];
-    //関連付け
-    [shareButton addTarget:self action:@selector(sharetapBtn:) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *shareimage = [UIImage imageNamed:@"share.gif"];
+    UIImageView *shareimageView=[[UIImageView alloc]initWithImage:shareimage];
+    shareimageView.frame= CGRectMake(240,450, 80, 60);
+    shareimageView.alpha=1.0;
+    [self.view addSubview:shareimageView];
+    [shareimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *sharerecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shareBtn:)];
+    [sharerecognizer setNumberOfTapsRequired:1];
+    [shareimageView addGestureRecognizer:sharerecognizer];
     
     
     
@@ -177,7 +193,7 @@
 }
 
 //スクリーンショットボタンがタップされたと時に呼び出されるメッソド
--(void)tapBtn:(UIButton *)myButton_tmp{
+-(void)shotBtn:(UIButton *)myButton_tmp{
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
     //ユーザーデフォルト
@@ -222,7 +238,7 @@ NSString *strNowKey = [dfkey stringFromDate:now];
 }
 
 //ボタンがタップされたと時に呼び出されるメッソド
--(void)restarttapBtn:(UIButton *)myButton_tmp{
+-(void)restartBtn:(UIButton *)myButton_tmp{
     ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     [self presentViewController:ViewController animated:YES completion:nil];
 
@@ -262,7 +278,7 @@ NSString *strNowKey = [dfkey stringFromDate:now];
     }
 }
 
-- (void)sharetapBtn:(id)sender {
+- (void)shareBtn:(id)sender {
     NSLog(@"77");
     //アクティビティーに渡す情報を配列に格納//nsArray,nsdictionary中身の型を気にしなくていい
     NSArray *actItems = @[takenPhoto];

@@ -11,8 +11,7 @@
 #import <iAd/iAd.h>
 @interface ViewController : UIViewController<ADBannerViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *StartLabel;
-@property (weak, nonatomic) IBOutlet UIButton *CollectLabel;
+
 
 
 
