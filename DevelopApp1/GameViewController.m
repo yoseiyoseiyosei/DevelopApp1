@@ -32,6 +32,13 @@
     UIImageView *bimageView;
     UIImageView *cimageView;
     UIImageView *dimageView;
+    
+    BOOL time_stop;
+    
+    int basictime;
+    float basicdistance;
+    
+    
 }
 
 @end
@@ -75,8 +82,9 @@
     //takenPhotoをallocしてサイズを変更する
     UIImage* myimage =[[UIImage alloc] init];
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
-    CGRect rect = CGRectMake(self.view.frame.size.width/4, 0, self.view.frame.size.width/2, self.view.frame.size.height/2);
-    takenPhoto.frame = rect;
+    takenPhoto.frame= CGRectMake(100,50, 120, 120);
+    takenPhoto.layer.cornerRadius = 120 * 0.5f;
+    takenPhoto.clipsToBounds = YES;
     [self.view addSubview:takenPhoto];
     
 //    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(DownSwipeHandle:)];
@@ -128,6 +136,9 @@
     dimageView.alpha=0;
     [self.view addSubview:dimageView];
     [dimageView setUserInteractionEnabled:YES];
+    
+    
+    time_stop = NO;
 
     
     
@@ -200,16 +211,22 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     if (aimageView.alpha ==1) {
         [self FadeInOut:aimageView];
+        NSLog(@"yes");
     }
-    if (aimageView.alpha ==1) {
+    if (bimageView.alpha ==1) {
         [self FadeInOut:bimageView];
+        NSLog(@"yes");
     }
-    if (aimageView.alpha ==1) {
+    if (cimageView.alpha ==1) {
         [self FadeInOut:cimageView];
+        NSLog(@"yes");
     }
     if (aimageView.alpha ==1) {
         [self FadeInOut:dimageView];
+        NSLog(@"yes");
     }
+    if (!time_stop) {
+        
     //タイマーの生成
     timer = [NSTimer
              scheduledTimerWithTimeInterval:1.0f target: self selector:@selector(TimerAction)userInfo:nil repeats:YES];
@@ -225,7 +242,7 @@
     startlocation = [touch locationInView:self.view];
     NSLog(@"tapstartタップ");
     [timer fire];
-    
+}
 }
 
 //タップ終了時に起動
@@ -251,6 +268,7 @@
     if (timeFlug == YES && distanceFlug == YES) {
         //裸のシーンに移動
         NSLog(@"scene 移動");
+        time_stop = YES;
         //次のシーン作り
         manResultViewController *ManResultViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"manResultViewController"];
         [self presentViewController:ManResultViewController animated:YES completion:nil];
@@ -275,33 +293,32 @@
         switch (timecount) {
             case 1:
                 [self FadeInOut:aimageView];
+                NSLog(@"no");
                 break;
             case 2:
                 [self FadeInOut:bimageView];
-                break;
-            case 3:
-                timeFlug = YES;
-                [self FadeInOut:cimageView];
+                NSLog(@"no");
                 break;
             default:
+                timeFlug = YES;
                 [self FadeInOut:dimageView];
+                NSLog(@"no");
                 break;
         }
     }else{
         switch (timecount) {
-            distanceFlug = NO;
+            distanceFlug = YES;
         case 1:
             [self FadeInOut:aimageView];
+                NSLog(@"no");
             break;
         case 2:
             [self FadeInOut:bimageView];
-            break;
-        case 3:
-            timeFlug = YES;
-            distanceFlug = YES;
+                NSLog(@"no");
             break;
         default:
-            [self FadeInOut:dimageView];
+                timeFlug = YES;
+                distanceFlug = YES;
             break;
         
         }
@@ -405,6 +422,14 @@
     //アニメーション実行
     [UIView commitAnimations];
 }
+
+-(void)judgement:(int)timecount :(float)distance{
+    if (timecount == basictime && distance == basicdistance  ) {
+        timeFlug = YES;
+        distanceFlug =YES;
+    }
+}
+
 /*
 #pragma mark - Navigation
 

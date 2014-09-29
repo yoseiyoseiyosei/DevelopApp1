@@ -56,13 +56,13 @@
     //takenPhotoをallocしてサイズを変更する
     UIImage* myimage =[[UIImage alloc] init];
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
-    CGRect rect = CGRectMake(self.view.frame.size.width/4, 0, self.view.frame.size.width/2, self.view.frame.size.height/3);
-    takenPhoto.frame = rect;
+    takenPhoto.frame= CGRectMake(100,50, 120, 120);
+    takenPhoto.layer.cornerRadius = 120 * 0.5f;
+    takenPhoto.clipsToBounds = YES;
     [_skyView addSubview:takenPhoto];
 
     //ヴューに表示
     [self.view addSubview:_skyView];
-    
     
     
     //バーナーオブジェクト生成

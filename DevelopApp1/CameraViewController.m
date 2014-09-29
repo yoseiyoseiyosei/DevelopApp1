@@ -116,12 +116,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+
     
     //カメラライブラリから選んだ写真のURLを取得。
     app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
+    
     //カメラで撮影したときだけ保存
     if (app.FaceImage == nil) {
+        image =(UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
         
         takenPhoto =[[ALAssetsLibrary alloc] init];
         [takenPhoto writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
@@ -135,10 +138,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }];
     }
     
-    showPhoto.frame= CGRectMake(10,20, 300, 400);
+    
     
     [self dismissViewControllerAnimated:YES completion:^{
         self->showPhoto.image = image;}];
+    
+    showPhoto = [[UIImageView alloc] initWithImage:image];
+    showPhoto.frame= CGRectMake(10,70, 300, 300);
+    showPhoto.layer.cornerRadius = 300 * 0.5f;
+    showPhoto.clipsToBounds = YES;
     [self.view addSubview:showPhoto];
 }
 
@@ -202,6 +210,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = sourceType;
         picker.delegate = self;
+        //トリミングを行う
+        [picker setAllowsEditing:YES];
         
         [self presentViewController:picker animated:YES completion:NULL];
     }
@@ -228,6 +238,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
     
 }
+
 
 
 //バーナーが表示される時発動する
