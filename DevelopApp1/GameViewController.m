@@ -198,12 +198,18 @@
 
 //タップ開始時に起動
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-//    if (!_isFadeIn) {
-//    [self FadeInOut:aimageView];
-//    [self FadeInOut:bimageView];
-//    [self FadeInOut:cimageView];
-//    [self FadeInOut:dimageView];
-//    }
+    if (aimageView.alpha ==1) {
+        [self FadeInOut:aimageView];
+    }
+    if (aimageView.alpha ==1) {
+        [self FadeInOut:bimageView];
+    }
+    if (aimageView.alpha ==1) {
+        [self FadeInOut:cimageView];
+    }
+    if (aimageView.alpha ==1) {
+        [self FadeInOut:dimageView];
+    }
     //タイマーの生成
     timer = [NSTimer
              scheduledTimerWithTimeInterval:1.0f target: self selector:@selector(TimerAction)userInfo:nil repeats:YES];
