@@ -69,14 +69,14 @@
     //NSMutableArray *takenphotos = [NSMutableArray new];
 
     //画像の位置
-    CGFloat xposition =0,yposition =0,wimage =80,himage =80;
+    CGFloat xposition =0,yposition =0;
     int count =0;
    
     
     for (id atekenphoto in [imagedictionary keyEnumerator]) {
         //[defaults removeObjectForKey:atekenphoto];
         //撮った画像をとってくる
-        [self showPhoto:[imagedictionary objectForKey:atekenphoto]];
+        [self showPhoto:[imagedictionary objectForKey:atekenphoto] xposition:xposition yposition:yposition];
         
         if (takenPhoto != nil) {
             
@@ -84,15 +84,15 @@
             count+=1;
             NSLog(@"%d %f",count,self.view.bounds.size.width/4);
 //            NSString *iti = [NSString stringWithString:@"%d",count];
-            //画像を乗せるview
-            UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
-            _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
-            //takenPhoto.frame = [[UIScreen mainScreen] bounds];
-            takenPhoto.frame =CGRectMake(xposition, yposition, wimage, himage);
-            //_skyViewに画像を乗せる
-            [_skyView addSubview:takenPhoto];
-            //self.viewに画像の乗った_skyViewを表示
-            [self.view addSubview:_skyView];
+//            //画像を乗せるview
+//            UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
+//            _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
+//            //takenPhoto.frame = [[UIScreen mainScreen] bounds];
+//            takenPhoto.frame =CGRectMake(xposition, yposition, wimage, himage);
+//            //_skyViewに画像を乗せる
+//            [_skyView addSubview:takenPhoto];
+//            //self.viewに画像の乗った_skyViewを表示
+//            [self.view addSubview:_skyView];
         
             if (xposition  < 240) {
                 xposition += 80;
@@ -155,8 +155,10 @@
 }
 
 //assetsから取得した画像を表示する
--(void)showPhoto:(NSString *)url
+-(void)showPhoto:(NSString *)url xposition:(CGFloat)xposition yposition:(CGFloat)yposition
 {
+    int wimage =80,himage =80;
+    
     //URLからALAssetを取得
     takenPhotolibrary = [[ALAssetsLibrary alloc] init];
     [takenPhotolibrary assetForURL:[NSURL URLWithString:url]
@@ -174,8 +176,21 @@
                                
                                UIImage *thumbnailImage = [UIImage imageWithCGImage:[asset thumbnail]];
                                
-                               self->takenPhoto.image = fullscreenImage; //イメージをセット
-                               self->takenPhoto.image = thumbnailImage; //イメージをセット
+                               //初期化
+                               takenPhoto = [UIImageView new];
+                               
+                               takenPhoto.frame =CGRectMake(0, 0, wimage, himage);
+                               //self->takenPhoto.image = fullscreenImage; //イメージをセット
+                               takenPhoto.image = thumbnailImage; //イメージをセット
+                               
+                               UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
+                               _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
+                               //takenPhoto.frame = [[UIScreen mainScreen] bounds];
+                               //_skyViewに画像を乗せる
+                               [_skyView addSubview:takenPhoto];
+                               //self.viewに画像の乗った_skyViewを表示
+                               [self.view addSubview:_skyView];
+                               
                                
                                //  UICollectionViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlbumViewController"];
                                //  [self presentViewController:mycontroller animated:YES completion:nil];
@@ -185,6 +200,7 @@
                            }
                            
                        } failureBlock: nil];
+    
     
 }
 

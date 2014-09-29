@@ -195,46 +195,50 @@
 //スクリーンショットボタンがタップされたと時に呼び出されるメッソド
 -(void)shotBtn:(UIButton *)myButton_tmp{
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
+    
     //ユーザーデフォルト
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-//現在作成した地図のスクリーンショットを作成
-UIImage *allPic = [self screenshotWithView:_skyView];
     
-        [takenPhotolibrary writeImageToSavedPhotosAlbum:allPic.CGImage orientation:(ALAssetOrientation)allPic.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
-            if(error ){
-                NSLog(@"Ooops!");
-            }
-            else{
-                NSLog(@"save");
-                app.FaceImage = [(NSURL *)assetURL absoluteString];
-            }
-        }];
-
-
-
-//現在日時のデータ取得
-NSDate *now = [NSDate date];
-//フォーマットの用意
-NSDateFormatter *dfkey = [[NSDateFormatter alloc] init];
-//フォーマットのセット
-[dfkey setDateFormat:@"yyyy/MM/dd_HH:mm:ss"];
-//文字列化
-NSString *strNowKey = [dfkey stringFromDate:now];
-
+    //現在作成した地図のスクリーンショットを作成
+    UIImage *allPic = [self screenshotWithView:_skyView];
     
-    NSMutableDictionary *ret_dictionary =[NSMutableDictionary new];
-    NSDictionary *tempdictionary =[defaults objectForKey:@"historyData"];
-    ret_dictionary = tempdictionary.mutableCopy;
-//現在時刻をキーに指定し、Historyデータに保存
-    if(ret_dictionary == nil){
-        ret_dictionary= [NSMutableDictionary new];
-    }
-[ret_dictionary setObject:app.FaceImage forKey:strNowKey];
-
-[defaults setObject:ret_dictionary forKey:@"historyData"];
-[defaults synchronize];
+    [takenPhotolibrary writeImageToSavedPhotosAlbum:allPic.CGImage orientation:(ALAssetOrientation)allPic.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
+        if(error ){
+            NSLog(@"Ooops!");
+        }
+        else{
+            NSLog(@"save");
+            app.FaceImage = [(NSURL *)assetURL absoluteString];
+            
+            
+            //現在日時のデータ取得
+            NSDate *now = [NSDate date];
+            //フォーマットの用意
+            NSDateFormatter *dfkey = [[NSDateFormatter alloc] init];
+            //フォーマットのセット
+            [dfkey setDateFormat:@"yyyy/MM/dd_HH:mm:ss"];
+            //文字列化
+            NSString *strNowKey = [dfkey stringFromDate:now];
+            
+            
+            NSMutableDictionary *ret_dictionary =[NSMutableDictionary new];
+            NSDictionary *tempdictionary =[defaults objectForKey:@"historyData"];
+            ret_dictionary = tempdictionary.mutableCopy;
+            //現在時刻をキーに指定し、Historyデータに保存
+            if(ret_dictionary == nil){
+                ret_dictionary= [NSMutableDictionary new];
+            }
+            [ret_dictionary setObject:app.FaceImage forKey:strNowKey];
+            
+            [defaults setObject:ret_dictionary forKey:@"historyData"];
+            [defaults synchronize];
+            
+            
+        }
+    }];
+    
+    
+    
 }
 
 //ボタンがタップされたと時に呼び出されるメッソド
