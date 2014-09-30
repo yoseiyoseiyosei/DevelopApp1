@@ -22,6 +22,8 @@
     
     BOOL _isFadeIn;
     NSTimer *timer; //クイズ中の経過時間を生成する
+    NSTimer *alltimer; //クイズ中の経過時間を生成する
+    
     CGPoint changePos;
     BOOL timeFlug;
     BOOL distanceFlug;
@@ -38,7 +40,15 @@
     int basictime;
     float basicdistance;
     
+    int swipecounter;
     
+    int whichtellalie;
+    
+    int seed;//highかlowかの判断
+    
+    int alltimecount;
+    
+    UILabel *label;
 }
 
 @end
@@ -57,9 +67,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    seed =[self randxy:0 :1];
+    
+    //スワイプのカウンター
+    swipecounter=0;
+    //swipe回数表示
+    label = [[UILabel alloc] init];
+    label.frame = CGRectMake(10, 10, 100, 100);
+    label.textColor = [UIColor blueColor];
+    label.font = [UIFont fontWithName:@"AppleGothic" size:12];
     
     //乱数でエロいフリックの定義を決める
     basictime = [self randxy:1 :3];
+    //basictime = 0;
     basicdistance = [self randxy:100 :230];
     //フェードインから
     _isFadeIn=YES;
@@ -142,7 +162,12 @@
     
     
     time_stop = NO;
-
+    
+    alltimecount =0;
+    //タイマーの生成
+    alltimer = [NSTimer
+             scheduledTimerWithTimeInterval:1.0f target: self selector:@selector(allTimerAction)userInfo:nil repeats:YES];
+    
     
     
 }
@@ -204,6 +229,13 @@
 //}
 
 //タイマーの一秒間隔で発動するメソッド
+-(void)allTimerAction{
+    alltimecount++;
+    NSLog(@"all %d秒",alltimecount);
+    
+}
+
+//タイマーの一秒間隔で発動するメソッド
 -(void)TimerAction{
     count++;
     NSLog(@"1秒");
@@ -212,6 +244,11 @@
 
 //タップ開始時に起動
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    if (swipecounter == 0) {
+        [alltimer fire];
+    }
+    swipecounter++;
+    
     if (aimageView.alpha ==1) {
         [self FadeInOut:aimageView];
         NSLog(@"yes");
@@ -230,22 +267,22 @@
     }
     if (!time_stop) {
         
-    //タイマーの生成
-    timer = [NSTimer
-             scheduledTimerWithTimeInterval:1.0f target: self selector:@selector(TimerAction)userInfo:nil repeats:YES];
-    //        scheduledTimerWithTimeInterval	タイマーを発生させる間隔
-    //        （1.5fなら1.5秒間隔）
-    //        target	タイマー発生時に呼び出すメソッドがあるターゲット
-    //        selector	タイマー発生時に呼び出すメソッドを指定する
-    //        userInfo	selectorで呼び出すメソッドに渡す情報(NSDictionary)
-    //        repeats	タイマーの実行を繰り返すかどうかの指定
-    //        （YES：繰り返す　NO：１回のみ）
-    //タイマースタート
-    UITouch *touch = [touches anyObject];
-    startlocation = [touch locationInView:self.view];
-    NSLog(@"tapstartタップ");
-    [timer fire];
-}
+        //タイマーの生成
+        timer = [NSTimer
+                 scheduledTimerWithTimeInterval:1.0f target: self selector:@selector(TimerAction)userInfo:nil repeats:YES];
+        //        scheduledTimerWithTimeInterval	タイマーを発生させる間隔
+        //        （1.5fなら1.5秒間隔）
+        //        target	タイマー発生時に呼び出すメソッドがあるターゲット
+        //        selector	タイマー発生時に呼び出すメソッドを指定する
+        //        userInfo	selectorで呼び出すメソッドに渡す情報(NSDictionary)
+        //        repeats	タイマーの実行を繰り返すかどうかの指定
+        //        （YES：繰り返す　NO：１回のみ）
+        //タイマースタート
+        UITouch *touch = [touches anyObject];
+        startlocation = [touch locationInView:self.view];
+        NSLog(@"tapstartタップ");
+        [timer fire];
+    }
 }
 
 //タップ終了時に起動
@@ -253,6 +290,11 @@
 {
     UITouch *aTouch = [touches anyObject];
     CGPoint endlocation = [aTouch locationInView:self.view];
+    
+    //swipe回数表示
+    label.text = [NSString stringWithFormat: @"%d",swipecounter];
+    [self.view addSubview:label];
+    NSLog(@"swipe : %d",swipecounter);
     
     float x=0;
     float y=0;
@@ -265,10 +307,19 @@
     NSLog(@"%f %f",x,y);
     
     //時間と距離を計測してエロいフリックを取得
-    [self balloon:y :count];
+    [self judgement:count :y];
+    
+//時間で強制終了
+    if(alltimecount >30){
+        timeFlug = YES;
+        distanceFlug = YES;
+    
+    }
     
     
     if (timeFlug == YES && distanceFlug == YES) {
+        
+        [alltimer invalidate];
         //裸のシーンに移動
         NSLog(@"scene 移動");
         time_stop = YES;
@@ -287,29 +338,7 @@
 -(void)fire{}
 -(void)invalidate{}
 
--(void)balloon:(float)distance :(int)timecount{
 
-        switch (timecount) {
-            case 1:
-                //判断
-                [self judgement:timecount :distance];
-                [self FadeInOut:aimageView];
-                NSLog(@"no");
-                break;
-            case 2:
-                [self judgement:timecount :distance];
-                [self FadeInOut:bimageView];
-                NSLog(@"no");
-                break;
-            default:
-                [self judgement:timecount :distance];
-                [self FadeInOut:dimageView];
-                NSLog(@"no");
-                break;
-        }
-    
-    
-}//誘惑
 
 
 -(int)randxy:(int)min :(int)max{
@@ -407,21 +436,165 @@
 }
 
 -(void)judgement:(int)timecount :(float)distance{
-    int seed =[self randxy:0 :1];
-    
+//ランダム時間が実際時間とあってるか
     if (timecount == basictime) {
-        timeFlug = YES;
+        
+    //highかlowかを決める
+        //highの時
         if (seed == 0) {
             if (distance > basicdistance) {
+                timeFlug = YES;
                 distanceFlug = YES;
+                NSLog(@"時間はあってる距離が長いので足りてる　画面遷移");
+                
+            }else{
+                timeFlug = YES;
+                distanceFlug = NO;
+                NSLog(@"時間はあってる距離が短すぎる　距離を長くして欲しい");
+                //吹き出しの表示
+                [self FadeInOut:aimageView];
+                
+                //嘘つく
+                [self tellalie];
             }
+        //lowの時
         }else{
             if (distance <= basicdistance) {
+                timeFlug = YES;
                 distanceFlug = YES;
+                NSLog(@"時間はあってる距離が短いので足りている　画面遷移");
+            }else{
+                timeFlug = YES;
+                distanceFlug = NO;
+                NSLog(@"時間はあってる距離が長過ぎる　距離を短くしてほしい");
+                //吹き出しの表示
+                [self FadeInOut:aimageView];
+                
+                //嘘つく
+                [self tellalie];
             }
+        }
+//ランダム時間が実際の時間と違っているとき
+    }else{
+        //時間が短いとき
+        if (timecount <basictime) {
+            //highかlowかを決める
+            //highの時
+            if (seed == 0) {
+                if (distance > basicdistance) {
+                    timeFlug = NO;
+                    distanceFlug = YES;
+                    NSLog(@"時間が短く距離が長いので足りている　時間を長くしてほしい");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                    
+                }else{
+                    timeFlug = NO;
+                    distanceFlug = NO;
+                    NSLog(@"時間が短く距離が短すぎる　時間を長くかつ距離を長く");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                }
+                //lowの時
+            }else{
+                if (distance <= basicdistance) {
+                    timeFlug = NO;
+                    distanceFlug = YES;
+                    NSLog(@"時間が短く距離が短いので足りている　時間を長くして欲しい");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                    
+                }else{
+                    timeFlug = NO;
+                    distanceFlug = NO;
+                    NSLog(@"時間が短く距離が長すぎる　時間を長く距離を短くしてほしい");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                }
+            }
+        //時間が長いとき
+        }else{
+            //highかlowかを決める
+            //highの時
+            if (seed == 0) {
+                if (distance > basicdistance) {
+                    timeFlug = NO;
+                    distanceFlug = YES;
+                    NSLog(@"時間が長く距離が長いので足りている　時間を短くしてほしい");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                
+                }else{
+                    timeFlug = NO;
+                    distanceFlug = NO;
+                    NSLog(@"時間が長く距離が短すぎる　時間を短く距離を長くしてほしい");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                }
+                //lowの時
+            }else{
+                if (distance <= basicdistance) {
+                    timeFlug = NO;
+                    distanceFlug = YES;
+                    NSLog(@"時間が長く距離が短いので足りている　時間を短くしてほしい");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                }else{
+                    timeFlug = NO;
+                    distanceFlug = NO;
+                    NSLog(@"時間が長く距離が長いすぎる　時間を短く距離を長くしてほしい");
+                    //吹き出しの表示
+                    [self FadeInOut:aimageView];
+                    
+                    //嘘つく
+                    [self tellalie];
+                }
+            }
+        
+        
+        
+        
         }
     }
 }
+
+//嘘つくメソッド
+-(void)tellalie{
+    int timelie = [self randxy:0 :6];
+    int distancelie = [self randxy:0 :6];
+    
+    if(timelie == 1){
+    distanceFlug = YES;
+        NSLog(@"嘘ついた");
+    }
+    
+    if(distancelie ==2){
+    timeFlug = YES;
+        NSLog(@"嘘ついた");
+    }
+}
+
 
 /*
 #pragma mark - Navigation

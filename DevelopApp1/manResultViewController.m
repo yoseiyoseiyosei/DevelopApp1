@@ -194,6 +194,10 @@
 
 //スクリーンショットボタンがタップされたと時に呼び出されるメッソド
 -(void)shotBtn:(UIButton *)myButton_tmp{
+    
+
+    
+    
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //ユーザーデフォルト
@@ -237,7 +241,15 @@
         }
     }];
     
-    
+//    UIView *View = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
+//    View.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+//    //takenPhoto.frame = [[UIScreen mainScreen] bounds];
+//    //Viewに画像を乗せる
+//    [View addSubview:takenPhoto];
+//    //self.viewに画像の乗った_skyViewを表示
+//    [self.view addSubview:View];
+//     View.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+//    [self.view addSubview:View];
     
 }
 

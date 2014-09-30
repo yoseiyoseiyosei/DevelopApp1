@@ -120,10 +120,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
     
     //カメラライブラリから選んだ写真のURLを取得。
-    app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
+    //app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
     
     //カメラで撮影したときだけ保存
-    if (app.FaceImage == nil) {
+    //if (app.FaceImage == nil) {
         image =(UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
         
         takenPhoto =[[ALAssetsLibrary alloc] init];
@@ -136,7 +136,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 app.FaceImage = [(NSURL *)assetURL absoluteString];
             }
         }];
-    }
+    //}
     
     
     

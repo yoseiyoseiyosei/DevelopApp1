@@ -52,15 +52,17 @@
     //最初は表示されていないのでno
     _isVisible = NO;
     
-    //スタートリターンボタン
-    UIButton *startreturnButton =[[UIButton alloc] initWithFrame:CGRectMake(30,540, 70, 30)];//位置x、y　画像h、w
-    [startreturnButton setTitle:@"restart" forState:UIControlStateNormal];
-    [startreturnButton setTitleColor:[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1.0] forState:UIControlStateNormal];//ボタンが青
-    [self.view addSubview:startreturnButton];
-    
-    //関連付け
-    [startreturnButton addTarget:self action:@selector(restarttapBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
+    //startボタンの画像を入れる
+    UIImage *image = [UIImage imageNamed:@"start.gif"];
+    UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+    imageView.frame= CGRectMake(120,400, 80, 60);
+    imageView.alpha=1.0;
+    [self.view addSubview:imageView];
+    [imageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *recognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(restarttapBtn:)];
+    [recognizer setNumberOfTapsRequired:1];
+    [imageView addGestureRecognizer:recognizer];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *imagedictionary =[NSMutableDictionary new];
@@ -150,8 +152,6 @@
 -(void)restarttapBtn:(UIButton *)myButton_tmp{
     ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     [self presentViewController:ViewController animated:YES completion:nil];
-    
-    
 }
 
 //assetsから取得した画像を表示する
