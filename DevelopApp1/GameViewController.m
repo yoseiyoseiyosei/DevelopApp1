@@ -58,6 +58,9 @@
 {
     [super viewDidLoad];
     
+    //乱数でエロいフリックの定義を決める
+    basictime = [self randxy:1 :3];
+    basicdistance = [self randxy:100 :230];
     //フェードインから
     _isFadeIn=YES;
     
@@ -253,8 +256,8 @@
     
     float x=0;
     float y=0;
-    x = startlocation.x - endlocation.x;
-    y = startlocation.y - endlocation.y;
+    x = (-1)*(startlocation.x - endlocation.x);
+    y = (-1)*(startlocation.y - endlocation.y);
     
     
     [timer invalidate]; // タイマーを停止する
@@ -286,52 +289,32 @@
 
 -(void)balloon:(float)distance :(int)timecount{
 
-    
-    if (distance > -250) {
-        distanceFlug = NO;
-        
         switch (timecount) {
             case 1:
+                //判断
+                [self judgement:timecount :distance];
                 [self FadeInOut:aimageView];
                 NSLog(@"no");
                 break;
             case 2:
+                [self judgement:timecount :distance];
                 [self FadeInOut:bimageView];
                 NSLog(@"no");
                 break;
             default:
-                timeFlug = YES;
+                [self judgement:timecount :distance];
                 [self FadeInOut:dimageView];
                 NSLog(@"no");
                 break;
         }
-    }else{
-        switch (timecount) {
-            distanceFlug = YES;
-        case 1:
-            [self FadeInOut:aimageView];
-                NSLog(@"no");
-            break;
-        case 2:
-            [self FadeInOut:bimageView];
-                NSLog(@"no");
-            break;
-        default:
-                timeFlug = YES;
-                distanceFlug = YES;
-            break;
-        
-        }
-        
-        
-    }
+    
     
 }//誘惑
 
 
--(float)randxy:(int)min :(int)max{
-    float rn;
-    rn=(float)([self getRandamInt:min max:max]);
+-(int)randxy:(int)min :(int)max{
+    int rn;
+    rn=[self getRandamInt:min max:max];
     return rn;
 }
 
@@ -424,9 +407,19 @@
 }
 
 -(void)judgement:(int)timecount :(float)distance{
-    if (timecount == basictime && distance == basicdistance  ) {
+    int seed =[self randxy:0 :1];
+    
+    if (timecount == basictime) {
         timeFlug = YES;
-        distanceFlug =YES;
+        if (seed == 0) {
+            if (distance > basicdistance) {
+                distanceFlug = YES;
+            }
+        }else{
+            if (distance <= basicdistance) {
+                distanceFlug = YES;
+            }
+        }
     }
 }
 
