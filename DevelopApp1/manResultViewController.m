@@ -232,6 +232,7 @@
             if(ret_dictionary == nil){
                 ret_dictionary= [NSMutableDictionary new];
             }
+            
             [ret_dictionary setObject:app.FaceImage forKey:strNowKey];
             
             [defaults setObject:ret_dictionary forKey:@"historyData"];

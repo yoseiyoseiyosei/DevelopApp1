@@ -33,6 +33,9 @@
 		8E1D211F19D6FB2F00AF9953 /* 女脱いだ候補２.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D210619D6FB2F00AF9953 /* 女脱いだ候補２.jpg */; };
 		8E1D212019D6FB2F00AF9953 /* 男脱いだ後.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D210719D6FB2F00AF9953 /* 男脱いだ後.jpg */; };
 		8E1D212219D7055300AF9953 /* title.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D212119D7055300AF9953 /* title.jpg */; };
+		8E1D219A19DC32D100AF9953 /* rule.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D219919DC32D100AF9953 /* rule.gif */; };
+		8E1D219D19DC364B00AF9953 /* ruleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D219C19DC364B00AF9953 /* ruleViewController.m */; };
+		8E1D219F19DC3BF800AF9953 /* x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D219E19DC3BF800AF9953 /* x.gif */; };
 		8E9830E219C80EB900F56A74 /* manResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E119C80EB900F56A74 /* manResultViewController.m */; };
 		8E9830E519C813CC00F56A74 /* wemanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E419C813CC00F56A74 /* wemanResultViewController.m */; };
 		8E9830E819C8145D00F56A74 /* cthersResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E719C8145D00F56A74 /* cthersResultViewController.m */; };
@@ -96,6 +99,10 @@
 		8E1D210619D6FB2F00AF9953 /* 女脱いだ候補２.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "女脱いだ候補２.jpg"; sourceTree = "<group>"; };
 		8E1D210719D6FB2F00AF9953 /* 男脱いだ後.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "男脱いだ後.jpg"; sourceTree = "<group>"; };
 		8E1D212119D7055300AF9953 /* title.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = title.jpg; sourceTree = "<group>"; };
+		8E1D219919DC32D100AF9953 /* rule.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rule.gif; sourceTree = "<group>"; };
+		8E1D219B19DC364B00AF9953 /* ruleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ruleViewController.h; sourceTree = "<group>"; };
+		8E1D219C19DC364B00AF9953 /* ruleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ruleViewController.m; sourceTree = "<group>"; };
+		8E1D219E19DC3BF800AF9953 /* x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = x.gif; path = ../x.gif; sourceTree = "<group>"; };
 		8E9830E019C80EB900F56A74 /* manResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = manResultViewController.h; sourceTree = "<group>"; };
 		8E9830E119C80EB900F56A74 /* manResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = manResultViewController.m; sourceTree = "<group>"; };
 		8E9830E319C813CC00F56A74 /* wemanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wemanResultViewController.h; sourceTree = "<group>"; };
@@ -164,6 +171,7 @@
 		8E1D20EE19D6FB2F00AF9953 /* IMage */ = {
 			isa = PBXGroup;
 			children = (
+				8E1D219E19DC3BF800AF9953 /* x.gif */,
 				8E1D20EF19D6FB2F00AF9953 /* camara.gif */,
 				8E1D20F019D6FB2F00AF9953 /* collect.gif */,
 				8E1D20F119D6FB2F00AF9953 /* fromttob.gif */,
@@ -174,6 +182,7 @@
 				8E1D20F619D6FB2F00AF9953 /* images (4).jpeg */,
 				8E1D20F719D6FB2F00AF9953 /* images.jpeg */,
 				8E1D20F819D6FB2F00AF9953 /* library.gif */,
+				8E1D219919DC32D100AF9953 /* rule.gif */,
 				8E1D20F919D6FB2F00AF9953 /* more.gif */,
 				8E1D20FA19D6FB2F00AF9953 /* morelove.gif */,
 				8E1D20FB19D6FB2F00AF9953 /* moreslow.gif */,
@@ -238,6 +247,8 @@
 				8EA57E6619BD10BD00B6B853 /* CameraViewController.m */,
 				8EA57E6B19BD14A800B6B853 /* CollectViewController.h */,
 				8EA57E6C19BD14A800B6B853 /* CollectViewController.m */,
+				8E1D219B19DC364B00AF9953 /* ruleViewController.h */,
+				8E1D219C19DC364B00AF9953 /* ruleViewController.m */,
 				8EA57E7319BDA15700B6B853 /* GameViewController.h */,
 				8EA57E7419BDA15700B6B853 /* GameViewController.m */,
 				8EA57E7619BDACA400B6B853 /* WemanGameViewController.h */,
@@ -380,10 +391,12 @@
 				8E1D211819D6FB2F00AF9953 /* start.gif in Resources */,
 				8E1D211619D6FB2F00AF9953 /* share.gif in Resources */,
 				8E1D210A19D6FB2F00AF9953 /* fromttob.gif in Resources */,
+				8E1D219F19DC3BF800AF9953 /* x.gif in Resources */,
 				8E1D210B19D6FB2F00AF9953 /* Ifeltlove.gif in Resources */,
 				8E1D212219D7055300AF9953 /* title.jpg in Resources */,
 				8E1D210F19D6FB2F00AF9953 /* images (4).jpeg in Resources */,
 				8E1D211B19D6FB2F00AF9953 /* スター.gif in Resources */,
+				8E1D219A19DC32D100AF9953 /* rule.gif in Resources */,
 				8E1D211119D6FB2F00AF9953 /* library.gif in Resources */,
 				8E1D211D19D6FB2F00AF9953 /* 女中国.jpg in Resources */,
 				8E1D211E19D6FB2F00AF9953 /* 女脱いだ候補１.jpg in Resources */,
@@ -415,6 +428,7 @@
 				8EA57E7B19BDACC300B6B853 /* OthersGameViewController.m in Sources */,
 				8EA57E6719BD10BD00B6B853 /* CameraViewController.m in Sources */,
 				8E9830E219C80EB900F56A74 /* manResultViewController.m in Sources */,
+				8E1D219D19DC364B00AF9953 /* ruleViewController.m in Sources */,
 				8EB45F3019BC417200F03297 /* AppDelegate.m in Sources */,
 				8EA57E7519BDA15700B6B853 /* GameViewController.m in Sources */,
 				8E9830E519C813CC00F56A74 /* wemanResultViewController.m in Sources */,

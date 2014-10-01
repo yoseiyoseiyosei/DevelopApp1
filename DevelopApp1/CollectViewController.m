@@ -11,11 +11,15 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 
+
 @interface CollectViewController (){
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
     ALAssetsLibrary *takenPhotolibrary;
     UIImageView *takenPhoto;
+    BOOL dataari;
+    UIScrollView *sv;
+
 }
 
 
@@ -35,10 +39,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *imagedictionary =[NSMutableDictionary new];
+    NSDictionary *tempimagedictionary =[defaults objectForKey:@"historyData"];
+    imagedictionary = tempimagedictionary.mutableCopy;
+    //NSMutableArray *takenphotos = [NSMutableArray new];
+    
+    // スクロールビュー例文
+    sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    UIView *uv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [sv addSubview:uv];
+    
+    
+    //画像の位置
+    CGFloat xposition =0,yposition =20;
+    int count =0;
+   
+    
+    for (id atekenphoto in [imagedictionary keyEnumerator]) {
+        
+        //撮った画像をとってくる
+        [self showPhoto:[imagedictionary objectForKey:atekenphoto] xposition:xposition yposition:yposition proccesskey:atekenphoto];
+        
+            //画像の位置
+            count+=1;
+            NSLog(@"%d %f",count,self.view.bounds.size.width/4);
+        
+            if (xposition  < 240) {
+                xposition += 80;
+            }else{
+                xposition =0;
+                yposition +=80;
+            }
+    }
+    
+    sv.contentSize = uv.bounds.size;
+    [self.view addSubview:sv];
+    
     //takenPhotoをallocしてサイズを変更する
     UIImage* myimage =[[UIImage alloc] init];
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
-
+    
     
     // Do any additional setup after loading the view.
     //バーナーオブジェクト生成
@@ -64,50 +105,6 @@
     [recognizer setNumberOfTapsRequired:1];
     [imageView addGestureRecognizer:recognizer];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *imagedictionary =[NSMutableDictionary new];
-    NSDictionary *tempimagedictionary =[defaults objectForKey:@"historyData"];
-    imagedictionary = tempimagedictionary.mutableCopy;
-    //NSMutableArray *takenphotos = [NSMutableArray new];
-
-    //画像の位置
-    CGFloat xposition =0,yposition =0;
-    int count =0;
-   
-    
-    for (id atekenphoto in [imagedictionary keyEnumerator]) {
-        //[defaults removeObjectForKey:atekenphoto];
-        //撮った画像をとってくる
-        [self showPhoto:[imagedictionary objectForKey:atekenphoto] xposition:xposition yposition:yposition];
-        
-        if (takenPhoto != nil) {
-            
-            //画像の位置
-            count+=1;
-            NSLog(@"%d %f",count,self.view.bounds.size.width/4);
-//            NSString *iti = [NSString stringWithString:@"%d",count];
-//            //画像を乗せるview
-//            UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
-//            _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
-//            //takenPhoto.frame = [[UIScreen mainScreen] bounds];
-//            takenPhoto.frame =CGRectMake(xposition, yposition, wimage, himage);
-//            //_skyViewに画像を乗せる
-//            [_skyView addSubview:takenPhoto];
-//            //self.viewに画像の乗った_skyViewを表示
-//            [self.view addSubview:_skyView];
-        
-            if (xposition  < 240) {
-                xposition += 80;
-            }else{
-                xposition =0;
-                yposition +=80;
-            }
-        
-
-        }
-    }
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,8 +151,13 @@
     [self presentViewController:ViewController animated:YES completion:nil];
 }
 
+//画像がタップされたと時に呼び出されるメッソド
+//-(void)ImagetapBtn:(UIImageView *)takenphoto{
+//    takenPhoto.frame =CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
+//}
+
 //assetsから取得した画像を表示する
--(void)showPhoto:(NSString *)url xposition:(CGFloat)xposition yposition:(CGFloat)yposition
+-(void)showPhoto:(NSString *)url xposition:(CGFloat)xposition yposition:(CGFloat)yposition  proccesskey:(NSString *)proccesskey
 {
     int wimage =80,himage =80;
     
@@ -166,6 +168,7 @@
                            
                            //画像があればYES、無ければNOを返す
                            if(asset){
+                               dataari =YES;
                                NSLog(@"データがあります");
                                //ALAssetRepresentationクラスのインスタンスの作成
                                ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
@@ -183,13 +186,20 @@
                                //self->takenPhoto.image = fullscreenImage; //イメージをセット
                                takenPhoto.image = thumbnailImage; //イメージをセット
                                
+                               //tapの動作
+//                               UITapGestureRecognizer *recognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImagetapBtn:)];
+//                               [recognizer setNumberOfTapsRequired:1];
+//                               [takenPhoto addGestureRecognizer:recognizer];
+                               
+                               
+                               
                                UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
                                _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
                                //takenPhoto.frame = [[UIScreen mainScreen] bounds];
                                //_skyViewに画像を乗せる
                                [_skyView addSubview:takenPhoto];
-                               //self.viewに画像の乗った_skyViewを表示
-                               [self.view addSubview:_skyView];
+
+                               [sv addSubview:_skyView];
                                
                                
                                //  UICollectionViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlbumViewController"];
@@ -197,6 +207,16 @@
                                
                            }else{
                                NSLog(@"データがありません");
+                               NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                               NSMutableDictionary *imagedictionary =[NSMutableDictionary new];
+                               NSDictionary *tempimagedictionary =[defaults objectForKey:@"historyData"];
+                               imagedictionary = tempimagedictionary.mutableCopy;
+                               
+                               [imagedictionary removeObjectForKey:proccesskey];
+                               
+                               [defaults setObject:imagedictionary forKey:@"historyData"];
+                               [defaults synchronize];
+
                            }
                            
                        } failureBlock: nil];

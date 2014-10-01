@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "ruleViewController.h"
 
 @interface CameraViewController (){
     ALAssetsLibrary *takenPhoto;
@@ -101,6 +102,19 @@
     UITapGestureRecognizer *returnrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(returnBtn:)];
     [returnrecognizer setNumberOfTapsRequired:1];
     [returnimageView addGestureRecognizer:returnrecognizer];
+    
+    //ruleボタンの画像を入れる
+    UIImage *ruleimage = [UIImage imageNamed:@"rule.gif"];
+    UIImageView *ruleimageView=[[UIImageView alloc]initWithImage:ruleimage];
+    ruleimageView.frame= CGRectMake(220,70, 80, 60);
+    ruleimageView.alpha=1.0;
+    [self.view addSubview:ruleimageView];
+    [ruleimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *rulerecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ruleBtn:)];
+    [rulerecognizer setNumberOfTapsRequired:1];
+    [ruleimageView addGestureRecognizer:rulerecognizer];
+    
 }
 
 
@@ -235,10 +249,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 -(void)returnBtn:(UIButton *)returnbutton{
      ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     [self presentViewController:ViewController animated:YES completion:nil];
+}
+
+//ルールに飛ぶ
+-(void)ruleBtn:(UIButton *)rulebutton{
+    ruleViewController *ruleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ruleViewController"];
+    [self presentViewController:ruleViewController animated:YES completion:nil];
 
     
 }
-
 
 
 //バーナーが表示される時発動する
