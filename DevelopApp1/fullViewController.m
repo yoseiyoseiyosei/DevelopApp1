@@ -1,0 +1,103 @@
+//
+//  fullViewController.m
+//  DevelopApp1
+//
+//  Created by 山岸央青 on 2014/10/03.
+//  Copyright (c) 2014年 yosei. All rights reserved.
+//
+
+#import "fullViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "CollectViewController.h"
+
+@interface fullViewController (){
+    ALAssetsLibrary *takenPhotolibrary;
+    UIImageView *takenPhoto;
+}
+
+@end
+
+@implementation fullViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self oneshowPhoto:(NSString *)self.imageAddressList[self.index]];
+    
+}
+
+//assetsから取得した画像を表示する
+-(void)oneshowPhoto:(NSString *)url
+{
+    int wimage =self.view.bounds.size.width,himage =self.view.bounds.size.height;
+    
+    //URLからALAssetを取得
+    takenPhotolibrary = [[ALAssetsLibrary alloc] init];
+    [takenPhotolibrary assetForURL:[NSURL URLWithString:url]
+                       resultBlock:^(ALAsset *asset) {
+                           
+                           //ALAssetRepresentationクラスのインスタンスの作成
+                           ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+                           
+                           //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
+                           //fullScreenImageで元画像と同じ解像度の写真を取得する。
+                           UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+                           //UIImage *thumbnailImage = [UIImage imageWithCGImage:[asset thumbnail]];
+                           
+                           
+                           //初期化
+                           takenPhoto = [UIImageView new];
+                           takenPhoto.frame =CGRectMake(0, 0, wimage, himage);
+                           //self->takenPhoto.image = fullscreenImage; //イメージをセット
+                           takenPhoto.image = fullscreenImage; //イメージをセット
+                           takenPhoto.userInteractionEnabled=YES;
+                           UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImageTapBtn:)];
+                           //                               [recognizer setNumberOfTouchesRequired:2];
+                           [takenPhoto addGestureRecognizer:recognizer];
+                           
+                           [self.view addSubview:takenPhoto];
+                           
+                       } failureBlock: nil];
+    
+}
+
+- (void)ImageTapBtn:(UITapGestureRecognizer *)sender
+{
+    
+    
+    CollectViewController *CollectViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectViewController"];
+    
+    [self presentViewController:CollectViewController animated:YES completion:nil];
+ 
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

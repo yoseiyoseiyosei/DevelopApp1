@@ -30,19 +30,35 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //ルールの画像を入れる
+    UIImage *rule1image = [UIImage imageNamed:@"プレストルール.jpeg"];
+    UIImageView *rule1imageView=[[UIImageView alloc]initWithImage:rule1image];
+    rule1imageView.frame= CGRectMake(0,0, self.view.bounds.size.width, self.view.bounds.size.height);
+    rule1imageView.alpha=1.0;
+    [rule1imageView setUserInteractionEnabled:YES];
+    
+    //ルールの画像を入れる
+    UIImage *rule2image = [UIImage imageNamed:@"広島ルール.jpeg"];
+    UIImageView *rule2imageView=[[UIImageView alloc]initWithImage:rule2image];
+    rule2imageView.frame= CGRectMake(0,self.view.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height);
+    rule2imageView.alpha=1.0;
+    [rule2imageView setUserInteractionEnabled:YES];
+    
     // スクロールビュー例文
     UIScrollView *sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     sv.backgroundColor = [UIColor cyanColor];
     
-    UIView *uv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1000, 1000)];
-    [sv addSubview:uv];
+    UIView *uv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 1000)];
+    //[sv addSubview:uv];
+    [sv addSubview:rule1imageView];
+    [sv addSubview:rule2imageView];
     sv.contentSize = uv.bounds.size;
     [self.view addSubview:sv];
     
-    //startボタンの画像を入れる
+    //cameraの画面に戻るボタンの画像を入れる
     UIImage *image = [UIImage imageNamed:@"x.gif"];
     UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
-    imageView.frame= CGRectMake(120,400, 80, 60);
+    imageView.frame= CGRectMake(280,60, 80, 60);
     imageView.alpha=1.0;
     [self.view addSubview:imageView];
     [imageView setUserInteractionEnabled:YES];

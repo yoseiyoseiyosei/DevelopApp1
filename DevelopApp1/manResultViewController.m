@@ -10,6 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import <Social/Social.h>
 
 @interface manResultViewController (){
     ALAssetsLibrary *takenPhotolibrary;

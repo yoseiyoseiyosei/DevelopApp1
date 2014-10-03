@@ -9,6 +9,7 @@
 #import "CollectViewController.h"
 #import "ViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "fullViewController.h"
 
 
 
@@ -19,7 +20,7 @@
     UIImageView *takenPhoto;
     BOOL dataari;
     UIScrollView *sv;
-
+    NSMutableArray *imageAddressList;
 }
 
 
@@ -39,6 +40,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self->imageAddressList = [NSMutableArray new];
+    
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *imagedictionary =[NSMutableDictionary new];
     NSDictionary *tempimagedictionary =[defaults objectForKey:@"historyData"];
@@ -47,6 +52,7 @@
     
     // スクロールビュー例文
     sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    sv.backgroundColor = [UIColor cyanColor];
     UIView *uv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [sv addSubview:uv];
     
@@ -59,21 +65,24 @@
     for (id atekenphoto in [imagedictionary keyEnumerator]) {
         
         //撮った画像をとってくる
-        [self showPhoto:[imagedictionary objectForKey:atekenphoto] xposition:xposition yposition:yposition proccesskey:atekenphoto];
+        [self showPhoto:[imagedictionary objectForKey:atekenphoto] xposition:xposition yposition:yposition proccesskey:atekenphoto index:count];
         
             //画像の位置
             count+=1;
             NSLog(@"%d %f",count,self.view.bounds.size.width/4);
         
-            if (xposition  < 240) {
-                xposition += 80;
+            if (xposition  < self.view.bounds.size.width-self.view.bounds.size.width/3) {
+                xposition += self.view.bounds.size.width/4;
             }else{
                 xposition =0;
-                yposition +=80;
+                yposition +=self.view.bounds.size.width/4;
+                UIView *hukuseiuv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+                [sv addSubview:hukuseiuv];
             }
     }
     
-    sv.contentSize = uv.bounds.size;
+
+    sv.contentSize = CGSizeMake(self.view.bounds.size.width, yposition+self.view.bounds.size.width/2);
     [self.view addSubview:sv];
     
     //takenPhotoをallocしてサイズを変更する
@@ -96,7 +105,7 @@
     //startボタンの画像を入れる
     UIImage *image = [UIImage imageNamed:@"start.gif"];
     UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
-    imageView.frame= CGRectMake(120,400, 80, 60);
+    imageView.frame= CGRectMake(0,self.view.frame.size.height-70, self.view.bounds.size.width, 20);
     imageView.alpha=1.0;
     [self.view addSubview:imageView];
     [imageView setUserInteractionEnabled:YES];
@@ -120,7 +129,7 @@
         
         [UIView setAnimationDuration:0.3];//始まり　秒数間隔
         
-        banner.frame= CGRectOffset(banner.frame, 0, self.view.frame.size.height-self.view.frame.size.height/11.5);//上に隠れているバナーを出す バーナーを指定 x軸　y軸
+        banner.frame= CGRectOffset(banner.frame, 0, self.view.frame.size.height-50);//上に隠れているバナーを出す バーナーを指定 x軸　y軸
         
         banner.alpha = 1.0;
         
@@ -151,15 +160,31 @@
     [self presentViewController:ViewController animated:YES completion:nil];
 }
 
-//画像がタップされたと時に呼び出されるメッソド
-//-(void)ImagetapBtn:(UIImageView *)takenphoto{
-//    takenPhoto.frame =CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
-//}
+
+- (void)ImageTapBtn:(UITapGestureRecognizer *)sender
+{
+    UIImageView *imageView = [sender view];
+    
+    
+    
+    fullViewController *fullViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"fullViewController"];
+    fullViewController.imageAddressList = imageAddressList;
+    fullViewController.index =imageView.tag;
+    
+    [self presentViewController:fullViewController animated:YES completion:nil];
+    
+    
+
+NSLog(@"%@", self->imageAddressList);
+NSLog(@"%lu", imageView.tag);
+NSLog(@"%@", self->imageAddressList[imageView.tag]);
+
+}
 
 //assetsから取得した画像を表示する
--(void)showPhoto:(NSString *)url xposition:(CGFloat)xposition yposition:(CGFloat)yposition  proccesskey:(NSString *)proccesskey
+-(void)showPhoto:(NSString *)url xposition:(CGFloat)xposition yposition:(CGFloat)yposition  proccesskey:(NSString *)proccesskey index:(NSInteger)index
 {
-    int wimage =80,himage =80;
+    int wimage =self.view.bounds.size.width/4,himage =self.view.bounds.size.width/4;
     
     //URLからALAssetを取得
     takenPhotolibrary = [[ALAssetsLibrary alloc] init];
@@ -168,6 +193,9 @@
                            
                            //画像があればYES、無ければNOを返す
                            if(asset){
+                               // 画像があったときだけ、本体画像のアドレスを配列で保持
+                               [self->imageAddressList addObject:url];
+                               
                                dataari =YES;
                                NSLog(@"データがあります");
                                //ALAssetRepresentationクラスのインスタンスの作成
@@ -176,22 +204,19 @@
                                //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
                                //fullScreenImageで元画像と同じ解像度の写真を取得する。
                                UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
-                               
                                UIImage *thumbnailImage = [UIImage imageWithCGImage:[asset thumbnail]];
+
                                
                                //初期化
                                takenPhoto = [UIImageView new];
-                               
                                takenPhoto.frame =CGRectMake(0, 0, wimage, himage);
                                //self->takenPhoto.image = fullscreenImage; //イメージをセット
                                takenPhoto.image = thumbnailImage; //イメージをセット
-                               
-                               //tapの動作
-//                               UITapGestureRecognizer *recognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImagetapBtn:)];
-//                               [recognizer setNumberOfTapsRequired:1];
-//                               [takenPhoto addGestureRecognizer:recognizer];
-                               
-                               
+                               takenPhoto.userInteractionEnabled=YES;
+                               takenPhoto.tag = index;
+                               UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImageTapBtn:)];
+//                               [recognizer setNumberOfTouchesRequired:2];
+                               [takenPhoto addGestureRecognizer:recognizer];
                                
                                UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
                                _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
@@ -199,11 +224,11 @@
                                //_skyViewに画像を乗せる
                                [_skyView addSubview:takenPhoto];
 
+                               
+                               
                                [sv addSubview:_skyView];
                                
                                
-                               //  UICollectionViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlbumViewController"];
-                               //  [self presentViewController:mycontroller animated:YES completion:nil];
                                
                            }else{
                                NSLog(@"データがありません");
@@ -223,6 +248,9 @@
     
     
 }
+
+
+
 
 
 /*

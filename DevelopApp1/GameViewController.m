@@ -49,6 +49,8 @@
     int alltimecount;
     
     UILabel *label;
+    
+    UIView* view;
 }
 
 @end
@@ -168,7 +170,28 @@
     alltimer = [NSTimer
              scheduledTimerWithTimeInterval:1.0f target: self selector:@selector(allTimerAction)userInfo:nil repeats:YES];
     
+    //  アニメーションの対象となるUIView
+    view = [[UIView alloc]init];
+    view.frame = CGRectMake(160, 200, 100, 100);
+    view.backgroundColor = [UIColor blackColor];
     
+    //むきむきの画像
+    UIImage *resultimage = [UIImage imageNamed:@"指.jpg"];
+    UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
+    resultimageView.frame = CGRectMake(0, 0, 100, 100);
+    [view addSubview:resultimageView];
+    
+    [self.view addSubview:view];
+    
+    //  UIViewをx = 100, y = 100の初期位置からx = 200, y = 200の座標にアニメーションで移動
+    [UIView beginAnimations:@"AnimationMove" context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:0.75];
+    view.alpha =1.0;
+    view.frame = CGRectMake(160, 300, 100, 100);
+    //  アニメーション終了時に呼び出す
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+    [UIView commitAnimations];
     
 }
 
@@ -246,6 +269,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     if (swipecounter == 0) {
         [alltimer fire];
+        view.alpha =0;
     }
     swipecounter++;
     
@@ -595,6 +619,33 @@
     }
 }
 
+-(void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    if ([animationID isEqualToString:@"AnimationMove"]) {
+        //  UIViewをx = 200, y = 200からx = 100, y = 100の座標にアニメーションで移動
+        [UIView beginAnimations:@"Animationback" context:nil];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDuration:0.75];
+        view.frame = CGRectMake(160, 200, 100, 100);
+        //  アニメーション終了時に呼び出す
+        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+        [UIView commitAnimations];
+    }
+    
+    if ([animationID isEqualToString:@"Animationback"]) {
+        //  UIViewをx = 100, y = 100の初期位置からx = 200, y = 200の座標にアニメーションで移動
+        [UIView beginAnimations:@"AnimationMove" context:nil];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDuration:0.75];
+        view.frame = CGRectMake(160, 300, 100, 100);
+        //  アニメーション終了時に呼び出す
+        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+        [UIView commitAnimations];
+    }
+    
+    
+    
+}
 
 /*
 #pragma mark - Navigation
