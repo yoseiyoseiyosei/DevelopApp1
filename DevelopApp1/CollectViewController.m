@@ -205,13 +205,14 @@ NSLog(@"%@", self->imageAddressList[imageView.tag]);
                                //fullScreenImageで元画像と同じ解像度の写真を取得する。
                                UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
                                UIImage *thumbnailImage = [UIImage imageWithCGImage:[asset thumbnail]];
-
                                
                                //初期化
                                takenPhoto = [UIImageView new];
                                takenPhoto.frame =CGRectMake(0, 0, wimage, himage);
                                //self->takenPhoto.image = fullscreenImage; //イメージをセット
                                takenPhoto.image = thumbnailImage; //イメージをセット
+                               takenPhoto.layer.cornerRadius = wimage * 0.5f;
+                               takenPhoto.clipsToBounds = YES;
                                takenPhoto.userInteractionEnabled=YES;
                                takenPhoto.tag = index;
                                UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImageTapBtn:)];
@@ -219,6 +220,8 @@ NSLog(@"%@", self->imageAddressList[imageView.tag]);
                                [takenPhoto addGestureRecognizer:recognizer];
                                
                                UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
+                               _skyView.layer.cornerRadius = wimage * 0.5f;
+                               _skyView.clipsToBounds = YES;
                                _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
                                //takenPhoto.frame = [[UIScreen mainScreen] bounds];
                                //_skyViewに画像を乗せる

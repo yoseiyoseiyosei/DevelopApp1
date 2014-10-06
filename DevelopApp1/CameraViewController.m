@@ -53,12 +53,10 @@
     //取った写真を表示
     showPhoto =[UIImageView new];
     
-    
-    
     //cameraボタンの画像を入れる
     UIImage *cameraimage = [UIImage imageNamed:@"camara.gif"];
     UIImageView *cameraimageView=[[UIImageView alloc]initWithImage:cameraimage];
-    cameraimageView.frame= CGRectMake(120,450, 80, 60);
+    cameraimageView.frame= CGRectMake(120,70, 80, 60);
     cameraimageView.alpha=1.0;
     [self.view addSubview:cameraimageView];
     [cameraimageView setUserInteractionEnabled:YES];
@@ -70,7 +68,7 @@
     //libraryボタンの画像を入れる
     UIImage *libraryimage = [UIImage imageNamed:@"library.gif"];
     UIImageView *libraryimageView=[[UIImageView alloc]initWithImage:libraryimage];
-    libraryimageView.frame= CGRectMake(40,450, 80, 60);
+    libraryimageView.frame= CGRectMake(40,70, 80, 60);
     libraryimageView.alpha=1.0;
     [self.view addSubview:libraryimageView];
     [libraryimageView setUserInteractionEnabled:YES];
@@ -135,7 +133,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
     //カメラライブラリから選んだ写真のURLを取得。
     //app.FaceImage = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
-    
     //カメラで撮影したときだけ保存
     //if (app.FaceImage == nil) {
         image =(UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
@@ -152,14 +149,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }];
     //}
     
-    
-    
     [self dismissViewControllerAnimated:YES completion:^{
         self->showPhoto.image = image;}];
     
     showPhoto = [[UIImageView alloc] initWithImage:image];
-    showPhoto.frame= CGRectMake(10,70, 300, 300);
-    showPhoto.layer.cornerRadius = 300 * 0.5f;
+    showPhoto.frame= CGRectMake(35,200,250,250);
+    showPhoto.layer.cornerRadius = 250 * 0.5f;
     showPhoto.clipsToBounds = YES;
     [self.view addSubview:showPhoto];
 }

@@ -173,9 +173,8 @@
     //  アニメーションの対象となるUIView
     view = [[UIView alloc]init];
     view.frame = CGRectMake(160, 200, 100, 100);
-    view.backgroundColor = [UIColor blackColor];
     
-    //むきむきの画像
+    //指の画像
     UIImage *resultimage = [UIImage imageNamed:@"指.jpg"];
     UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
     resultimageView.frame = CGRectMake(0, 0, 100, 100);
@@ -188,7 +187,7 @@
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:0.75];
     view.alpha =1.0;
-    view.frame = CGRectMake(160, 300, 100, 100);
+    //view.frame = CGRectMake(160, 300, 100, 100);
     //  アニメーション終了時に呼び出す
     [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
     [UIView commitAnimations];
@@ -362,15 +361,11 @@
 -(void)fire{}
 -(void)invalidate{}
 
-
-
-
 -(int)randxy:(int)min :(int)max{
     int rn;
     rn=[self getRandamInt:min max:max];
     return rn;
 }
-
 
 -(int)getRandamInt:(int)min max:(int)max {
     static int initFlag;
@@ -412,6 +407,11 @@
         [UIView commitAnimations];
         _isVisible = NO;
     }
+}
+
+-(void)comment:(UIImageView *)ImageView{
+    
+
 }
 
 //フェードインアウトの操作
@@ -559,6 +559,7 @@
                     NSLog(@"時間が長く距離が長いので足りている　時間を短くしてほしい");
                     //吹き出しの表示
                     [self FadeInOut:aimageView];
+                    [self comment:aimageView];
                     
                     //嘘つく
                     [self tellalie];
@@ -569,6 +570,7 @@
                     NSLog(@"時間が長く距離が短すぎる　時間を短く距離を長くしてほしい");
                     //吹き出しの表示
                     [self FadeInOut:aimageView];
+                    [self comment:aimageView];
                     
                     //嘘つく
                     [self tellalie];
@@ -581,7 +583,7 @@
                     NSLog(@"時間が長く距離が短いので足りている　時間を短くしてほしい");
                     //吹き出しの表示
                     [self FadeInOut:aimageView];
-                    
+                    [self comment:aimageView];
                     //嘘つく
                     [self tellalie];
                 }else{
@@ -590,7 +592,7 @@
                     NSLog(@"時間が長く距離が長いすぎる　時間を短く距離を長くしてほしい");
                     //吹き出しの表示
                     [self FadeInOut:aimageView];
-                    
+                    [self comment:aimageView];
                     //嘘つく
                     [self tellalie];
                 }
@@ -646,6 +648,22 @@
     
     
 }
+//-(void)commentset:(UIImageView *)commentimage{
+//    UIView* commentview= [[UIView alloc]init];
+//    commentview.frame = CGRectMake(320, 200, 100, 100);
+//    
+//    commentimage.frame = CGRectMake(0, 0, 100, 100);
+//    [commentview addSubview:commentimage];
+//    
+//    [self.view addSubview:commentview];
+//    
+//    
+//    
+//    [UIView setAnimationDidStopSelector:@selector(commentflush:)];
+//    [UIView commitAnimations];
+//
+//
+//}
 
 /*
 #pragma mark - Navigation

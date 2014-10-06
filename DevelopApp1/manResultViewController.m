@@ -196,9 +196,6 @@
 //スクリーンショットボタンがタップされたと時に呼び出されるメッソド
 -(void)shotBtn:(UIButton *)myButton_tmp{
     
-
-    
-    
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //ユーザーデフォルト
@@ -299,7 +296,9 @@
 - (void)shareBtn:(id)sender {
     NSLog(@"77");
     //アクティビティーに渡す情報を配列に格納//nsArray,nsdictionary中身の型を気にしなくていい
-    NSArray *actItems = @[takenPhoto];
+    UIImage *image =[UIImage new];
+    image = [self screenshotWithView:_skyView];
+    NSArray *actItems = @[image];
     //アクティビティービューの生成
     UIActivityViewController *activityView=[[UIActivityViewController alloc]initWithActivityItems:actItems applicationActivities:nil];
     //モーダル処理でアクティビティービューを表示//モーダル：親の上にかぶさっている子
