@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface fullViewController : UIViewController<UIGestureRecognizerDelegate>
+@interface fullViewController : UIViewController<UIGestureRecognizerDelegate, UIScrollViewDelegate>
 
 @property(strong,nonatomic)NSMutableArray *imageAddressList;
 @property(nonatomic)NSInteger index;

@@ -41,6 +41,7 @@
 		8E1D21A519DE58AD00AF9953 /* 指.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D21A419DE58AD00AF9953 /* 指.jpg */; };
 		8E1D21A819DE83B600AF9953 /* fullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D21A719DE83B600AF9953 /* fullViewController.m */; };
 		8E1D21AA19DE8BB100AF9953 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E1D21A919DE8BB100AF9953 /* Social.framework */; };
+		8E1D21AD19E5F3BB00AF9953 /* tutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D21AC19E5F3BB00AF9953 /* tutorialViewController.m */; };
 		8E9830E219C80EB900F56A74 /* manResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E119C80EB900F56A74 /* manResultViewController.m */; };
 		8E9830E519C813CC00F56A74 /* wemanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E419C813CC00F56A74 /* wemanResultViewController.m */; };
 		8E9830E819C8145D00F56A74 /* cthersResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E719C8145D00F56A74 /* cthersResultViewController.m */; };
@@ -114,6 +115,8 @@
 		8E1D21A619DE83B600AF9953 /* fullViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fullViewController.h; sourceTree = "<group>"; };
 		8E1D21A719DE83B600AF9953 /* fullViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fullViewController.m; sourceTree = "<group>"; };
 		8E1D21A919DE8BB100AF9953 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		8E1D21AB19E5F3BB00AF9953 /* tutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutorialViewController.h; sourceTree = "<group>"; };
+		8E1D21AC19E5F3BB00AF9953 /* tutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tutorialViewController.m; sourceTree = "<group>"; };
 		8E9830E019C80EB900F56A74 /* manResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = manResultViewController.h; sourceTree = "<group>"; };
 		8E9830E119C80EB900F56A74 /* manResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = manResultViewController.m; sourceTree = "<group>"; };
 		8E9830E319C813CC00F56A74 /* wemanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wemanResultViewController.h; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 			children = (
 				8EB45F2E19BC417200F03297 /* AppDelegate.h */,
 				8EB45F2F19BC417200F03297 /* AppDelegate.m */,
+				8E1D21AB19E5F3BB00AF9953 /* tutorialViewController.h */,
+				8E1D21AC19E5F3BB00AF9953 /* tutorialViewController.m */,
 				8EB14DCE19C81BD7004FFBFA /* Main.storyboard */,
 				8EB45F3419BC417200F03297 /* ViewController.h */,
 				8EB45F3519BC417200F03297 /* ViewController.m */,
@@ -445,6 +450,7 @@
 			files = (
 				8EA57E7819BDACA400B6B853 /* WemanGameViewController.m in Sources */,
 				8EB45F3619BC417200F03297 /* ViewController.m in Sources */,
+				8E1D21AD19E5F3BB00AF9953 /* tutorialViewController.m in Sources */,
 				8EA57E6D19BD14A800B6B853 /* CollectViewController.m in Sources */,
 				8EA57E7B19BDACC300B6B853 /* OthersGameViewController.m in Sources */,
 				8E1D21A819DE83B600AF9953 /* fullViewController.m in Sources */,

@@ -52,13 +52,13 @@
     
     // スクロールビュー例文
     sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    sv.backgroundColor = [UIColor cyanColor];
+    //sv.backgroundColor = [UIColor cyanColor];
     UIView *uv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [sv addSubview:uv];
     
     
     //画像の位置
-    CGFloat xposition =0,yposition =20;
+    CGFloat xposition = 0,yposition = 20;
     int count =0;
    
     

@@ -36,11 +36,15 @@
     [super viewDidLoad];
     sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     sv.backgroundColor = [UIColor cyanColor];
+   
     UIView *uv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [sv addSubview:uv];
-    sv.contentSize = CGSizeMake(self.view.bounds.size.width*2,self.view.bounds.size.height*2);
+    sv.delegate = self;
+    sv.maximumZoomScale = 4.0f;
+    sv.minimumZoomScale = 0.8f;
+    sv.zoomScale = 1.0f;
+    sv.contentSize = CGSizeMake(self.view.bounds.size.width,self.view.bounds.size.height*2);
 
-    
     [self oneshowPhoto:(NSString *)self.imageAddressList[self.index]];
     
 }
