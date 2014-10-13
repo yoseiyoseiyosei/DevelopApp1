@@ -87,7 +87,7 @@
     label.font = [UIFont fontWithName:@"AppleGothic" size:12];
     
     //乱数でエロいフリックの定義を決める
-    basictime = [self randxy:1 :3];
+    basictime = [self randxy:0 :2] + 1;
     //basictime = 0;
     basicdistance = [self randxy:100 :230];
     //フェードインから
@@ -148,6 +148,8 @@
     aimageViewFrame.size = CGSizeMake(100, 100);
     aimageView.alpha=0;
     [self.view addSubview:aimageView];
+    
+    
     [aimageView setUserInteractionEnabled:YES];
     //画像を貼付ける
     UIImage *bimage = [UIImage imageNamed:@"Ifeltlove.gif"];
@@ -294,22 +296,6 @@
     }
     swipecounter++;
     
-    if (aimageView.alpha ==1) {
-        ;
-        NSLog(@"yes");
-    }
-    if (bimageView.alpha ==1) {
-        [self FadeInOut:bimageView];
-        NSLog(@"yes");
-    }
-    if (cimageView.alpha ==1) {
-        [self FadeInOut:cimageView];
-        NSLog(@"yes");
-    }
-    if (aimageView.alpha ==1) {
-        [self FadeInOut:dimageView];
-        NSLog(@"yes");
-    }
     if (!time_stop) {
         
         //タイマーの生成
@@ -491,7 +477,7 @@
             }else{
                 timeFlug = YES;
                 distanceFlug = NO;
-                NSLog(@"時間はあってる距離が短すぎる　距離を長くして欲しい");
+                NSLog(@"時間はあってる距離が短すぎる　距離を長くして欲しい tauch me from top to bottom");
                 //吹き出しの表示
                 
                 //嘘つく
@@ -506,7 +492,7 @@
             }else{
                 timeFlug = YES;
                 distanceFlug = NO;
-                NSLog(@"時間はあってる距離が長過ぎる　距離を短くしてほしい");
+                NSLog(@"時間はあってる距離が長過ぎる　距離を短くしてほしい too tauch me");
                 //吹き出しの表示
                 
                 //嘘つく
@@ -523,7 +509,7 @@
                 if (distance > basicdistance) {
                     timeFlug = NO;
                     distanceFlug = YES;
-                    NSLog(@"時間が短く距離が長いので足りている　時間を長くしてほしい");
+                    NSLog(@"時間が短く距離が長いので足りている　時間を長くしてほしい ");
                     //吹き出しの表示
                     
                     [self comment:@"moreslow.gif"];
@@ -533,7 +519,7 @@
                 }else{
                     timeFlug = NO;
                     distanceFlug = NO;
-                    NSLog(@"時間が短く距離が短すぎる　時間を長くかつ距離を長く");
+                    NSLog(@"時間が短く距離が短すぎる　時間を長くかつ距離を長く ruck of love");
                     //吹き出しの表示
                     
                     [self comment:@"moreslow.gif"];
@@ -547,7 +533,7 @@
                     distanceFlug = YES;
                     NSLog(@"時間が短く距離が短いので足りている　時間を長くして欲しい");
                     //吹き出しの表示
-                    
+                    [self comment:@"moreslow.gif"];
                     
                     //嘘つく
                     [self tellalie];
@@ -647,7 +633,7 @@
         [UIView setAnimationDuration:0.75];
         view.frame = CGRectMake(160, 200, 100, 100);
         //  アニメーション終了時に呼び出す
-//        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
         [UIView commitAnimations];
         allcount++;
         
@@ -661,7 +647,7 @@
         [UIView setAnimationDuration:0.75];
         view.frame = CGRectMake(160, 300, 100, 100);
         //  アニメーション終了時に呼び出す
-//        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
         [UIView commitAnimations];
         allcount++;
     }

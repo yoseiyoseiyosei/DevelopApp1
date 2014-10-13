@@ -72,10 +72,10 @@
             NSLog(@"%d %f",count,self.view.bounds.size.width/4);
         
             if (xposition  < self.view.bounds.size.width-self.view.bounds.size.width/3) {
-                xposition += self.view.bounds.size.width/4;
+                xposition += self.view.bounds.size.width/3;
             }else{
                 xposition =0;
-                yposition +=self.view.bounds.size.width/4;
+                yposition +=self.view.bounds.size.width/3;
                 UIView *hukuseiuv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
                 [sv addSubview:hukuseiuv];
             }
@@ -184,7 +184,7 @@ NSLog(@"%@", self->imageAddressList[imageView.tag]);
 //assetsから取得した画像を表示する
 -(void)showPhoto:(NSString *)url xposition:(CGFloat)xposition yposition:(CGFloat)yposition  proccesskey:(NSString *)proccesskey index:(NSInteger)index
 {
-    int wimage =self.view.bounds.size.width/4,himage =self.view.bounds.size.width/4;
+    int wimage =self.view.bounds.size.width/3,himage =self.view.bounds.size.width/3;
     
     //URLからALAssetを取得
     takenPhotolibrary = [[ALAssetsLibrary alloc] init];
