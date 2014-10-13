@@ -56,6 +56,8 @@
     UIView* commentview;
     
     int allcount;
+    
+    int positionX ,positionY ,sizeX ,sizeY;
 
 }
 
@@ -74,6 +76,7 @@
 
 - (void)viewDidLoad
 {
+    
     allcount =0;
     [super viewDidLoad];
     seed =[self randxy:0 :1];
@@ -119,11 +122,6 @@
     takenPhoto.clipsToBounds = YES;
     [self.view addSubview:takenPhoto];
     
-//    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(DownSwipeHandle:)];
-//    [recognizer setNumberOfTouchesRequired:1];
-//    recognizer.direction = UISwipeGestureRecognizerDirectionDown;
-//    [imageView addGestureRecognizer:recognizer];
-    
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
     
@@ -140,39 +138,47 @@
     count=0;
     
     
-    
-    //画像を貼付ける
-    UIImage *aimage = [UIImage imageNamed:@"moreslow.gif"];
-    aimageView=[[UIImageView alloc]initWithImage:aimage];
-    CGRect aimageViewFrame = aimageView.frame;
-    aimageViewFrame.size = CGSizeMake(100, 100);
-    aimageView.alpha=0;
+    //コメントの画像
+    UIImage *aimage = [UIImage imageNamed:@"shot.gif"];
+    aimageView = [[UIImageView alloc] initWithImage:aimage];
+    positionX = 320,positionY = 200,sizeX =100,sizeY = 100;
+    aimageView.frame = CGRectMake(positionX, positionY, sizeX, sizeY);
     [self.view addSubview:aimageView];
+    [self comment:aimageView];
     
     
-    [aimageView setUserInteractionEnabled:YES];
-    //画像を貼付ける
-    UIImage *bimage = [UIImage imageNamed:@"Ifeltlove.gif"];
-    bimageView=[[UIImageView alloc]initWithImage:bimage];
-    bimageView.frame= CGRectMake(160, 50, 100, 100);
-    bimageView.alpha=0;
-    [self.view addSubview:bimageView];
-    [bimageView setUserInteractionEnabled:YES];
-    //画像を貼付ける
-    UIImage *cimage = [UIImage imageNamed:@"fromttob.gif"];
-    cimageView=[[UIImageView alloc]initWithImage:cimage];
-    cimageView.frame= CGRectMake(160, 50, 100, 100);
-    cimageView.alpha=0;
-    timeFlug = YES;
-    [self.view addSubview:cimageView];
-    [cimageView setUserInteractionEnabled:YES];
-    //画像を貼付ける
-    UIImage *dimage = [UIImage imageNamed:@"more.gif"];
-    dimageView=[[UIImageView alloc]initWithImage:dimage];
-    dimageView.frame= CGRectMake(160, 50, 100, 100);
-    dimageView.alpha=0;
-    [self.view addSubview:dimageView];
-    [dimageView setUserInteractionEnabled:YES];
+//    //画像を貼付ける
+//    UIImage *aimage = [UIImage imageNamed:@"moreslow.gif"];
+//    aimageView=[[UIImageView alloc]initWithImage:aimage];
+//    CGRect aimageViewFrame = aimageView.frame;
+//    aimageViewFrame.size = CGSizeMake(100, 100);
+//    aimageView.alpha=0;
+//    [self.view addSubview:aimageView];
+//    
+//    
+//    [aimageView setUserInteractionEnabled:YES];
+//    //画像を貼付ける
+//    UIImage *bimage = [UIImage imageNamed:@"Ifeltlove.gif"];
+//    bimageView=[[UIImageView alloc]initWithImage:bimage];
+//    bimageView.frame= CGRectMake(160, 50, 100, 100);
+//    bimageView.alpha=0;
+//    [self.view addSubview:bimageView];
+//    [bimageView setUserInteractionEnabled:YES];
+//    //画像を貼付ける
+//    UIImage *cimage = [UIImage imageNamed:@"fromttob.gif"];
+//    cimageView=[[UIImageView alloc]initWithImage:cimage];
+//    cimageView.frame= CGRectMake(160, 50, 100, 100);
+//    cimageView.alpha=0;
+//    timeFlug = YES;
+//    [self.view addSubview:cimageView];
+//    [cimageView setUserInteractionEnabled:YES];
+//    //画像を貼付ける
+//    UIImage *dimage = [UIImage imageNamed:@"more.gif"];
+//    dimageView=[[UIImageView alloc]initWithImage:dimage];
+//    dimageView.frame= CGRectMake(160, 50, 100, 100);
+//    dimageView.alpha=0;
+//    [self.view addSubview:dimageView];
+//    [dimageView setUserInteractionEnabled:YES];
     
     
     time_stop = NO;
@@ -186,36 +192,7 @@
     view = [[UIView alloc]init];
     view.frame = CGRectMake(160, 200, 100, 100);
     
-    //指の画像
-    UIImage *resultimage = [UIImage imageNamed:@"指.jpg"];
-    UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
-    resultimageView.frame = CGRectMake(0, 0, 100, 100);
-    [view addSubview:resultimageView];
-    
-    [self.view addSubview:view];
-    
-    //  UIViewをx = 100, y = 100の初期位置からx = 200, y = 200の座標にアニメーションで移動
-//    [UIView animateWithDuration:0.75
-//                     animations:^{
-//                        [view ]
-//                     }
-//                     completion:^(BOOL finished){
-//                         
-//                     }];
-    
-    
-    
-    [UIView beginAnimations:@"AnimationMove" context:nil];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:0.75];
-    view.alpha =1.0;
-    //view.frame = CGRectMake(160, 300, 100, 100);
-    //  アニメーション終了時に呼び出す
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-    [UIView commitAnimations];
-    
-    // コメントアニメーションの対象となるUIView
-    commentview = [[UIView alloc]init];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -479,7 +456,7 @@
                 distanceFlug = NO;
                 NSLog(@"時間はあってる距離が短すぎる　距離を長くして欲しい tauch me from top to bottom");
                 //吹き出しの表示
-                
+                [self comment:aimageView];
                 //嘘つく
                 [self tellalie];
             }
@@ -494,7 +471,7 @@
                 distanceFlug = NO;
                 NSLog(@"時間はあってる距離が長過ぎる　距離を短くしてほしい too tauch me");
                 //吹き出しの表示
-                
+                [self comment:aimageView];
                 //嘘つく
                 [self tellalie];
             }
@@ -512,7 +489,7 @@
                     NSLog(@"時間が短く距離が長いので足りている　時間を長くしてほしい ");
                     //吹き出しの表示
                     
-                    [self comment:@"moreslow.gif"];
+                    [self comment:aimageView];
                     //嘘つく
                     [self tellalie];
                     
@@ -522,7 +499,7 @@
                     NSLog(@"時間が短く距離が短すぎる　時間を長くかつ距離を長く ruck of love");
                     //吹き出しの表示
                     
-                    [self comment:@"moreslow.gif"];
+                    [self comment:aimageView];
                     //嘘つく
                     [self tellalie];
                 }
@@ -533,7 +510,7 @@
                     distanceFlug = YES;
                     NSLog(@"時間が短く距離が短いので足りている　時間を長くして欲しい");
                     //吹き出しの表示
-                    [self comment:@"moreslow.gif"];
+                    [self comment:aimageView];
                     
                     //嘘つく
                     [self tellalie];
@@ -544,7 +521,7 @@
                     NSLog(@"時間が短く距離が長すぎる　時間を長く距離を短くしてほしい");
                     //吹き出しの表示
                     
-                    [self comment:@"morelove.gif"];
+                    [self comment:aimageView];
                     //嘘つく
                     [self tellalie];
                 }
@@ -560,7 +537,7 @@
                     NSLog(@"時間が長く距離が長いので足りている　時間を短くしてほしい");
                     //吹き出しの表示
                     
-                    [self comment:@"moreslow.gif"];
+                    [self comment:aimageView];
                     
                     //嘘つく
                     [self tellalie];
@@ -571,7 +548,7 @@
                     NSLog(@"時間が長く距離が短すぎる　時間を短く距離を長くしてほしい");
                     //吹き出しの表示
                     
-                    [self comment:@"morelove.gif"];
+                    [self comment:aimageView];
                     
                     //嘘つく
                     [self tellalie];
@@ -584,7 +561,7 @@
                     NSLog(@"時間が長く距離が短いので足りている　時間を短くしてほしい");
                     //吹き出しの表示
                     
-                    [self comment:@"moreslow.gif"];
+                    [self comment:aimageView];
                     //嘘つく
                     [self tellalie];
                 }else{
@@ -593,7 +570,7 @@
                     NSLog(@"時間が長く距離が長いすぎる　時間を短く距離を長くしてほしい");
                     //吹き出しの表示
                    
-                    [self comment:@"morelove.gif"];
+                    [self comment:aimageView];
                     //嘘つく
                     [self tellalie];
                 }
@@ -622,65 +599,23 @@
     }
 }
 
--(void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+//アニメーションするとこ
+-(void)comment:(UIImageView *)imageView
 {
-    if(allcount<3){
-    if ([animationID isEqualToString:@"AnimationMove"]) {
-        //  UIViewをx = 200, y = 200からx = 100, y = 100の座標にアニメーションで移動
-//        [view.layer removeAllAnimations];
-        [UIView beginAnimations:@"Animationback" context:nil];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDuration:0.75];
-        view.frame = CGRectMake(160, 200, 100, 100);
-        //  アニメーション終了時に呼び出す
-        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-        [UIView commitAnimations];
-        allcount++;
-        
-    }
-    
-    if ([animationID isEqualToString:@"Animationback"]) {
-//        [view.layer removeAllAnimations];
-        //  UIViewをx = 100, y = 100の初期位置からx = 200, y = 200の座標にアニメーションで移動
-        [UIView beginAnimations:@"AnimationMove" context:nil];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDuration:0.75];
-        view.frame = CGRectMake(160, 300, 100, 100);
-        //  アニメーション終了時に呼び出す
-        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-        [UIView commitAnimations];
-        allcount++;
-    }
-        
-    }
-    if ([animationID isEqualToString:@"VAnimationMove"]) {
-        commentview = [[UIView alloc]init];
-    }
+    int X = -420;
+    [UIView animateWithDuration:2.0f
+                          delay:0.0f
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         // アニメーションをする処理
+                         imageView.frame = CGRectMake(positionX+X, positionY, sizeX, sizeY);
+                     }
+                     completion:^(BOOL finished){
+                         // アニメーションが終わった後実行する処理
+                         positionX = 320,positionY = 200,sizeX =100,sizeY = 100;
+                         imageView.frame = CGRectMake(positionX, positionY, sizeX, sizeY);
+                     }];
 }
-
-
-
--(void)comment:(NSString *)imagename{
-    
-    commentview.frame = CGRectMake(320, 200, 100, 100);
-    
-    //むきむきの画像
-    UIImage *image = [UIImage imageNamed:imagename];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(0, 0, 100, 100);
-    [commentview addSubview:imageView];
-    [self.view addSubview:commentview];
-    
-    //  UIViewをx = 100, y = 100の初期位置からx = 200, y = 200の座標にアニメーションで移動
-    [UIView beginAnimations:@"VAnimationMove" context:nil];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:3];
-    commentview.frame = CGRectMake(-100, 200, 100, 100);
-    
-}
-
-
-
 
 
 /*
