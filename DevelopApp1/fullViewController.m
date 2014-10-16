@@ -34,6 +34,7 @@
 {
     
     [super viewDidLoad];
+    
     sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     sv.backgroundColor = [UIColor cyanColor];
    
@@ -101,6 +102,10 @@
     
 }
 
+//- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+//    return takenPhoto;
+//}
+//
 // ピンチジェスチャー発生時に呼び出されように設定したメソッド。
 // ピンチジェスチャー中に何度も呼び出される。
 - (void)pinchAction : (UIPinchGestureRecognizer *)sender {
@@ -125,6 +130,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

@@ -103,24 +103,69 @@
     takeoffnumber = [self randxy:min:max];
     //カウント初期化
     swipecount =0;
-    //スーツのボディーを表示
-    UIImage *image = [UIImage imageNamed:@"surts.jpeg"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = [[UIScreen mainScreen] bounds];
-    [self.view addSubview:imageView];
-    [imageView setUserInteractionEnabled:YES];
+    
     
     //グローバルから取った写真のアドレスを取得
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self showPhoto:app.FaceImage];
     
     //takenPhotoをallocしてサイズを変更する
-    UIImage* myimage =[[UIImage alloc] init];
-    takenPhoto =[[UIImageView alloc]initWithImage:myimage];
-    takenPhoto.frame= CGRectMake(100,50, 120, 120);
-    takenPhoto.layer.cornerRadius = 120 * 0.5f;
+    takenPhoto =[[UIImageView alloc]init];
+    takenPhoto.frame= CGRectMake(130,50, 80, 80);
+    takenPhoto.layer.cornerRadius = 80 * 0.5f;
     takenPhoto.clipsToBounds = YES;
     [self.view addSubview:takenPhoto];
+    
+    
+    //スーツのボディーを表示
+    UIImage *image = [UIImage imageNamed:@"facenothingman@2x.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = [[UIScreen mainScreen] bounds];
+    [self.view addSubview:imageView];
+    //[imageView setUserInteractionEnabled:YES];
+    
+    //下矢印のアニメーション
+    self.view.layer.backgroundColor = [[UIColor whiteColor] CGColor];
+    
+    UIImage *textImage = [UIImage imageNamed:@"yajirusi@2x.png"];
+    CGFloat textWidth = textImage.size.width;
+    CGFloat textHeight = textImage.size.height;
+    UIImageView *textImageView =[[UIImageView alloc] initWithImage:textImage];
+    
+    CALayer *textLayer = [textImageView layer];
+    textLayer.contents = (id)[textImage CGImage];
+    textLayer.frame = CGRectMake(100, 215, textWidth, textHeight);
+    
+    CALayer *maskLayer = [CALayer layer];
+    
+    // Mask image ends with 0.15 opacity on both sides. Set the background color of the layer
+    // to the same value so the layer can extend the mask image.
+    //maskLayer.backgroundColor = [[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.15f] CGColor];
+    maskLayer.contents = (id)[[UIImage imageNamed:@"siro@2x.png"] CGImage];
+    
+    // Center the mask image on twice the width of the text layer, so it starts to the left
+    // of the text layer and moves to its right when we translate it by width.
+    maskLayer.contentsGravity = kCAGravityCenter;
+    maskLayer.frame = CGRectMake(0, -50, textWidth, 10);
+    
+    // Animate the mask layer's horizontal position
+    CABasicAnimation *maskAnim = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    maskAnim.byValue = [NSNumber numberWithFloat:textHeight];
+    maskAnim.repeatCount = HUGE_VALF;
+    maskAnim.duration = 2.0f;
+    [maskLayer addAnimation:maskAnim forKey:@"slideAnim"];
+    
+    textLayer.mask = maskLayer;
+    [self.view.layer addSublayer:textLayer];
+    
+    [self.view addSubview:textImageView];
+
+    //countの画像を入れる
+    UIImage *menuimage = [UIImage imageNamed:@"count@2x.png"];
+    UIImageView *menuimageView=[[UIImageView alloc]initWithImage:menuimage];
+    menuimageView.frame= CGRectMake(6,40, 94.5, 44);
+    menuimageView.alpha=1.0;
+    [self.view addSubview:menuimageView];
     
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
@@ -189,8 +234,8 @@
              scheduledTimerWithTimeInterval:1.0f target: self selector:@selector(allTimerAction)userInfo:nil repeats:YES];
     
     //  アニメーションの対象となるUIView
-    view = [[UIView alloc]init];
-    view.frame = CGRectMake(160, 200, 100, 100);
+//    view = [[UIView alloc]init];
+//    view.frame = CGRectMake(160, 200, 100, 100);
     
 
 }
@@ -271,6 +316,7 @@
         [alltimer fire];
         [view.layer removeAllAnimations];
     }
+
     swipecounter++;
     
     if (!time_stop) {
@@ -301,6 +347,7 @@
     
     //swipe回数表示
     label.text = [NSString stringWithFormat: @"%d",swipecounter];
+    label.frame = CGRectMake(70, 40, 50, 50);
     [self.view addSubview:label];
     NSLog(@"swipe : %d",swipecounter);
     
@@ -454,7 +501,7 @@
             }else{
                 timeFlug = YES;
                 distanceFlug = NO;
-                NSLog(@"時間はあってる距離が短すぎる　距離を長くして欲しい tauch me from top to bottom");
+                NSLog(@"時間はあってる距離が短すぎる　距離を長くして欲しい tauch me from top to bottom 1 long");
                 //吹き出しの表示
                 [self comment:aimageView];
                 //嘘つく
@@ -469,7 +516,7 @@
             }else{
                 timeFlug = YES;
                 distanceFlug = NO;
-                NSLog(@"時間はあってる距離が長過ぎる　距離を短くしてほしい too tauch me");
+                NSLog(@"時間はあってる距離が長過ぎる　距離を短くしてほしい 2 short");
                 //吹き出しの表示
                 [self comment:aimageView];
                 //嘘つく
@@ -486,7 +533,7 @@
                 if (distance > basicdistance) {
                     timeFlug = NO;
                     distanceFlug = YES;
-                    NSLog(@"時間が短く距離が長いので足りている　時間を長くしてほしい ");
+                    NSLog(@"時間が短く距離が長いので足りている　時間を長くしてほしい 3 slow");
                     //吹き出しの表示
                     
                     [self comment:aimageView];
@@ -496,7 +543,7 @@
                 }else{
                     timeFlug = NO;
                     distanceFlug = NO;
-                    NSLog(@"時間が短く距離が短すぎる　時間を長くかつ距離を長く ruck of love");
+                    NSLog(@"時間が短く距離が短すぎる　時間を長くかつ距離を長く 4 slow long");
                     //吹き出しの表示
                     
                     [self comment:aimageView];
@@ -508,7 +555,7 @@
                 if (distance <= basicdistance) {
                     timeFlug = NO;
                     distanceFlug = YES;
-                    NSLog(@"時間が短く距離が短いので足りている　時間を長くして欲しい");
+                    NSLog(@"時間が短く距離が短いので足りている　時間を長くして欲しい 5 slow");
                     //吹き出しの表示
                     [self comment:aimageView];
                     
@@ -518,7 +565,7 @@
                 }else{
                     timeFlug = NO;
                     distanceFlug = NO;
-                    NSLog(@"時間が短く距離が長すぎる　時間を長く距離を短くしてほしい");
+                    NSLog(@"時間が短く距離が長すぎる　時間を長く距離を短くしてほしい 6 slow short");
                     //吹き出しの表示
                     
                     [self comment:aimageView];
@@ -534,7 +581,7 @@
                 if (distance > basicdistance) {
                     timeFlug = NO;
                     distanceFlug = YES;
-                    NSLog(@"時間が長く距離が長いので足りている　時間を短くしてほしい");
+                    NSLog(@"時間が長く距離が長いので足りている　時間を短くしてほしい 7 fast");
                     //吹き出しの表示
                     
                     [self comment:aimageView];
@@ -545,7 +592,7 @@
                 }else{
                     timeFlug = NO;
                     distanceFlug = NO;
-                    NSLog(@"時間が長く距離が短すぎる　時間を短く距離を長くしてほしい");
+                    NSLog(@"時間が長く距離が短すぎる　時間を短く距離を長くしてほしい 8 fast long");
                     //吹き出しの表示
                     
                     [self comment:aimageView];
@@ -558,7 +605,7 @@
                 if (distance <= basicdistance) {
                     timeFlug = NO;
                     distanceFlug = YES;
-                    NSLog(@"時間が長く距離が短いので足りている　時間を短くしてほしい");
+                    NSLog(@"時間が長く距離が短いので足りている　時間を短くしてほしい 9 fast");
                     //吹き出しの表示
                     
                     [self comment:aimageView];
@@ -567,7 +614,7 @@
                 }else{
                     timeFlug = NO;
                     distanceFlug = NO;
-                    NSLog(@"時間が長く距離が長いすぎる　時間を短く距離を長くしてほしい");
+                    NSLog(@"時間が長く距離が長いすぎる　時間を短く距離を長くしてほしい 10 fast short");
                     //吹き出しの表示
                    
                     [self comment:aimageView];

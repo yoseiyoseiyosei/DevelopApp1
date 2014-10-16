@@ -39,6 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //壁紙の画像を入れる
+    UIImage *titleimage = [UIImage imageNamed:@"camerascene2@2x.png"];
+    UIImageView *titleimageView=[[UIImageView alloc]initWithImage:titleimage];
+    titleimageView.frame=[[UIScreen mainScreen] bounds];
+    titleimageView.alpha=1.0;
+    [self.view addSubview:titleimageView];
+    
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
     
@@ -52,11 +59,22 @@
     
     //取った写真を表示
     showPhoto =[UIImageView new];
+    //menuボタンの画像を入れる
+    UIImage *menuimage = [UIImage imageNamed:@"menubutton@2x.png"];
+    UIImageView *menuimageView=[[UIImageView alloc]initWithImage:menuimage];
+    menuimageView.frame= CGRectMake(6,40, 94.5, 44);
+    menuimageView.alpha=1.0;
+    [self.view addSubview:menuimageView];
+    [menuimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *menurecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(menuBtn:)];
+    [menurecognizer setNumberOfTapsRequired:1];
+    [menuimageView addGestureRecognizer:menurecognizer];
     
     //cameraボタンの画像を入れる
-    UIImage *cameraimage = [UIImage imageNamed:@"camara.gif"];
+    UIImage *cameraimage = [UIImage imageNamed:@"camerabutton@2x.png"];
     UIImageView *cameraimageView=[[UIImageView alloc]initWithImage:cameraimage];
-    cameraimageView.frame= CGRectMake(120,70, 80, 60);
+    cameraimageView.frame= CGRectMake(112.5,40,94.5, 44);
     cameraimageView.alpha=1.0;
     [self.view addSubview:cameraimageView];
     [cameraimageView setUserInteractionEnabled:YES];
@@ -66,9 +84,9 @@
     [cameraimageView addGestureRecognizer:recognizer];
     
     //libraryボタンの画像を入れる
-    UIImage *libraryimage = [UIImage imageNamed:@"library.gif"];
+    UIImage *libraryimage = [UIImage imageNamed:@"librarybutton@2x.png"];
     UIImageView *libraryimageView=[[UIImageView alloc]initWithImage:libraryimage];
-    libraryimageView.frame= CGRectMake(40,70, 80, 60);
+    libraryimageView.frame= CGRectMake(219,40, 94.5, 44);
     libraryimageView.alpha=1.0;
     [self.view addSubview:libraryimageView];
     [libraryimageView setUserInteractionEnabled:YES];
@@ -77,41 +95,41 @@
     [libraryrecognizer setNumberOfTapsRequired:1];
     [libraryimageView addGestureRecognizer:libraryrecognizer];
     
-    //nextボタンの画像を入れる
-    UIImage *nextimage = [UIImage imageNamed:@"next.gif"];
-    UIImageView *nextimageView=[[UIImageView alloc]initWithImage:nextimage];
-    nextimageView.frame= CGRectMake(240,450, 80, 60);
-    nextimageView.alpha=1.0;
-    [self.view addSubview:nextimageView];
-    [nextimageView setUserInteractionEnabled:YES];
+    //manボタンの画像を入れる
+    UIImage *manimage = [UIImage imageNamed:@"manbutton@2x.png"];
+    UIImageView *manimageView=[[UIImageView alloc]initWithImage:manimage];
+    manimageView.frame= CGRectMake(6,474, 94.5, 44);
+    manimageView.alpha=1.0;
+    [self.view addSubview:manimageView];
+    [manimageView setUserInteractionEnabled:YES];
     //tapの動作
-    UITapGestureRecognizer *nextrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextBtn:)];
-    [nextrecognizer setNumberOfTapsRequired:1];
-    [nextimageView addGestureRecognizer:nextrecognizer];
+    UITapGestureRecognizer *manrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(manBtn:)];
+    [manrecognizer setNumberOfTapsRequired:1];
+    [manimageView addGestureRecognizer:manrecognizer];
     
-    //retuernボタンの画像を入れる
-    UIImage *returnimage = [UIImage imageNamed:@"start.gif"];
-    UIImageView *returnimageView=[[UIImageView alloc]initWithImage:returnimage];
-    returnimageView.frame= CGRectMake(10,10, 80, 30);
-    returnimageView.alpha=1.0;
-    [self.view addSubview:returnimageView];
-    [returnimageView setUserInteractionEnabled:YES];
+    //thirdボタンの画像を入れる
+    UIImage *thirdimage = [UIImage imageNamed:@"thirdbutton@2x.png"];
+    UIImageView *thirdimageView=[[UIImageView alloc]initWithImage:thirdimage];
+    thirdimageView.frame= CGRectMake(112.5,474, 94.5, 44);
+    thirdimageView.alpha=1.0;
+    [self.view addSubview:thirdimageView];
+    [thirdimageView setUserInteractionEnabled:YES];
     //tapの動作
-    UITapGestureRecognizer *returnrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(returnBtn:)];
-    [returnrecognizer setNumberOfTapsRequired:1];
-    [returnimageView addGestureRecognizer:returnrecognizer];
+    UITapGestureRecognizer *thirdrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(thirdBtn:)];
+    [thirdrecognizer setNumberOfTapsRequired:1];
+    [thirdimageView addGestureRecognizer:thirdrecognizer];
     
-    //ruleボタンの画像を入れる
-    UIImage *ruleimage = [UIImage imageNamed:@"rule.gif"];
-    UIImageView *ruleimageView=[[UIImageView alloc]initWithImage:ruleimage];
-    ruleimageView.frame= CGRectMake(220,70, 80, 60);
-    ruleimageView.alpha=1.0;
-    [self.view addSubview:ruleimageView];
-    [ruleimageView setUserInteractionEnabled:YES];
+    //womanボタンの画像を入れる
+    UIImage *womanimage = [UIImage imageNamed:@"womanbutton@2x.png"];
+    UIImageView *womanimageView=[[UIImageView alloc]initWithImage:womanimage];
+    womanimageView.frame= CGRectMake(219,474, 94.5, 44);
+    womanimageView.alpha=1.0;
+    [self.view addSubview:womanimageView];
+    [womanimageView setUserInteractionEnabled:YES];
     //tapの動作
-    UITapGestureRecognizer *rulerecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ruleBtn:)];
-    [rulerecognizer setNumberOfTapsRequired:1];
-    [ruleimageView addGestureRecognizer:rulerecognizer];
+    UITapGestureRecognizer *womanrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(womanBtn:)];
+    [womanrecognizer setNumberOfTapsRequired:1];
+    [womanimageView addGestureRecognizer:womanrecognizer];
     
 }
 
@@ -153,50 +171,50 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         self->showPhoto.image = image;}];
     
     showPhoto = [[UIImageView alloc] initWithImage:image];
-    showPhoto.frame= CGRectMake(35,200,250,250);
+    showPhoto.frame= CGRectMake(35,150,250,250);
     showPhoto.layer.cornerRadius = 250 * 0.5f;
     showPhoto.clipsToBounds = YES;
     [self.view addSubview:showPhoto];
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    switch (buttonIndex) {
-        case 0:{
-            NSLog(@"man");
-            if (self->showPhoto.image != nil) {
-            GameViewController *gameViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
-            [self presentViewController:gameViewController animated:YES completion:nil];
-            }
-        }
-        break;
-        case 1:{
-            NSLog(@"weman");
-            if (self->showPhoto.image != nil) {
-            WemanGameViewController *wemanViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WemanGameViewController"];
-            [self presentViewController:wemanViewController animated:YES completion:nil];
-            }
-        }
-            break;
-        case 2:{
-            NSLog(@"others");
-            if (self->showPhoto.image != nil) {
-            OthersGameViewController *othersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OthersGameViewController"];
-            [self presentViewController:othersViewController animated:YES completion:nil];
-            }
-        }
-            break;
-        case 3:{
-            NSLog(@"cancel");
-        }
-            break;
-            
-        default:
-            NSLog(@"エラー");
-            break;
-    }
-    
-}
+//-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    
+//    switch (buttonIndex) {
+//        case 0:{
+//            NSLog(@"man");
+//            if (self->showPhoto.image != nil) {
+//            GameViewController *gameViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
+//            [self presentViewController:gameViewController animated:YES completion:nil];
+//            }
+//        }
+//        break;
+//        case 1:{
+//            NSLog(@"weman");
+//            if (self->showPhoto.image != nil) {
+//            WemanGameViewController *wemanViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WemanGameViewController"];
+//            [self presentViewController:wemanViewController animated:YES completion:nil];
+//            }
+//        }
+//            break;
+//        case 2:{
+//            NSLog(@"others");
+//            if (self->showPhoto.image != nil) {
+//            OthersGameViewController *othersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OthersGameViewController"];
+//            [self presentViewController:othersViewController animated:YES completion:nil];
+//            }
+//        }
+//            break;
+//        case 3:{
+//            NSLog(@"cancel");
+//        }
+//            break;
+//            
+//        default:
+//            NSLog(@"エラー");
+//            break;
+//    }
+//    
+//}
 
 -(void)cameraBtn:(UIButton *)camerabutton{
     UIImagePickerControllerSourceType sourceType
@@ -226,24 +244,47 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 }
 
--(void)nextBtn:(UIButton *)nextbutton{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    actionSheet.title = @"Your sex?";
-    actionSheet.delegate = self;
-    
-    [actionSheet addButtonWithTitle:@"Man"];
-    [actionSheet addButtonWithTitle:@"Weman"];
-    [actionSheet addButtonWithTitle:@"The others"];
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setDestructiveButtonIndex:3];//赤文字で目立たせれる
-    [actionSheet setCancelButtonIndex:3];//分けて表示
-    [actionSheet showInView:self.view];
+-(void)menuBtn:(UIButton *)menubutton{
+    ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [self presentViewController:ViewController animated:YES completion:nil];
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+//    actionSheet.title = @"Your sex?";
+//    actionSheet.delegate = self;
+//    
+//    [actionSheet addButtonWithTitle:@"Man"];
+//    [actionSheet addButtonWithTitle:@"Weman"];
+//    [actionSheet addButtonWithTitle:@"The others"];
+//    [actionSheet addButtonWithTitle:@"Cancel"];
+//    [actionSheet setDestructiveButtonIndex:3];//赤文字で目立たせれる
+//    [actionSheet setCancelButtonIndex:3];//分けて表示
+//    [actionSheet showInView:self.view];
     
 }
 
 -(void)returnBtn:(UIButton *)returnbutton{
      ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     [self presentViewController:ViewController animated:YES completion:nil];
+}
+
+-(void)manBtn:(UIButton *)manbutton{
+    if (self->showPhoto.image != nil) {
+        GameViewController *gameViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
+        [self presentViewController:gameViewController animated:YES completion:nil];
+    }
+}
+
+-(void)womanBtn:(UIButton *)womanbutton{
+    if (self->showPhoto.image != nil) {
+        WemanGameViewController *wemanViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WemanGameViewController"];
+        [self presentViewController:wemanViewController animated:YES completion:nil];
+    }
+}
+
+-(void)thirdBtn:(UIButton *)thirdbutton{
+    if (self->showPhoto.image != nil) {
+        OthersGameViewController *othersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OthersGameViewController"];
+        [self presentViewController:othersViewController animated:YES completion:nil];
+    }
 }
 
 //ルールに飛ぶ

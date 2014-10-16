@@ -44,12 +44,6 @@
     _skyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,self.view.bounds.size.width, self.view.bounds.size.height-self.view.bounds.size.height/11.5)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
     _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:0];
     
-    //むきむきの画像
-    UIImage *resultimage = [UIImage imageNamed:@"むきむき.jpeg"];
-    UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
-    resultimageView.frame = [[UIScreen mainScreen] bounds];
-    [_skyView addSubview:resultimageView];
-    
     //グローバルから画像のアドレスを取得
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self showPhoto:app.FaceImage];
@@ -57,10 +51,18 @@
     //takenPhotoをallocしてサイズを変更する
     UIImage* myimage =[[UIImage alloc] init];
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
-    takenPhoto.frame= CGRectMake(100,50, 120, 120);
+    takenPhoto.frame= CGRectMake(95,10, 140, 140);
     takenPhoto.layer.cornerRadius = 120 * 0.5f;
     takenPhoto.clipsToBounds = YES;
     [_skyView addSubview:takenPhoto];
+    
+    //むきむきの画像
+    UIImage *resultimage = [UIImage imageNamed:@"facenothinmanre@x2.png"];
+    UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
+    resultimageView.frame = [[UIScreen mainScreen] bounds];
+    [_skyView addSubview:resultimageView];
+    
+
 
     //ヴューに表示
     [self.view addSubview:_skyView];
@@ -74,38 +76,10 @@
     [self.view addSubview:_adView];//表示させる
     _adView.alpha = 0,0;//透明
     
-    //スクリーンショットボタン
-    UIImage *shotimage = [UIImage imageNamed:@"shot.gif"];
-    UIImageView *shotimageView=[[UIImageView alloc]initWithImage:shotimage];
-    shotimageView.frame= CGRectMake(120,400, 80, 60);
-    shotimageView.alpha=1.0;
-    [self.view addSubview:shotimageView];
-    [shotimageView setUserInteractionEnabled:YES];
-    //tapの動作
-    UITapGestureRecognizer *shotrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shotBtn:)];
-    [shotrecognizer setNumberOfTapsRequired:1];
-    [shotimageView addGestureRecognizer:shotrecognizer];
-
-    
-    //スタートリターンボタン
-    //restsrtボタンの画像を入れる
-    UIImage *restsrtimage = [UIImage imageNamed:@"start.gif"];
-    UIImageView *restsrtimageView=[[UIImageView alloc]initWithImage:restsrtimage];
-    restsrtimageView.frame= CGRectMake(40,450, 80, 60);
-    restsrtimageView.alpha=1.0;
-    [self.view addSubview:restsrtimageView];
-    [restsrtimageView setUserInteractionEnabled:YES];
-    //tapの動作
-    UITapGestureRecognizer *restsrtrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(restartBtn:)];
-    [restsrtrecognizer setNumberOfTapsRequired:1];
-    [restsrtimageView addGestureRecognizer:restsrtrecognizer];
-
-
-    
     //シェアボタン
-    UIImage *shareimage = [UIImage imageNamed:@"share.gif"];
+    UIImage *shareimage = [UIImage imageNamed:@"sharebutton2@2x.png"];
     UIImageView *shareimageView=[[UIImageView alloc]initWithImage:shareimage];
-    shareimageView.frame= CGRectMake(240,450, 80, 60);
+    shareimageView.frame= CGRectMake(6,474, 94.5, 44);
     shareimageView.alpha=1.0;
     [self.view addSubview:shareimageView];
     [shareimageView setUserInteractionEnabled:YES];
@@ -114,6 +88,33 @@
     [sharerecognizer setNumberOfTapsRequired:1];
     [shareimageView addGestureRecognizer:sharerecognizer];
     
+
+
+    //スクリーンショットボタン
+    UIImage *shotimage = [UIImage imageNamed:@"screenshotbutto2@2x.png"];
+    UIImageView *shotimageView=[[UIImageView alloc]initWithImage:shotimage];
+    shotimageView.frame= CGRectMake(112.5,474, 94.5, 44);
+    shotimageView.alpha=1.0;
+    [self.view addSubview:shotimageView];
+    [shotimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *shotrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shotBtn:)];
+    [shotrecognizer setNumberOfTapsRequired:1];
+    [shotimageView addGestureRecognizer:shotrecognizer];
+    
+    //スタートリターンボタン
+    //menuボタンの画像を入れる
+    UIImage *restsrtimage = [UIImage imageNamed:@"menubutton@2x.png"];
+    UIImageView *restsrtimageView=[[UIImageView alloc]initWithImage:restsrtimage];
+    restsrtimageView.frame= CGRectMake(219,474, 94.5, 44);
+    restsrtimageView.alpha=1.0;
+    [self.view addSubview:restsrtimageView];
+    [restsrtimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *restsrtrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(restartBtn:)];
+    [restsrtrecognizer setNumberOfTapsRequired:1];
+    [restsrtimageView addGestureRecognizer:restsrtrecognizer];
+
     
     
     //最初は表示されていないのでno
@@ -236,12 +237,20 @@
             [defaults setObject:ret_dictionary forKey:@"historyData"];
             [defaults synchronize];
             
-            
         }
     }];
     
-//    UIView *View = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
-//    View.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    UIImage *restsrtimage = [UIImage new];
+    UIImageView *restsrtimageView=[[UIImageView alloc]initWithImage:restsrtimage];
+    restsrtimageView.frame= CGRectMake(0,0, 320, 568);
+    restsrtimageView.backgroundColor = [UIColor whiteColor];
+    restsrtimageView.alpha=1.0;
+    [self.view addSubview:restsrtimageView];
+    [restsrtimageView setUserInteractionEnabled:YES];
+    
+    [self sampleImageFadeIn:restsrtimageView];
+    
+    [self sampleImageFadeOut:restsrtimageView];
 //    //takenPhoto.frame = [[UIScreen mainScreen] bounds];
 //    //Viewに画像を乗せる
 //    [View addSubview:takenPhoto];
@@ -304,6 +313,39 @@
     //モーダル処理でアクティビティービューを表示//モーダル：親の上にかぶさっている子
     [self presentViewController:activityView animated:YES completion:nil];
     
+}
+
+
+//フェードイン
+- (void)sampleImageFadeIn:(UIImageView *)ImageView
+{
+    //フェードイン
+    ImageView.alpha = 0;
+    //アニメーションのタイプを指定
+    [UIView beginAnimations:@"fadeIn" context:nil];
+    //イージング指定
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    //アニメーション秒数を指定
+    [UIView setAnimationDuration:0.5];
+    //目標のアルファ値を指定
+    ImageView.alpha = 1;
+    //アニメーション実行
+    [UIView commitAnimations];
+}
+
+//フェードアウト
+- (void)sampleImageFadeOut:(UIImageView *)ImageView
+{
+    //フェードアウト
+    [UIView beginAnimations:@"fadeOut" context:nil];
+    //イージング指定
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    //アニメーション秒数を指定
+    [UIView setAnimationDuration:0.5];
+    //目標のアルファ値を指定
+    ImageView.alpha = 0;
+    //アニメーション実行
+    [UIView commitAnimations];
 }
 /*
 #pragma mark - Navigation

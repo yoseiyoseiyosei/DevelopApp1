@@ -7,6 +7,7 @@
 //
 
 #import "tutorialViewController.h"
+#import "ViewController.h"
 
 @interface tutorialViewController ()
 
@@ -29,8 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
-    NSInteger pageSize = 3; // ページ数
+    NSInteger pageSize = 5; // ページ数
     CGFloat width = self.view.bounds.size.width;
     CGFloat height = self.view.bounds.size.height;
     
@@ -64,6 +64,21 @@
         label.backgroundColor = [UIColor blueColor];
         label.textAlignment = NSTextAlignmentCenter;
         [self.scrollView addSubview:label];
+        NSString *name = [NSString stringWithFormat:@"images (%d).jpeg",i];
+        UIImage *image = [UIImage imageNamed:name];
+        UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+        imageView.frame= CGRectMake(i * width, 0, width, height);
+        //        if(i==2){
+        //        imageView.alpha=0;
+        //        }else{
+        //        imageView.alpha=1.0;
+        //        }
+        [self.scrollView addSubview:imageView];
+        //        UIImage *image = [UIImage imageNamed:@"rule.gif"];
+        //        UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+        //        imageView.frame= CGRectMake(0,0, 320, 400);
+        //        imageView.alpha=1.0;
+        //        [self.scrollView addSubview:imageView];
         NSLog(@"images(%d).jpeg",i);
     }
     
@@ -72,7 +87,7 @@
     self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(x, 430, 300, 50)];
     
     // 背景色を設定
-    self.pageControl.backgroundColor = [UIColor whiteColor];
+    //self.pageControl.backgroundColor = [UIColor whiteColor];
     
     // ページ数を設定
     self.pageControl.numberOfPages = pageSize;
@@ -93,8 +108,23 @@
     
     // ページコントロールを貼付ける
     [self.view addSubview:self.pageControl];
+    
+    //retuernボタンの画像を入れる
+    UIImage *returnimage = [UIImage imageNamed:@"menubutton@2x.png"];
+    UIImageView *returnimageView=[[UIImageView alloc]initWithImage:returnimage];
+    returnimageView.frame= CGRectMake(10,10, 94.5,44);
+    returnimageView.alpha=1.0;
+    [self.view addSubview:returnimageView];
+    [returnimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *returnrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(returnBtn:)];
+    [returnrecognizer setNumberOfTapsRequired:1];
+    [returnimageView addGestureRecognizer:returnrecognizer];
 }
-
+-(void)returnBtn:(UIButton *)returnbutton{
+    ViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [self presentViewController:ViewController animated:YES completion:nil];
+}
 // スクロールビューがスワイプされたとき
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView
 {

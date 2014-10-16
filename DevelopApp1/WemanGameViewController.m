@@ -8,6 +8,7 @@
 
 #import "WemanGameViewController.h"
 
+
 @interface WemanGameViewController (){
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
@@ -28,7 +29,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
     
@@ -39,8 +40,41 @@
     
     //最初は表示されていないのでno
     _isVisible = NO;
-}
+    
+    //下→アニメーション
+    self.view.layer.backgroundColor = [[UIColor whiteColor] CGColor];
+    
+    UIImage *textImage = [UIImage imageNamed:@"yajirusi@2x.png"];
+    CGFloat textWidth = textImage.size.width;
+    CGFloat textHeight = textImage.size.height;
+    CALayer *textLayer = [CALayer layer];
+    textLayer.contents = (id)[textImage CGImage];
+    textLayer.frame = CGRectMake(10, 50, textWidth, textHeight);
+    
+    CALayer *maskLayer = [CALayer layer];
+    
+    // Mask image ends with 0.15 opacity on both sides. Set the background color of the layer
+    // to the same value so the layer can extend the mask image.
+    //maskLayer.backgroundColor = [[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.15f] CGColor];
+    maskLayer.contents = (id)[[UIImage imageNamed:@"siro@2x.png"] CGImage];
+    
+    // Center the mask image on twice the width of the text layer, so it starts to the left
+    // of the text layer and moves to its right when we translate it by width.
+    maskLayer.contentsGravity = kCAGravityCenter;
+    maskLayer.frame = CGRectMake(0, -50, textWidth, 10);
+    
+    // Animate the mask layer's horizontal position
+    CABasicAnimation *maskAnim = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    maskAnim.byValue = [NSNumber numberWithFloat:textHeight];
+    maskAnim.repeatCount = HUGE_VALF;
+    maskAnim.duration = 3.0f;
+    [maskLayer addAnimation:maskAnim forKey:@"slideAnim"];
+    
+    textLayer.mask = maskLayer;
+    [self.view.layer addSublayer:textLayer];
 
+    [super viewDidLoad];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

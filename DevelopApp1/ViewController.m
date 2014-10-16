@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "CameraViewController.h"
 #import "CollectViewController.h"
+#import "tutorialViewController.h"
 @interface ViewController (){
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
@@ -33,19 +34,17 @@
     //最初は表示されていないのでno
     _isVisible = NO;
     
-    //titlの画像を入れる
-    UIImage *titleimage = [UIImage imageNamed:@"title.jpg"];
+    //壁紙の画像を入れる
+    UIImage *titleimage = [UIImage imageNamed:@"startscien@2x.png"];
     UIImageView *titleimageView=[[UIImageView alloc]initWithImage:titleimage];
     titleimageView.frame=[[UIScreen mainScreen] bounds];
     titleimageView.alpha=1.0;
     [self.view addSubview:titleimageView];
     
-    
-    
     //startボタンの画像を入れる
-    UIImage *image = [UIImage imageNamed:@"start.gif"];
+    UIImage *image = [UIImage imageNamed:@"startbutton@2x.png"];
     UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
-    imageView.frame= CGRectMake(120,400, 80, 60);
+    imageView.frame= CGRectMake(88,299, 145, 53);
     imageView.alpha=1.0;
     [self.view addSubview:imageView];
     [imageView setUserInteractionEnabled:YES];
@@ -54,18 +53,31 @@
     [recognizer setNumberOfTapsRequired:1];
     [imageView addGestureRecognizer:recognizer];
     
-    UIImage *collectionimage = [UIImage imageNamed:@"collect.gif"];
+    
+    //collectionボタンの画像を入れる
+    UIImage *collectionimage = [UIImage imageNamed:@"collectionbutton2@2x.gif"];
     UIImageView *collectionimageView=[[UIImageView alloc]initWithImage:collectionimage];
-    collectionimageView.frame= CGRectMake(120,480, 80, 60);
+    collectionimageView.frame= CGRectMake(88,382, 145, 53);
     collectionimageView.alpha=1.0;
     [self.view addSubview:collectionimageView];
     [collectionimageView setUserInteractionEnabled:YES];
     //tapの動作
     UITapGestureRecognizer *collectionrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collectionBtn:)];
-    [recognizer setNumberOfTapsRequired:1];
+    [collectionrecognizer setNumberOfTapsRequired:1];
     [collectionimageView addGestureRecognizer:collectionrecognizer];
     
-    
+
+    //tutorialボタンの画像を入れる
+    UIImage *tutorialimage = [UIImage imageNamed:@"tutorialbutton@2x.png"];
+    UIImageView *tutorialimageView=[[UIImageView alloc]initWithImage:tutorialimage];
+    tutorialimageView.frame= CGRectMake(88,465, 145, 53);
+    tutorialimageView.alpha=1.0;
+    [self.view addSubview:tutorialimageView];
+    [tutorialimageView setUserInteractionEnabled:YES];
+    //tapの動作
+    UITapGestureRecognizer *tutorialrecognizer =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tutorialBtn:)];
+    [tutorialrecognizer setNumberOfTapsRequired:1];
+    [tutorialimageView addGestureRecognizer:tutorialrecognizer];
     
     
 
@@ -122,7 +134,10 @@
 }
 
 
-
-
+-(void)tutorialBtn:(UIButton *)startbutton{
+    tutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
+    [self presentViewController:tutorialViewController animated:YES completion:nil];
+    
+}
 
 @end

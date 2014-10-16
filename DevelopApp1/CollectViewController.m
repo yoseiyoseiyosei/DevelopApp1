@@ -40,8 +40,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view.backgroundColor =[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
     self->imageAddressList = [NSMutableArray new];
+    
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -103,9 +104,9 @@
     _isVisible = NO;
     
     //startボタンの画像を入れる
-    UIImage *image = [UIImage imageNamed:@"start.gif"];
+    UIImage *image = [UIImage imageNamed:@"returnbutton@2x.png"];
     UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
-    imageView.frame= CGRectMake(0,self.view.frame.size.height-70, self.view.bounds.size.width, 20);
+    imageView.frame= CGRectMake(0,self.view.frame.size.height-100, self.view.bounds.size.width, 50);
     imageView.alpha=1.0;
     [self.view addSubview:imageView];
     [imageView setUserInteractionEnabled:YES];
@@ -175,9 +176,9 @@
     
     
 
-NSLog(@"%@", self->imageAddressList);
-NSLog(@"%lu", imageView.tag);
-NSLog(@"%@", self->imageAddressList[imageView.tag]);
+//NSLog(@"%@", self->imageAddressList);
+//NSLog(@"%lu", imageView.tag);
+//NSLog(@"%@", self->imageAddressList[imageView.tag]);
 
 }
 
@@ -222,7 +223,7 @@ NSLog(@"%@", self->imageAddressList[imageView.tag]);
                                UIView *_skyView = [[UIView alloc] initWithFrame:CGRectMake(xposition, yposition,wimage, himage)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
                                _skyView.layer.cornerRadius = wimage * 0.5f;
                                _skyView.clipsToBounds = YES;
-                               _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
+                               //_skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:1];
                                //takenPhoto.frame = [[UIScreen mainScreen] bounds];
                                //_skyViewに画像を乗せる
                                [_skyView addSubview:takenPhoto];
