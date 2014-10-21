@@ -70,6 +70,28 @@
 		8E690D8F19EE5F4600B1382B /* siro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E690D8E19EE5F4600B1382B /* siro@2x.png */; };
 		8E7B33C319EF382100F5BF57 /* facenothingman@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B33C219EF382100F5BF57 /* facenothingman@2x.png */; };
 		8E7B33C519EF3CE400F5BF57 /* facenothinmanre@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B33C419EF3CE400F5BF57 /* facenothinmanre@x2.png */; };
+		8E7B34D319F0E31600F5BF57 /* faceshape.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34D219F0E31600F5BF57 /* faceshape.png */; };
+		8E7B34D519F122DD00F5BF57 /* faceshapewaku@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34D419F122DD00F5BF57 /* faceshapewaku@2x.png */; };
+		8E7B34D719F221E600F5BF57 /* resultladyfacenasi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34D619F221E600F5BF57 /* resultladyfacenasi@2x.png */; };
+		8E7B34D919F221F000F5BF57 /* resultmangousei@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34D819F221F000F5BF57 /* resultmangousei@2x.png */; };
+		8E7B34DB19F221FD00F5BF57 /* gamescienlady2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34DA19F221FD00F5BF57 /* gamescienlady2@2x.png */; };
+		8E7B34DD19F2493200F5BF57 /* faceframe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34DC19F2493200F5BF57 /* faceframe@2x.png */; };
+		8E7B34DF19F3906200F5BF57 /* selectbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34DE19F3906200F5BF57 /* selectbutton@2x.png */; };
+		8E7B34E119F3935900F5BF57 /* facenasiman@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34E019F3935900F5BF57 /* facenasiman@2x.png */; };
+		8E7B34E319F3947100F5BF57 /* faceresultmannasi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34E219F3947100F5BF57 /* faceresultmannasi@2x.png */; };
+		8E7B34E519F397AC00F5BF57 /* facenasiresultman2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34E419F397AB00F5BF57 /* facenasiresultman2@2x.png */; };
+		8E7B34E719F3993E00F5BF57 /* facenasiresultman4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34E619F3993E00F5BF57 /* facenasiresultman4@2x.png */; };
+		8E7B34E919F39AA700F5BF57 /* facenasiresultman5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34E819F39AA700F5BF57 /* facenasiresultman5@2x.png */; };
+		8E7B34EB19F3BB7D00F5BF57 /* digdowndeepsweety@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34EA19F3BB7D00F5BF57 /* digdowndeepsweety@2x.png */; };
+		8E7B34ED19F4F1A300F5BF57 /* cameraframeajust@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34EC19F4F1A300F5BF57 /* cameraframeajust@2x.png */; };
+		8E7B34F019F5022500F5BF57 /* maruframe@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34EE19F5022500F5BF57 /* maruframe@2x.gif */; };
+		8E7B34F119F5022500F5BF57 /* marugurade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34EF19F5022500F5BF57 /* marugurade@2x.png */; };
+		8E7B34F319F5023100F5BF57 /* librarybuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34F219F5023100F5BF57 /* librarybuttonwhite@2x.png */; };
+		8E7B34F519F5023D00F5BF57 /* menubuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34F419F5023D00F5BF57 /* menubuttonwhite@2x.png */; };
+		8E7B34F719F5026100F5BF57 /* camerabuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34F619F5026100F5BF57 /* camerabuttonwhite@2x.png */; };
+		8E7B34F919F50BEA00F5BF57 /* selectbuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34F819F50BEA00F5BF57 /* selectbuttonwhite@2x.png */; };
+		8E7B34FB19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34FA19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png */; };
+		8E7B34FD19F62A1C00F5BF57 /* sharebuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34FC19F62A1C00F5BF57 /* sharebuttonwhite@2x.png */; };
 		8E9830E219C80EB900F56A74 /* manResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E119C80EB900F56A74 /* manResultViewController.m */; };
 		8E9830E519C813CC00F56A74 /* wemanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E419C813CC00F56A74 /* wemanResultViewController.m */; };
 		8E9830E819C8145D00F56A74 /* cthersResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E719C8145D00F56A74 /* cthersResultViewController.m */; };
@@ -173,6 +195,28 @@
 		8E690D8E19EE5F4600B1382B /* siro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siro@2x.png"; sourceTree = "<group>"; };
 		8E7B33C219EF382100F5BF57 /* facenothingman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facenothingman@2x.png"; sourceTree = "<group>"; };
 		8E7B33C419EF3CE400F5BF57 /* facenothinmanre@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facenothinmanre@x2.png"; sourceTree = "<group>"; };
+		8E7B34D219F0E31600F5BF57 /* faceshape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceshape.png; sourceTree = "<group>"; };
+		8E7B34D419F122DD00F5BF57 /* faceshapewaku@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceshapewaku@2x.png"; sourceTree = "<group>"; };
+		8E7B34D619F221E600F5BF57 /* resultladyfacenasi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resultladyfacenasi@2x.png"; sourceTree = "<group>"; };
+		8E7B34D819F221F000F5BF57 /* resultmangousei@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resultmangousei@2x.png"; sourceTree = "<group>"; };
+		8E7B34DA19F221FD00F5BF57 /* gamescienlady2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gamescienlady2@2x.png"; sourceTree = "<group>"; };
+		8E7B34DC19F2493200F5BF57 /* faceframe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceframe@2x.png"; sourceTree = "<group>"; };
+		8E7B34DE19F3906200F5BF57 /* selectbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectbutton@2x.png"; sourceTree = "<group>"; };
+		8E7B34E019F3935900F5BF57 /* facenasiman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facenasiman@2x.png"; sourceTree = "<group>"; };
+		8E7B34E219F3947100F5BF57 /* faceresultmannasi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceresultmannasi@2x.png"; sourceTree = "<group>"; };
+		8E7B34E419F397AB00F5BF57 /* facenasiresultman2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facenasiresultman2@2x.png"; sourceTree = "<group>"; };
+		8E7B34E619F3993E00F5BF57 /* facenasiresultman4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facenasiresultman4@2x.png"; sourceTree = "<group>"; };
+		8E7B34E819F39AA700F5BF57 /* facenasiresultman5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facenasiresultman5@2x.png"; sourceTree = "<group>"; };
+		8E7B34EA19F3BB7D00F5BF57 /* digdowndeepsweety@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "digdowndeepsweety@2x.png"; sourceTree = "<group>"; };
+		8E7B34EC19F4F1A300F5BF57 /* cameraframeajust@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cameraframeajust@2x.png"; sourceTree = "<group>"; };
+		8E7B34EE19F5022500F5BF57 /* maruframe@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "maruframe@2x.gif"; sourceTree = "<group>"; };
+		8E7B34EF19F5022500F5BF57 /* marugurade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marugurade@2x.png"; sourceTree = "<group>"; };
+		8E7B34F219F5023100F5BF57 /* librarybuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "librarybuttonwhite@2x.png"; sourceTree = "<group>"; };
+		8E7B34F419F5023D00F5BF57 /* menubuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubuttonwhite@2x.png"; sourceTree = "<group>"; };
+		8E7B34F619F5026100F5BF57 /* camerabuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camerabuttonwhite@2x.png"; sourceTree = "<group>"; };
+		8E7B34F819F50BEA00F5BF57 /* selectbuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectbuttonwhite@2x.png"; sourceTree = "<group>"; };
+		8E7B34FA19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenshotbuttonwhite@2x.png"; sourceTree = "<group>"; };
+		8E7B34FC19F62A1C00F5BF57 /* sharebuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharebuttonwhite@2x.png"; sourceTree = "<group>"; };
 		8E9830E019C80EB900F56A74 /* manResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = manResultViewController.h; sourceTree = "<group>"; };
 		8E9830E119C80EB900F56A74 /* manResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = manResultViewController.m; sourceTree = "<group>"; };
 		8E9830E319C813CC00F56A74 /* wemanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wemanResultViewController.h; sourceTree = "<group>"; };
@@ -242,6 +286,28 @@
 		8E1D20EE19D6FB2F00AF9953 /* IMage */ = {
 			isa = PBXGroup;
 			children = (
+				8E7B34FC19F62A1C00F5BF57 /* sharebuttonwhite@2x.png */,
+				8E7B34FA19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png */,
+				8E7B34F819F50BEA00F5BF57 /* selectbuttonwhite@2x.png */,
+				8E7B34F619F5026100F5BF57 /* camerabuttonwhite@2x.png */,
+				8E7B34F419F5023D00F5BF57 /* menubuttonwhite@2x.png */,
+				8E7B34F219F5023100F5BF57 /* librarybuttonwhite@2x.png */,
+				8E7B34EE19F5022500F5BF57 /* maruframe@2x.gif */,
+				8E7B34EF19F5022500F5BF57 /* marugurade@2x.png */,
+				8E7B34EC19F4F1A300F5BF57 /* cameraframeajust@2x.png */,
+				8E7B34E819F39AA700F5BF57 /* facenasiresultman5@2x.png */,
+				8E7B34EA19F3BB7D00F5BF57 /* digdowndeepsweety@2x.png */,
+				8E7B34E619F3993E00F5BF57 /* facenasiresultman4@2x.png */,
+				8E7B34E419F397AB00F5BF57 /* facenasiresultman2@2x.png */,
+				8E7B34E219F3947100F5BF57 /* faceresultmannasi@2x.png */,
+				8E7B34DE19F3906200F5BF57 /* selectbutton@2x.png */,
+				8E7B34E019F3935900F5BF57 /* facenasiman@2x.png */,
+				8E7B34DC19F2493200F5BF57 /* faceframe@2x.png */,
+				8E7B34DA19F221FD00F5BF57 /* gamescienlady2@2x.png */,
+				8E7B34D819F221F000F5BF57 /* resultmangousei@2x.png */,
+				8E7B34D619F221E600F5BF57 /* resultladyfacenasi@2x.png */,
+				8E7B34D419F122DD00F5BF57 /* faceshapewaku@2x.png */,
+				8E7B34D219F0E31600F5BF57 /* faceshape.png */,
 				8E7B33C419EF3CE400F5BF57 /* facenothinmanre@x2.png */,
 				8E7B33C219EF382100F5BF57 /* facenothingman@2x.png */,
 				8E690D8E19EE5F4600B1382B /* siro@2x.png */,
@@ -480,20 +546,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E7B34DF19F3906200F5BF57 /* selectbutton@2x.png in Resources */,
+				8E7B34E319F3947100F5BF57 /* faceresultmannasi@2x.png in Resources */,
 				8E690D6119ED22BC00B1382B /* collectionbutton2@2x.gif in Resources */,
 				8E690D6A19EDA58E00B1382B /* manbutton@2x.png in Resources */,
 				8E1D210D19D6FB2F00AF9953 /* images (2).jpeg in Resources */,
+				8E7B34F519F5023D00F5BF57 /* menubuttonwhite@2x.png in Resources */,
 				8EB45F3819BC417200F03297 /* Images.xcassets in Resources */,
 				8E690D6919EDA58E00B1382B /* menubutton@2x.png in Resources */,
 				8E1D211719D6FB2F00AF9953 /* shot.gif in Resources */,
 				8EB45F2A19BC417200F03297 /* InfoPlist.strings in Resources */,
 				8E1D211219D6FB2F00AF9953 /* more.gif in Resources */,
+				8E7B34E919F39AA700F5BF57 /* facenasiresultman5@2x.png in Resources */,
 				8E1D211519D6FB2F00AF9953 /* next.gif in Resources */,
+				8E7B34D519F122DD00F5BF57 /* faceshapewaku@2x.png in Resources */,
 				8E1D210E19D6FB2F00AF9953 /* images (3).jpeg in Resources */,
 				8E690D7D19EDEC2F00B1382B /* screenshotbutto2@2x.png in Resources */,
 				8E690D8519EE34AE00B1382B /* gamescienman@2x.png in Resources */,
 				8E1D211A19D6FB2F00AF9953 /* むきむき.jpeg in Resources */,
 				8EB14DCF19C81BD7004FFBFA /* Main.storyboard in Resources */,
+				8E7B34E719F3993E00F5BF57 /* facenasiresultman4@2x.png in Resources */,
+				8E7B34FD19F62A1C00F5BF57 /* sharebuttonwhite@2x.png in Resources */,
 				8E1D21A119DD0B3300AF9953 /* 広島ルール.jpeg in Resources */,
 				8E690D7519EDE9C200B1382B /* screenshotbutto@2x.png in Resources */,
 				8E1D211019D6FB2F00AF9953 /* images (0).jpeg in Resources */,
@@ -502,11 +575,16 @@
 				8E690D6F19EDA5BA00B1382B /* thirdbutton@2x.png in Resources */,
 				8E1D211F19D6FB2F00AF9953 /* 女脱いだ候補２.jpg in Resources */,
 				8E1D210C19D6FB2F00AF9953 /* images (1).jpeg in Resources */,
+				8E7B34EB19F3BB7D00F5BF57 /* digdowndeepsweety@2x.png in Resources */,
 				8E690D6519ED9F5200B1382B /* camerascene2@2x.png in Resources */,
 				8E1D211919D6FB2F00AF9953 /* surts.jpeg in Resources */,
 				8E1D212019D6FB2F00AF9953 /* 男脱いだ後.jpg in Resources */,
+				8E7B34D719F221E600F5BF57 /* resultladyfacenasi@2x.png in Resources */,
+				8E7B34DD19F2493200F5BF57 /* faceframe@2x.png in Resources */,
+				8E7B34E119F3935900F5BF57 /* facenasiman@2x.png in Resources */,
 				8E690D7119EDA66A00B1382B /* camerabutton@2x.png in Resources */,
 				8E690D5D19ED097500B1382B /* tutorialbutton@2x.png in Resources */,
+				8E7B34F019F5022500F5BF57 /* maruframe@2x.gif in Resources */,
 				8E1D211419D6FB2F00AF9953 /* moreslow.gif in Resources */,
 				8E690D5719ED04E400B1382B /* startinginpact@2x.png in Resources */,
 				8E1D211819D6FB2F00AF9953 /* start.gif in Resources */,
@@ -526,21 +604,31 @@
 				8E690D5F19ED0BDB00B1382B /* startscien@2x.png in Resources */,
 				8E1D211B19D6FB2F00AF9953 /* スター.gif in Resources */,
 				8E1D219A19DC32D100AF9953 /* rule.gif in Resources */,
+				8E7B34ED19F4F1A300F5BF57 /* cameraframeajust@2x.png in Resources */,
 				8E690D7B19EDEC1700B1382B /* sharebutton2@2x.png in Resources */,
 				8E690D6B19EDA58E00B1382B /* librarybutton@2x.png in Resources */,
+				8E7B34D919F221F000F5BF57 /* resultmangousei@2x.png in Resources */,
 				8E690D7F19EE2AAA00B1382B /* count@2x.png in Resources */,
 				8E1D211119D6FB2F00AF9953 /* library.gif in Resources */,
+				8E7B34FB19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png in Resources */,
 				8E690D7319EDBCEA00B1382B /* returnbutton@2x.png in Resources */,
+				8E7B34F919F50BEA00F5BF57 /* selectbuttonwhite@2x.png in Resources */,
 				8E1D211D19D6FB2F00AF9953 /* 女中国.jpg in Resources */,
 				8E690D8719EE34C200B1382B /* resultman@2x.png in Resources */,
 				8E1D211E19D6FB2F00AF9953 /* 女脱いだ候補１.jpg in Resources */,
 				8E690D6D19EDA5A400B1382B /* womanbutton@2x.png in Resources */,
+				8E7B34F119F5022500F5BF57 /* marugurade@2x.png in Resources */,
 				8E1D211C19D6FB2F00AF9953 /* ダウンロード.jpeg in Resources */,
 				8E7B33C319EF382100F5BF57 /* facenothingman@2x.png in Resources */,
+				8E7B34D319F0E31600F5BF57 /* faceshape.png in Resources */,
+				8E7B34DB19F221FD00F5BF57 /* gamescienlady2@2x.png in Resources */,
 				8E1D210819D6FB2F00AF9953 /* camara.gif in Resources */,
 				8E1D210919D6FB2F00AF9953 /* collect.gif in Resources */,
 				8E1D211319D6FB2F00AF9953 /* morelove.gif in Resources */,
+				8E7B34F719F5026100F5BF57 /* camerabuttonwhite@2x.png in Resources */,
+				8E7B34E519F397AC00F5BF57 /* facenasiresultman2@2x.png in Resources */,
 				8E690D8119EE308700B1382B /* icon@2x.png in Resources */,
+				8E7B34F319F5023100F5BF57 /* librarybuttonwhite@2x.png in Resources */,
 				8E7B33C519EF3CE400F5BF57 /* facenothinmanre@x2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

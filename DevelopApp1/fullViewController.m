@@ -42,7 +42,7 @@
     [sv addSubview:uv];
     sv.delegate = self;
     sv.maximumZoomScale = 4.0f;
-    sv.minimumZoomScale = 0.8f;
+    sv.minimumZoomScale = 1.0f;
     sv.zoomScale = 1.0f;
     sv.contentSize = CGSizeMake(self.view.bounds.size.width,self.view.bounds.size.height*2);
 
@@ -79,9 +79,9 @@
                            //                               [recognizer setNumberOfTouchesRequired:2];
                            [takenPhoto addGestureRecognizer:recognizer];
                            
-                           // ピンチジェスチャーを登録する
-                           UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
-                           [sv addGestureRecognizer:pinch];
+//                           // ピンチジェスチャーを登録する
+//                           UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
+//                           [sv addGestureRecognizer:pinch];
                            
                            [sv addSubview:takenPhoto];
                            
@@ -102,28 +102,28 @@
     
 }
 
-//- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-//    return takenPhoto;
-//}
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return takenPhoto;
+}
 //
 // ピンチジェスチャー発生時に呼び出されように設定したメソッド。
 // ピンチジェスチャー中に何度も呼び出される。
-- (void)pinchAction : (UIPinchGestureRecognizer *)sender {
-    
-    // ピンチジェスチャー発生時に、Imageの現在のアフィン変形の状態を保存する
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        currentTransForm = takenPhoto.transform;
-        // currentTransFormは、フィールド変数。imgViewは画像を表示するUIImageView型のフィールド変数。
-    }
-	
-    // ピンチジェスチャー発生時から、どれだけ拡大率が変化したかを取得する
-    // 2本の指の距離が離れた場合には、1以上の値、近づいた場合には、1以下の値が取得できる
-    CGFloat scale = [sender scale];
-    
-    // ピンチジェスチャー開始時からの拡大率の変化を、imgViewのアフィン変形の状態に設定する事で、拡大する。
-    takenPhoto.transform = CGAffineTransformConcat(currentTransForm, CGAffineTransformMakeScale(scale, scale));
-    
-}
+//- (void)pinchAction : (UIPinchGestureRecognizer *)sender {
+//    
+//    // ピンチジェスチャー発生時に、Imageの現在のアフィン変形の状態を保存する
+//    if (sender.state == UIGestureRecognizerStateBegan) {
+//        currentTransForm = takenPhoto.transform;
+//        // currentTransFormは、フィールド変数。imgViewは画像を表示するUIImageView型のフィールド変数。
+//    }
+//	
+//    // ピンチジェスチャー発生時から、どれだけ拡大率が変化したかを取得する
+//    // 2本の指の距離が離れた場合には、1以上の値、近づいた場合には、1以下の値が取得できる
+//    CGFloat scale = [sender scale];
+//    
+//    // ピンチジェスチャー開始時からの拡大率の変化を、imgViewのアフィン変形の状態に設定する事で、拡大する。
+//    takenPhoto.transform = CGAffineTransformConcat(currentTransForm, CGAffineTransformMakeScale(scale, scale));
+//    
+//}
 
 - (void)didReceiveMemoryWarning
 {

@@ -13,6 +13,9 @@
 @interface ViewController (){
     ADBannerView *_adView;//広告を入れる変数
     BOOL _isVisible;//広告がちゃんと表示できているかの確認　フラグ
+    UIImageView *imageView;
+    UIImageView *collectionimageView;
+    UIImageView *tutorialimageView;
     
 }
 
@@ -22,6 +25,11 @@
 
 - (void)viewDidLoad
 {
+    
+    if( [ UIApplication sharedApplication ].isStatusBarHidden == NO ) {
+        [ UIApplication sharedApplication ].statusBarHidden = YES;
+    }
+    
     [super viewDidLoad];
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
@@ -43,7 +51,7 @@
     
     //startボタンの画像を入れる
     UIImage *image = [UIImage imageNamed:@"startbutton@2x.png"];
-    UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+    imageView=[[UIImageView alloc]initWithImage:image];
     imageView.frame= CGRectMake(88,299, 145, 53);
     imageView.alpha=1.0;
     [self.view addSubview:imageView];
@@ -56,7 +64,7 @@
     
     //collectionボタンの画像を入れる
     UIImage *collectionimage = [UIImage imageNamed:@"collectionbutton2@2x.gif"];
-    UIImageView *collectionimageView=[[UIImageView alloc]initWithImage:collectionimage];
+    collectionimageView=[[UIImageView alloc]initWithImage:collectionimage];
     collectionimageView.frame= CGRectMake(88,382, 145, 53);
     collectionimageView.alpha=1.0;
     [self.view addSubview:collectionimageView];
@@ -69,7 +77,7 @@
 
     //tutorialボタンの画像を入れる
     UIImage *tutorialimage = [UIImage imageNamed:@"tutorialbutton@2x.png"];
-    UIImageView *tutorialimageView=[[UIImageView alloc]initWithImage:tutorialimage];
+    tutorialimageView=[[UIImageView alloc]initWithImage:tutorialimage];
     tutorialimageView.frame= CGRectMake(88,465, 145, 53);
     tutorialimageView.alpha=1.0;
     [self.view addSubview:tutorialimageView];
@@ -122,22 +130,60 @@
 }
 
 -(void)startBtn:(UIButton *)startbutton{
+    [self sampleImageFadeOut:imageView];
+    [self sampleImageFadeIn:imageView];
     CameraViewController *cameraViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
     [self presentViewController:cameraViewController animated:YES completion:nil];
+
 
 }
 
 -(void)collectionBtn:(UIButton *)collectionbutton{
     CollectViewController *collectViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectViewController"];
     [self presentViewController:collectViewController animated:YES completion:nil];
-    
+    [self sampleImageFadeOut:collectionimageView];
+    [self sampleImageFadeIn:collectionimageView];
 }
 
 
 -(void)tutorialBtn:(UIButton *)startbutton{
     tutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
     [self presentViewController:tutorialViewController animated:YES completion:nil];
-    
+    [self sampleImageFadeOut:tutorialimageView];
+    [self sampleImageFadeIn:tutorialimageView];
+}
+
+//フェードイン
+- (void)sampleImageFadeIn:(UIImageView *)ImageView
+{
+    //フェードイン
+    ImageView.alpha = 0;
+    //アニメーションのタイプを指定
+    [UIView beginAnimations:@"fadeIn" context:nil];
+    //イージング指定
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    //アニメーション秒数を指定
+    [UIView setAnimationDuration:1];
+    //目標のアルファ値を指定
+    ImageView.alpha = 1;
+    //アニメーション実行
+    [UIView commitAnimations];
+}
+
+//フェードアウト
+- (void)sampleImageFadeOut:(UIImageView *)ImageView
+{
+    //フェードアウト
+    ImageView.alpha = 1;
+    [UIView beginAnimations:@"fadeOut" context:nil];
+    //イージング指定
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    //アニメーション秒数を指定
+    [UIView setAnimationDuration:4];
+    //目標のアルファ値を指定
+    ImageView.alpha = 0;
+    //アニメーション実行
+    [UIView commitAnimations];
 }
 
 @end

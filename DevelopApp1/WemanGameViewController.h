@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
-@interface WemanGameViewController : UIViewController<ADBannerViewDelegate>
+@interface WemanGameViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,ADBannerViewDelegate>
 
 @end

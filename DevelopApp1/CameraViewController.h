@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
-@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,ADBannerViewDelegate>
+@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,ADBannerViewDelegate,UIScrollViewDelegate>
 
 
 

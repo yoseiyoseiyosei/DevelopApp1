@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import <Social/Social.h>
+
 
 @interface manResultViewController (){
     ALAssetsLibrary *takenPhotolibrary;
@@ -51,13 +51,13 @@
     //takenPhotoをallocしてサイズを変更する
     UIImage* myimage =[[UIImage alloc] init];
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
-    takenPhoto.frame= CGRectMake(95,10, 140, 140);
-    takenPhoto.layer.cornerRadius = 120 * 0.5f;
-    takenPhoto.clipsToBounds = YES;
+    takenPhoto.frame= CGRectMake(74,3,160, 163);
+//    takenPhoto.layer.cornerRadius = 120 * 0.5f;
+//    takenPhoto.clipsToBounds = YES;
     [_skyView addSubview:takenPhoto];
     
     //むきむきの画像
-    UIImage *resultimage = [UIImage imageNamed:@"facenothinmanre@x2.png"];
+    UIImage *resultimage = [UIImage imageNamed:@"facenasiresultman5@2x.png"];
     UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
     resultimageView.frame = [[UIScreen mainScreen] bounds];
     [_skyView addSubview:resultimageView];

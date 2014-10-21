@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
-@interface OthersGameViewController : UIViewController<ADBannerViewDelegate>
+@interface OthersGameViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,ADBannerViewDelegate>
 
 @end
