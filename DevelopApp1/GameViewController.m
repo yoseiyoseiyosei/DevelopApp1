@@ -114,9 +114,10 @@
     swipecounter=0;
     //swipe回数表示
     label = [[UILabel alloc] init];
-    label.frame = CGRectMake(10, 10, 100, 100);
-    label.textColor = [UIColor blueColor];
-    label.font = [UIFont fontWithName:@"AppleGothic" size:12];
+    
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"Helvetica Light" size:20];
+    label.frame = CGRectMake(25, 5, 20, 20);
     
     //乱数でエロいフリックの定義を決める
     basictime = [self randxy:0 :2] + 1;
@@ -132,7 +133,7 @@
     
     //takenPhotoをallocしてサイズを変更する
     takenPhoto =[[UIImageView alloc]init];
-    takenPhoto.frame= CGRectMake(122,52,100, 92.25);
+    takenPhoto.frame= CGRectMake(95,49,157, 97);
     //takenPhoto.layer.cornerRadius = 80 * 0.5f;
     //takenPhoto.clipsToBounds = YES;
     [self.view addSubview:takenPhoto];
@@ -530,7 +531,7 @@
     
     //swipe回数表示
     label.text = [NSString stringWithFormat: @"%d",swipecounter];
-    label.frame = CGRectMake(70, 40, 50, 50);
+    label.frame = CGRectMake(75, 37, 50, 50);
     [self.view addSubview:label];
     NSLog(@"swipe : %d",swipecounter);
     

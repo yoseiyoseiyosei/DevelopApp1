@@ -92,6 +92,13 @@
 		8E7B34F919F50BEA00F5BF57 /* selectbuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34F819F50BEA00F5BF57 /* selectbuttonwhite@2x.png */; };
 		8E7B34FB19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34FA19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png */; };
 		8E7B34FD19F62A1C00F5BF57 /* sharebuttonwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B34FC19F62A1C00F5BF57 /* sharebuttonwhite@2x.png */; };
+		8E96DB3719F652140004A524 /* camerascien3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E96DB3619F652140004A524 /* camerascien3@2x.png */; };
+		8E96DB3919F6BB130004A524 /* tutorial1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E96DB3819F6BB130004A524 /* tutorial1@2x.png */; };
+		8E96DB3B19F6BB3B0004A524 /* tutorial4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E96DB3A19F6BB3B0004A524 /* tutorial4@2x.png */; };
+		8E96DB3D19F6BB500004A524 /* tutorial2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E96DB3C19F6BB500004A524 /* tutorial2@2x.png */; };
+		8E96DB3F19F6BB5F0004A524 /* tutorial3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E96DB3E19F6BB5F0004A524 /* tutorial3@2x.png */; };
+		8E96DB4119F6BB9C0004A524 /* tutorial5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E96DB4019F6BB9C0004A524 /* tutorial5@2x.png */; };
+		8E96DB4319F6C0E80004A524 /* batu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E96DB4219F6C0E80004A524 /* batu@2x.png */; };
 		8E9830E219C80EB900F56A74 /* manResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E119C80EB900F56A74 /* manResultViewController.m */; };
 		8E9830E519C813CC00F56A74 /* wemanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E419C813CC00F56A74 /* wemanResultViewController.m */; };
 		8E9830E819C8145D00F56A74 /* cthersResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9830E719C8145D00F56A74 /* cthersResultViewController.m */; };
@@ -217,6 +224,13 @@
 		8E7B34F819F50BEA00F5BF57 /* selectbuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectbuttonwhite@2x.png"; sourceTree = "<group>"; };
 		8E7B34FA19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenshotbuttonwhite@2x.png"; sourceTree = "<group>"; };
 		8E7B34FC19F62A1C00F5BF57 /* sharebuttonwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharebuttonwhite@2x.png"; sourceTree = "<group>"; };
+		8E96DB3619F652140004A524 /* camerascien3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camerascien3@2x.png"; sourceTree = "<group>"; };
+		8E96DB3819F6BB130004A524 /* tutorial1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial1@2x.png"; sourceTree = "<group>"; };
+		8E96DB3A19F6BB3B0004A524 /* tutorial4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial4@2x.png"; sourceTree = "<group>"; };
+		8E96DB3C19F6BB500004A524 /* tutorial2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial2@2x.png"; sourceTree = "<group>"; };
+		8E96DB3E19F6BB5F0004A524 /* tutorial3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial3@2x.png"; sourceTree = "<group>"; };
+		8E96DB4019F6BB9C0004A524 /* tutorial5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial5@2x.png"; sourceTree = "<group>"; };
+		8E96DB4219F6C0E80004A524 /* batu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "batu@2x.png"; sourceTree = "<group>"; };
 		8E9830E019C80EB900F56A74 /* manResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = manResultViewController.h; sourceTree = "<group>"; };
 		8E9830E119C80EB900F56A74 /* manResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = manResultViewController.m; sourceTree = "<group>"; };
 		8E9830E319C813CC00F56A74 /* wemanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wemanResultViewController.h; sourceTree = "<group>"; };
@@ -286,6 +300,13 @@
 		8E1D20EE19D6FB2F00AF9953 /* IMage */ = {
 			isa = PBXGroup;
 			children = (
+				8E96DB4219F6C0E80004A524 /* batu@2x.png */,
+				8E96DB4019F6BB9C0004A524 /* tutorial5@2x.png */,
+				8E96DB3E19F6BB5F0004A524 /* tutorial3@2x.png */,
+				8E96DB3C19F6BB500004A524 /* tutorial2@2x.png */,
+				8E96DB3A19F6BB3B0004A524 /* tutorial4@2x.png */,
+				8E96DB3819F6BB130004A524 /* tutorial1@2x.png */,
+				8E96DB3619F652140004A524 /* camerascien3@2x.png */,
 				8E7B34FC19F62A1C00F5BF57 /* sharebuttonwhite@2x.png */,
 				8E7B34FA19F62A0000F5BF57 /* screenshotbuttonwhite@2x.png */,
 				8E7B34F819F50BEA00F5BF57 /* selectbuttonwhite@2x.png */,
@@ -548,11 +569,13 @@
 			files = (
 				8E7B34DF19F3906200F5BF57 /* selectbutton@2x.png in Resources */,
 				8E7B34E319F3947100F5BF57 /* faceresultmannasi@2x.png in Resources */,
+				8E96DB3B19F6BB3B0004A524 /* tutorial4@2x.png in Resources */,
 				8E690D6119ED22BC00B1382B /* collectionbutton2@2x.gif in Resources */,
 				8E690D6A19EDA58E00B1382B /* manbutton@2x.png in Resources */,
 				8E1D210D19D6FB2F00AF9953 /* images (2).jpeg in Resources */,
 				8E7B34F519F5023D00F5BF57 /* menubuttonwhite@2x.png in Resources */,
 				8EB45F3819BC417200F03297 /* Images.xcassets in Resources */,
+				8E96DB3919F6BB130004A524 /* tutorial1@2x.png in Resources */,
 				8E690D6919EDA58E00B1382B /* menubutton@2x.png in Resources */,
 				8E1D211719D6FB2F00AF9953 /* shot.gif in Resources */,
 				8EB45F2A19BC417200F03297 /* InfoPlist.strings in Resources */,
@@ -567,6 +590,7 @@
 				8EB14DCF19C81BD7004FFBFA /* Main.storyboard in Resources */,
 				8E7B34E719F3993E00F5BF57 /* facenasiresultman4@2x.png in Resources */,
 				8E7B34FD19F62A1C00F5BF57 /* sharebuttonwhite@2x.png in Resources */,
+				8E96DB4119F6BB9C0004A524 /* tutorial5@2x.png in Resources */,
 				8E1D21A119DD0B3300AF9953 /* 広島ルール.jpeg in Resources */,
 				8E690D7519EDE9C200B1382B /* screenshotbutto@2x.png in Resources */,
 				8E1D211019D6FB2F00AF9953 /* images (0).jpeg in Resources */,
@@ -578,6 +602,7 @@
 				8E7B34EB19F3BB7D00F5BF57 /* digdowndeepsweety@2x.png in Resources */,
 				8E690D6519ED9F5200B1382B /* camerascene2@2x.png in Resources */,
 				8E1D211919D6FB2F00AF9953 /* surts.jpeg in Resources */,
+				8E96DB4319F6C0E80004A524 /* batu@2x.png in Resources */,
 				8E1D212019D6FB2F00AF9953 /* 男脱いだ後.jpg in Resources */,
 				8E7B34D719F221E600F5BF57 /* resultladyfacenasi@2x.png in Resources */,
 				8E7B34DD19F2493200F5BF57 /* faceframe@2x.png in Resources */,
@@ -596,9 +621,12 @@
 				8E690D5919ED093600B1382B /* startbutton@2x.png in Resources */,
 				8E690D7919EDE9F500B1382B /* sharebutton@2x.png in Resources */,
 				8E1D210B19D6FB2F00AF9953 /* Ifeltlove.gif in Resources */,
+				8E96DB3F19F6BB5F0004A524 /* tutorial3@2x.png in Resources */,
 				8E1D212219D7055300AF9953 /* title.jpg in Resources */,
 				8E1D21A319DD0B4800AF9953 /* プレストルール.jpeg in Resources */,
 				8E1D21A519DE58AD00AF9953 /* 指.jpg in Resources */,
+				8E96DB3D19F6BB500004A524 /* tutorial2@2x.png in Resources */,
+				8E96DB3719F652140004A524 /* camerascien3@2x.png in Resources */,
 				8E1D210F19D6FB2F00AF9953 /* images (4).jpeg in Resources */,
 				8E690D8319EE34A000B1382B /* gamescienlady@2x.png in Resources */,
 				8E690D5F19ED0BDB00B1382B /* startscien@2x.png in Resources */,

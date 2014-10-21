@@ -57,14 +57,8 @@
     
     // スクロールビューにラベルを貼付ける
     for (int i = 0; i < pageSize; i++) {
-        // UILabel作成
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(i * width, 0, width, height)];
-        label.text = [NSString stringWithFormat:@"%d", i + 1];
-        label.font = [UIFont fontWithName:@"Arial" size:92];
-        label.backgroundColor = [UIColor blueColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        [self.scrollView addSubview:label];
-        NSString *name = [NSString stringWithFormat:@"images (%d).jpeg",i];
+        //画像
+        NSString *name = [NSString stringWithFormat:@"tutorial%d@2x.png",i+1];
         UIImage *image = [UIImage imageNamed:name];
         UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
         imageView.frame= CGRectMake(i * width, 0, width, height);
@@ -84,7 +78,7 @@
     
     // ページコントロールのインスタンス化
     CGFloat x = (width - 300) / 2;
-    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(x, 430, 300, 50)];
+    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(x, 520, 300, 50)];
     
     // 背景色を設定
     //self.pageControl.backgroundColor = [UIColor whiteColor];
@@ -96,9 +90,9 @@
     self.pageControl.currentPage = 0;
     
     // デフォルトの色
-    self.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    self.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
     // 選択されてるページを現す色
-    self.pageControl.currentPageIndicatorTintColor =  [UIColor colorWithRed:0.2 green:0.6 blue:1.0 alpha:1.0];
+    self.pageControl.currentPageIndicatorTintColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
     
     // ページコントロールをタップされたときに呼ばれるメソッドを設定
     self.pageControl.userInteractionEnabled = YES;
@@ -110,9 +104,9 @@
     [self.view addSubview:self.pageControl];
     
     //retuernボタンの画像を入れる
-    UIImage *returnimage = [UIImage imageNamed:@"menubutton@2x.png"];
+    UIImage *returnimage = [UIImage imageNamed:@"batu@2x.png"];
     UIImageView *returnimageView=[[UIImageView alloc]initWithImage:returnimage];
-    returnimageView.frame= CGRectMake(10,10, 94.5,44);
+    returnimageView.frame= CGRectMake(280,10, 30,30);
     returnimageView.alpha=1.0;
     [self.view addSubview:returnimageView];
     [returnimageView setUserInteractionEnabled:YES];

@@ -54,7 +54,7 @@
 {
     [super viewDidLoad];
     //壁紙の画像を入れる
-    UIImage *titleimage = [UIImage imageNamed:@"cameraframeajust@2x.png"];
+    UIImage *titleimage = [UIImage imageNamed:@"camerascien3@2x.png"];
     UIImageView *titleimageView=[[UIImageView alloc]initWithImage:titleimage];
     titleimageView.frame=[[UIScreen mainScreen] bounds];
     titleimageView.alpha=1.0;
@@ -298,10 +298,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
         [actionSheet addButtonWithTitle:@"Man"];
         [actionSheet addButtonWithTitle:@"Woman"];
-        [actionSheet addButtonWithTitle:@"Others"];
+//        [actionSheet addButtonWithTitle:@"Others"];
         [actionSheet addButtonWithTitle:@"Cancel"];
-        [actionSheet setDestructiveButtonIndex:3];//赤文字で目立たせれる
-        [actionSheet setCancelButtonIndex:3];//分けて表示
+        [actionSheet setDestructiveButtonIndex:2];//赤文字で目立たせれる
+        [actionSheet setCancelButtonIndex:2];//分けて表示
         [actionSheet showInView:self.view];
 }
 
@@ -326,14 +326,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             }
         }
             break;
-        case 2:{
-            NSLog(@"others");
-            if (self->showPhoto.image != nil) {
-                
-            OthersGameViewController *othersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OthersGameViewController"];
-            [self presentViewController:othersViewController animated:YES completion:nil];
-            }
-        }
+//        case 2:{
+//            NSLog(@"others");
+//            if (self->showPhoto.image != nil) {
+//                
+//            OthersGameViewController *othersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OthersGameViewController"];
+//            [self presentViewController:othersViewController animated:YES completion:nil];
+//            }
+//        }
             break;
         case 3:{
             NSLog(@"cancel");
