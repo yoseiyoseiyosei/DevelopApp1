@@ -114,7 +114,6 @@
     swipecounter=0;
     //swipe回数表示
     label = [[UILabel alloc] init];
-    
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"Helvetica Light" size:20];
     label.frame = CGRectMake(25, 5, 20, 20);
@@ -154,7 +153,7 @@
     CGFloat textHeight = textImage.size.height;
 
     UIImageView *textImageView =[[UIImageView alloc] initWithImage:textImage];
-    textImageView.frame = CGRectMake(10, 215, textWidth, textHeight);
+    textImageView.frame = CGRectMake(250, 215, textWidth, textHeight);
     [self.view addSubview:textImageView];
 
     //マスクレイヤーで矢印をアニメーション
@@ -208,26 +207,26 @@
     
     //makeshortdistance短く
     
-    UIImage *makeshort1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeshort1 = [UIImage imageNamed:@"makeshort1@2x.png"];
     makeshort1View = [[UIImageView alloc] initWithImage:makeshort1];
     makeshort1View.frame = CGRectMake(positionX, positionY, makeshort1.size.width, makeshort1.size.height);
     [self.view addSubview:makeshort1View];
     [self comment:makeshort1View];
     
     //画像を貼付ける
-    UIImage *makeshort2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeshort2 = [UIImage imageNamed:@"makeshort2@2x.png"];
     makeshort2View = [[UIImageView alloc] initWithImage:makeshort2];
     makeshort2View.frame = CGRectMake(positionX, positionY, makeshort2.size.width, makeshort2.size.height);
     [self.view addSubview:makeshort2View];
 
     //画像を貼付ける
-    UIImage *makeshort3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeshort3 = [UIImage imageNamed:@"makeshort3@2x.png"];
     makeshort3View = [[UIImageView alloc] initWithImage:makeshort3];
     makeshort3View.frame = CGRectMake(positionX, positionY, makeshort3.size.width, makeshort3.size.height);
     [self.view addSubview:makeshort3View];
 
     //画像を貼付ける
-    UIImage *makeshort4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeshort4 = [UIImage imageNamed:@"makeshort1@2x.png"];
     makeshort4View = [[UIImageView alloc] initWithImage:makeshort4];
     makeshort4View.frame = CGRectMake(positionX, positionY, makeshort4.size.width, makeshort4.size.height);
     [self.view addSubview:makeshort4View];
@@ -236,52 +235,52 @@
     
     //makelongdistance長く
     
-    UIImage *makelong1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makelong1 = [UIImage imageNamed:@"makelong1@2x.png"];
     makelong1View = [[UIImageView alloc] initWithImage:makelong1];
     makelong1View.frame = CGRectMake(positionX, positionY, makelong1.size.width, makelong1.size.height);
     [self.view addSubview:makelong1View];
     [self comment:makelong1View];
     
     //画像を貼付ける
-    UIImage *makelong2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makelong2 = [UIImage imageNamed:@"makelong2@2x.png"];
     makelong2View = [[UIImageView alloc] initWithImage:makelong2];
     makelong2View.frame = CGRectMake(positionX, positionY, makelong2.size.width, makelong2.size.height);
     [self.view addSubview:makelong2View];
     
     //画像を貼付ける
-    UIImage *makelong3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makelong3 = [UIImage imageNamed:@"makelong3@2x.png"];
     makelong3View = [[UIImageView alloc] initWithImage:makelong3];
     makelong3View.frame = CGRectMake(positionX, positionY, makelong3.size.width, makelong3.size.height);
     [self.view addSubview:makelong3View];
     
     //画像を貼付ける
-    UIImage *makelong4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makelong4 = [UIImage imageNamed:@"makelong4@2x.png"];
     makelong4View = [[UIImageView alloc] initWithImage:makelong4];
     makelong4View.frame = CGRectMake(positionX, positionY, makelong4.size.width, makelong4.size.height);
     [self.view addSubview:makelong4View];
 
     //makefast速く
     
-    UIImage *makefast1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefast1 = [UIImage imageNamed:@"makefast1@2x.png"];
     makefast1View = [[UIImageView alloc] initWithImage:makefast1];
     makefast1View.frame = CGRectMake(positionX, positionY, makefast1.size.width, makefast1.size.height);
     [self.view addSubview:makefast1View];
     [self comment:makefast1View];
     
     //画像を貼付ける
-    UIImage *makefast2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefast2 = [UIImage imageNamed:@"makefast2@2x.png"];
     makefast2View = [[UIImageView alloc] initWithImage:makefast2];
     makefast2View.frame = CGRectMake(positionX, positionY, makefast2.size.width, makefast2.size.height);
     [self.view addSubview:makefast2View];
     
     //画像を貼付ける
-    UIImage *makefast3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefast3 = [UIImage imageNamed:@"makefast3@2x.png"];
     makefast3View = [[UIImageView alloc] initWithImage:makefast3];
     makefast3View.frame = CGRectMake(positionX, positionY, makefast3.size.width, makefast3.size.height);
     [self.view addSubview:makefast3View];
     
     //画像を貼付ける
-    UIImage *makefast4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefast4 = [UIImage imageNamed:@"makefast4@2x.png"];
     makefast4View = [[UIImageView alloc] initWithImage:makefast4];
     makefast4View.frame = CGRectMake(positionX, positionY, makefast4.size.width, makefast4.size.height);
     [self.view addSubview:makefast4View];
@@ -289,26 +288,26 @@
     
     
     //makeslow遅く
-    UIImage *makeslow1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslow1 = [UIImage imageNamed:@"makeslow1@2x.png"];
     makeslow1View = [[UIImageView alloc] initWithImage:makeslow1];
     makeslow1View.frame = CGRectMake(positionX, positionY, makeslow1.size.width, makeslow1.size.height);
     [self.view addSubview:makeslow1View];
     [self comment:makeslow1View];
     
     //画像を貼付ける
-    UIImage *makeslow2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslow2 = [UIImage imageNamed:@"makeslow2@2x.png"];
     makeslow2View = [[UIImageView alloc] initWithImage:makeslow2];
     makeslow2View.frame = CGRectMake(positionX, positionY, makeslow2.size.width, makeslow2.size.height);
     [self.view addSubview:makeslow2View];
     
     //画像を貼付ける
-    UIImage *makeslow3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslow3 = [UIImage imageNamed:@"makeslow3@2x.png"];
     makeslow3View = [[UIImageView alloc] initWithImage:makeslow3];
     makeslow3View.frame = CGRectMake(positionX, positionY, makeslow3.size.width, makeslow3.size.height);
     [self.view addSubview:makeslow3View];
     
     //画像を貼付ける
-    UIImage *makeslow4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslow4 = [UIImage imageNamed:@"makeslow4@2x.png"];
     makeslow4View = [[UIImageView alloc] initWithImage:makeslow4];
     makeslow4View.frame = CGRectMake(positionX, positionY, makeslow4.size.width, makeslow4.size.height);
     [self.view addSubview:makeslow4View];
@@ -317,26 +316,26 @@
     
     
     //slow&short
-    UIImage *makeslowshort1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslowshort1 = [UIImage imageNamed:@"makeslowshort1@2x.png"];
     makeslowshort1View = [[UIImageView alloc] initWithImage:makeslowshort1];
     makeslowshort1View.frame = CGRectMake(positionX, positionY, makeslowshort1.size.width, makeslowshort1.size.height);
     [self.view addSubview:makeslowshort1View];
     [self comment:makeslowshort1View];
     
     //画像を貼付ける
-    UIImage *makeslowshort2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslowshort2 = [UIImage imageNamed:@"makeslowshort2@2x.png"];
     makeslowshort2View = [[UIImageView alloc] initWithImage:makeslowshort2];
     makeslowshort2View.frame = CGRectMake(positionX, positionY, makeslowshort2.size.width, makeslowshort2.size.height);
     [self.view addSubview:makeslowshort2View];
     
     //画像を貼付ける
-    UIImage *makeslowshort3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslowshort3 = [UIImage imageNamed:@"makeslowshort3@2x.png"];
     makeslowshort3View = [[UIImageView alloc] initWithImage:makeslowshort3];
     makeslowshort3View.frame = CGRectMake(positionX, positionY, makeslowshort3.size.width, makeslowshort3.size.height);
     [self.view addSubview:makeslowshort3View];
     
     //画像を貼付ける
-    UIImage *makeslowshort4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslowshort4 = [UIImage imageNamed:@"makeslowshort3@2x.png"];
     makeslowshort4View = [[UIImageView alloc] initWithImage:makeslowshort3];
     makeslowshort4View.frame = CGRectMake(positionX, positionY, makeslowshort4.size.width, makeslowshort4.size.height);
     [self.view addSubview:makeslowshort4View];
@@ -344,27 +343,27 @@
     
     
     
-    //slow&short
-    UIImage *makeslowlong1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    //slow&long
+    UIImage *makeslowlong1 = [UIImage imageNamed:@"makeslowlong1@2x.png"];
     makeslowlong1View = [[UIImageView alloc] initWithImage:makeslowlong1];
     makeslowlong1View.frame = CGRectMake(positionX, positionY, makeslowlong1.size.width, makeslowlong1.size.height);
     [self.view addSubview:makeslowlong1View];
     [self comment:makeslowlong1View];
     
     //画像を貼付ける
-    UIImage *makeslowlong2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslowlong2 = [UIImage imageNamed:@"makeslowlong2@2x.png"];
     makeslowlong2View = [[UIImageView alloc] initWithImage:makeslowlong2];
     makeslowlong2View.frame = CGRectMake(positionX, positionY, makeslowlong2.size.width, makeslowlong2.size.height);
     [self.view addSubview:makeslowlong2View];
     
     //画像を貼付ける
-    UIImage *makeslowlong3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslowlong3 = [UIImage imageNamed:@"makeslowlong3@2x.png"];
     makeslowlong3View = [[UIImageView alloc] initWithImage:makeslowlong3];
     makeslowlong3View.frame = CGRectMake(positionX, positionY, makeslowlong3.size.width, makeslowlong3.size.height);
     [self.view addSubview:makeslowlong3View];
     
     //画像を貼付ける
-    UIImage *makeslowlong4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makeslowlong4 = [UIImage imageNamed:@"makeslowlong1@2x.png"];
     makeslowlong4View = [[UIImageView alloc] initWithImage:makeslowlong4];
     makeslowlong4View.frame = CGRectMake(positionX, positionY, makeslowlong4.size.width, makeslowlong4.size.height);
     [self.view addSubview:makeslowlong4View];
@@ -373,26 +372,26 @@
     
     
     //fast&long
-    UIImage *makefastlong1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastlong1 = [UIImage imageNamed:@"makefastlong1@2x.png"];
     makefastlong1View = [[UIImageView alloc] initWithImage:makefastlong1];
     makefastlong1View.frame = CGRectMake(positionX, positionY, makefastlong1.size.width, makefastlong1.size.height);
     [self.view addSubview:makefastlong1View];
     [self comment:makefastlong1View];
     
     //画像を貼付ける
-    UIImage *makefastlong2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastlong2 = [UIImage imageNamed:@"makefastlong2@2x.png"];
     makefastlong2View = [[UIImageView alloc] initWithImage:makefastlong2];
     makefastlong2View.frame = CGRectMake(positionX, positionY, makefastlong2.size.width, makefastlong2.size.height);
     [self.view addSubview:makefastlong2View];
     
     //画像を貼付ける
-    UIImage *makefastlong3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastlong3 = [UIImage imageNamed:@"makefastlong3@2x.png"];
     makefastlong3View = [[UIImageView alloc] initWithImage:makefastlong3];
     makefastlong3View.frame = CGRectMake(positionX, positionY, makefastlong3.size.width, makefastlong3.size.height);
     [self.view addSubview:makefastlong3View];
     
     //画像を貼付ける
-    UIImage *makefastlong4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastlong4 = [UIImage imageNamed:@"makefastlong4@2x.png"];
     makefastlong4View = [[UIImageView alloc] initWithImage:makefastlong4];
     makefastlong4View.frame = CGRectMake(positionX, positionY, makefastlong4.size.width, makefastlong4.size.height);
     [self.view addSubview:makefastlong4View];
@@ -401,26 +400,26 @@
     
     
     //fast&short
-    UIImage *makefastshort1 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastshort1 = [UIImage imageNamed:@"makefastshort1@2x.png"];
     makefastshort1View = [[UIImageView alloc] initWithImage:makefastshort1];
     makefastshort1View.frame = CGRectMake(positionX, positionY, makefastshort1.size.width, makefastshort1.size.height);
     [self.view addSubview:makefastshort1View];
     [self comment:makefastshort1View];
     
     //画像を貼付ける
-    UIImage *makefastshort2 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastshort2 = [UIImage imageNamed:@"makefastshort2@2x.png"];
     makefastshort2View = [[UIImageView alloc] initWithImage:makefastshort2];
     makefastshort2View.frame = CGRectMake(positionX, positionY, makefastshort2.size.width, makefastshort2.size.height);
     [self.view addSubview:makefastshort2View];
     
     //画像を貼付ける
-    UIImage *makefastshort3 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastshort3 = [UIImage imageNamed:@"makefastshort3@2x.png"];
     makefastshort3View = [[UIImageView alloc] initWithImage:makefastshort3];
     makefastshort3View.frame = CGRectMake(positionX, positionY, makefastshort3.size.width, makefastshort3.size.height);
     [self.view addSubview:makefastshort3View];
     
     //画像を貼付ける
-    UIImage *makefastshort4 = [UIImage imageNamed:@"digdowndeepsweety@2x.png"];
+    UIImage *makefastshort4 = [UIImage imageNamed:@"makefastshort4@2x.png"];
     makefastshort4View = [[UIImageView alloc] initWithImage:makefastshort4];
     makefastshort4View.frame = CGRectMake(positionX, positionY, makefastshort4.size.width, makefastshort4.size.height);
     [self.view addSubview:makefastshort4View];
@@ -526,6 +525,7 @@
 //タップ終了時に起動
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     UITouch *aTouch = [touches anyObject];
     CGPoint endlocation = [aTouch locationInView:self.view];
     
@@ -557,7 +557,7 @@
     
     
     if (timeFlug == YES && distanceFlug == YES) {
-        
+        app.allswipecounter = swipecounter;
         [alltimer invalidate];
         //裸のシーンに移動
         NSLog(@"scene 移動");
@@ -834,7 +834,7 @@
 -(void)comment:(UIImageView *)imageView
 {
     int X = -imageView.frame.size.width;
-    [UIView animateWithDuration:2.0f
+    [UIView animateWithDuration:2.5f
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{

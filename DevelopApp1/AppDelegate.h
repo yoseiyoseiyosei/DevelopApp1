@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *FaceImage;
+@property (nonatomic) int allswipecounter;
 
 @end

@@ -63,7 +63,7 @@
     
     
     //collectionボタンの画像を入れる
-    UIImage *collectionimage = [UIImage imageNamed:@"collectionbutton2@2x.gif"];
+    UIImage *collectionimage = [UIImage imageNamed:@"collectionbutton@2x.png"];
     collectionimageView=[[UIImageView alloc]initWithImage:collectionimage];
     collectionimageView.frame= CGRectMake(88,382, 145, 53);
     collectionimageView.alpha=1.0;

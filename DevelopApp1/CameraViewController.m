@@ -181,7 +181,7 @@
     sv.clipsToBounds = YES;
     sv.backgroundColor = [UIColor whiteColor];
     sv.delegate = self;
-    sv.contentSize = CGSizeMake(self.view.bounds.size.width*2,self.view.bounds.size.width*2);
+    sv.contentSize = CGSizeMake(self.view.bounds.size.width*3,self.view.bounds.size.width*3);
     // ピンチジェスチャーを登録する
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
     [sv addGestureRecognizer:pinch];
@@ -292,7 +292,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }];
     
         UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-        actionSheet.title = @"Your sex?";
+        actionSheet.title = @"Your gender?";
         actionSheet.delegate = self;
         actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     

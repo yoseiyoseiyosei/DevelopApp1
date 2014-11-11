@@ -116,12 +116,25 @@
     [restsrtimageView addGestureRecognizer:restsrtrecognizer];
 
     
-    
-    //最初は表示されていないのでno
-    _isVisible = NO;
+    //countの画像を入れる
+    UIImage *menuimage = [UIImage imageNamed:@"count@2x.png"];
+    UIImageView *menuimageView=[[UIImageView alloc]initWithImage:menuimage];
+    menuimageView.frame= CGRectMake(6,40, 94.5, 44);
+    menuimageView.alpha=1.0;
+    [self.view addSubview:menuimageView];
     
     
 
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = [NSString stringWithFormat: @"%d",app.allswipecounter];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"Helvetica Light" size:20];
+    label.frame = CGRectMake(75, 37, 50, 50);
+    [self.view addSubview:label];
+    
+    //最初は表示されていないのでno
+    _isVisible = NO;
     
 }
 
