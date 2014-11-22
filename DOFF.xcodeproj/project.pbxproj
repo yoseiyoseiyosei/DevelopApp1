@@ -21,6 +21,7 @@
 		8EA57E7819BDACA400B6B853 /* WemanGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA57E7719BDACA400B6B853 /* WemanGameViewController.m */; };
 		8EA57E7B19BDACC300B6B853 /* OthersGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA57E7A19BDACC300B6B853 /* OthersGameViewController.m */; };
 		8EA57EBE19C0496700B6B853 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA57EBD19C0496700B6B853 /* AssetsLibrary.framework */; };
+		8EA865EF1A171CB50031904D /* Memo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8EA865EE1A171CB50031904D /* Memo.txt */; };
 		8EB14DCF19C81BD7004FFBFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB14DCE19C81BD7004FFBFA /* Main.storyboard */; };
 		8EB45F2019BC417200F03297 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB45F1F19BC417200F03297 /* Foundation.framework */; };
 		8EB45F2219BC417200F03297 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB45F2119BC417200F03297 /* CoreGraphics.framework */; };
@@ -73,22 +74,23 @@
 		8EA57E7919BDACC300B6B853 /* OthersGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthersGameViewController.h; sourceTree = "<group>"; };
 		8EA57E7A19BDACC300B6B853 /* OthersGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthersGameViewController.m; sourceTree = "<group>"; };
 		8EA57EBD19C0496700B6B853 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		8EA865EE1A171CB50031904D /* Memo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Memo.txt; sourceTree = "<group>"; };
 		8EB14DCE19C81BD7004FFBFA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		8EB45F1C19BC417200F03297 /* DevelopApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevelopApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EB45F1C19BC417200F03297 /* DOFF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DOFF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB45F1F19BC417200F03297 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8EB45F2119BC417200F03297 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8EB45F2319BC417200F03297 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8EB45F2719BC417200F03297 /* DevelopApp1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DevelopApp1-Info.plist"; sourceTree = "<group>"; };
+		8EB45F2719BC417200F03297 /* DOFF-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DOFF-Info.plist"; sourceTree = "<group>"; };
 		8EB45F2919BC417200F03297 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8EB45F2B19BC417200F03297 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8EB45F2D19BC417200F03297 /* DevelopApp1-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DevelopApp1-Prefix.pch"; sourceTree = "<group>"; };
+		8EB45F2D19BC417200F03297 /* DOFF-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DOFF-Prefix.pch"; sourceTree = "<group>"; };
 		8EB45F2E19BC417200F03297 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EB45F2F19BC417200F03297 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8EB45F3419BC417200F03297 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8EB45F3519BC417200F03297 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8EB45F3D19BC417200F03297 /* DevelopApp1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevelopApp1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EB45F3D19BC417200F03297 /* DOFFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DOFFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB45F3E19BC417200F03297 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		8EB45F4619BC417200F03297 /* DevelopApp1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DevelopApp1Tests-Info.plist"; sourceTree = "<group>"; };
+		8EB45F4619BC417200F03297 /* DOFFTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DOFFTests-Info.plist"; sourceTree = "<group>"; };
 		8EB45F4819BC417200F03297 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8EB45F4A19BC417200F03297 /* DevelopApp1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevelopApp1Tests.m; sourceTree = "<group>"; };
 		8EB45F9519BC708300F03297 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -124,6 +126,7 @@
 		8EB45F1319BC417200F03297 = {
 			isa = PBXGroup;
 			children = (
+				8EA865EE1A171CB50031904D /* Memo.txt */,
 				8EB45F2519BC417200F03297 /* DevelopApp1 */,
 				8EB45F4419BC417200F03297 /* DevelopApp1Tests */,
 				8EB45F1E19BC417200F03297 /* Frameworks */,
@@ -134,8 +137,8 @@
 		8EB45F1D19BC417200F03297 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EB45F1C19BC417200F03297 /* DevelopApp1.app */,
-				8EB45F3D19BC417200F03297 /* DevelopApp1Tests.xctest */,
+				8EB45F1C19BC417200F03297 /* DOFF.app */,
+				8EB45F3D19BC417200F03297 /* DOFFTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,10 +196,10 @@
 		8EB45F2619BC417200F03297 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EB45F2719BC417200F03297 /* DevelopApp1-Info.plist */,
+				8EB45F2719BC417200F03297 /* DOFF-Info.plist */,
 				8EB45F2819BC417200F03297 /* InfoPlist.strings */,
 				8EB45F2B19BC417200F03297 /* main.m */,
-				8EB45F2D19BC417200F03297 /* DevelopApp1-Prefix.pch */,
+				8EB45F2D19BC417200F03297 /* DOFF-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -213,7 +216,7 @@
 		8EB45F4519BC417200F03297 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EB45F4619BC417200F03297 /* DevelopApp1Tests-Info.plist */,
+				8EB45F4619BC417200F03297 /* DOFFTests-Info.plist */,
 				8EB45F4719BC417200F03297 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -222,9 +225,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8EB45F1B19BC417200F03297 /* DevelopApp1 */ = {
+		8EB45F1B19BC417200F03297 /* DOFF */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EB45F4E19BC417200F03297 /* Build configuration list for PBXNativeTarget "DevelopApp1" */;
+			buildConfigurationList = 8EB45F4E19BC417200F03297 /* Build configuration list for PBXNativeTarget "DOFF" */;
 			buildPhases = (
 				8EB45F1819BC417200F03297 /* Sources */,
 				8EB45F1919BC417200F03297 /* Frameworks */,
@@ -234,14 +237,14 @@
 			);
 			dependencies = (
 			);
-			name = DevelopApp1;
+			name = DOFF;
 			productName = DevelopApp1;
-			productReference = 8EB45F1C19BC417200F03297 /* DevelopApp1.app */;
+			productReference = 8EB45F1C19BC417200F03297 /* DOFF.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8EB45F3C19BC417200F03297 /* DevelopApp1Tests */ = {
+		8EB45F3C19BC417200F03297 /* DOFFTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EB45F5119BC417200F03297 /* Build configuration list for PBXNativeTarget "DevelopApp1Tests" */;
+			buildConfigurationList = 8EB45F5119BC417200F03297 /* Build configuration list for PBXNativeTarget "DOFFTests" */;
 			buildPhases = (
 				8EB45F3919BC417200F03297 /* Sources */,
 				8EB45F3A19BC417200F03297 /* Frameworks */,
@@ -252,9 +255,9 @@
 			dependencies = (
 				8EB45F4319BC417200F03297 /* PBXTargetDependency */,
 			);
-			name = DevelopApp1Tests;
+			name = DOFFTests;
 			productName = DevelopApp1Tests;
-			productReference = 8EB45F3D19BC417200F03297 /* DevelopApp1Tests.xctest */;
+			productReference = 8EB45F3D19BC417200F03297 /* DOFFTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -266,12 +269,15 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = yosei;
 				TargetAttributes = {
+					8EB45F1B19BC417200F03297 = {
+						DevelopmentTeam = YT6S6GTN56;
+					};
 					8EB45F3C19BC417200F03297 = {
 						TestTargetID = 8EB45F1B19BC417200F03297;
 					};
 				};
 			};
-			buildConfigurationList = 8EB45F1719BC417200F03297 /* Build configuration list for PBXProject "DevelopApp1" */;
+			buildConfigurationList = 8EB45F1719BC417200F03297 /* Build configuration list for PBXProject "DOFF" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -284,8 +290,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EB45F1B19BC417200F03297 /* DevelopApp1 */,
-				8EB45F3C19BC417200F03297 /* DevelopApp1Tests */,
+				8EB45F1B19BC417200F03297 /* DOFF */,
+				8EB45F3C19BC417200F03297 /* DOFFTests */,
 			);
 		};
 /* End PBXProject section */
@@ -295,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA865EF1A171CB50031904D /* Memo.txt in Resources */,
 				8EB45F2A19BC417200F03297 /* InfoPlist.strings in Resources */,
 				8EB14DCF19C81BD7004FFBFA /* Main.storyboard in Resources */,
 				8E96DB9319F882BD0004A524 /* Images.xcassets in Resources */,
@@ -346,7 +353,7 @@
 /* Begin PBXTargetDependency section */
 		8EB45F4319BC417200F03297 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8EB45F1B19BC417200F03297 /* DevelopApp1 */;
+			target = 8EB45F1B19BC417200F03297 /* DOFF */;
 			targetProxy = 8EB45F4219BC417200F03297 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -448,10 +455,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DevelopApp1/DevelopApp1-Prefix.pch";
-				INFOPLIST_FILE = "DevelopApp1/DevelopApp1-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "DevelopApp1/DOFF-Prefix.pch";
+				INFOPLIST_FILE = "DevelopApp1/DOFF-Info.plist";
+				PRODUCT_NAME = DOFF;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -461,10 +471,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DevelopApp1/DevelopApp1-Prefix.pch";
-				INFOPLIST_FILE = "DevelopApp1/DevelopApp1-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "DevelopApp1/DOFF-Prefix.pch";
+				INFOPLIST_FILE = "DevelopApp1/DOFF-Info.plist";
+				PRODUCT_NAME = DOFF;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -484,8 +497,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "DevelopApp1Tests/DevelopApp1Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "DevelopApp1Tests/DOFFTests-Info.plist";
+				PRODUCT_NAME = DOFFTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -502,8 +515,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DevelopApp1/DevelopApp1-Prefix.pch";
-				INFOPLIST_FILE = "DevelopApp1Tests/DevelopApp1Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "DevelopApp1Tests/DOFFTests-Info.plist";
+				PRODUCT_NAME = DOFFTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -512,7 +525,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EB45F1719BC417200F03297 /* Build configuration list for PBXProject "DevelopApp1" */ = {
+		8EB45F1719BC417200F03297 /* Build configuration list for PBXProject "DOFF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EB45F4C19BC417200F03297 /* Debug */,
@@ -521,7 +534,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EB45F4E19BC417200F03297 /* Build configuration list for PBXNativeTarget "DevelopApp1" */ = {
+		8EB45F4E19BC417200F03297 /* Build configuration list for PBXNativeTarget "DOFF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EB45F4F19BC417200F03297 /* Debug */,
@@ -530,7 +543,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EB45F5119BC417200F03297 /* Build configuration list for PBXNativeTarget "DevelopApp1Tests" */ = {
+		8EB45F5119BC417200F03297 /* Build configuration list for PBXNativeTarget "DOFFTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EB45F5219BC417200F03297 /* Debug */,

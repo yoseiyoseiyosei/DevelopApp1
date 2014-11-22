@@ -31,6 +31,11 @@
     }
     
     [super viewDidLoad];
+    
+    CGRect windowsize = [[UIScreen mainScreen] bounds];
+    
+    NSLog(@"%f",windowsize.size.height);
+    
     //バーナーオブジェクト生成
     _adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, _adView.frame.size.height,_adView.frame.size.width,_adView.frame.size.height)];//
     
@@ -52,7 +57,7 @@
     //startボタンの画像を入れる
     UIImage *image = [UIImage imageNamed:@"startbutton@2x.png"];
     imageView=[[UIImageView alloc]initWithImage:image];
-    imageView.frame= CGRectMake(88,299, 145, 53);
+    imageView.frame= CGRectMake((windowsize.size.width-145)/2,windowsize.size.height-50-53*3-windowsize.size.height*0.05*2, 145, 53);
     imageView.alpha=1.0;
     [self.view addSubview:imageView];
     [imageView setUserInteractionEnabled:YES];
@@ -65,7 +70,7 @@
     //collectionボタンの画像を入れる
     UIImage *collectionimage = [UIImage imageNamed:@"collectionbutton@2x.png"];
     collectionimageView=[[UIImageView alloc]initWithImage:collectionimage];
-    collectionimageView.frame= CGRectMake(88,382, 145, 53);
+    collectionimageView.frame= CGRectMake((windowsize.size.width-145)/2,windowsize.size.height-50-53*2-windowsize.size.height*0.05, 145, 53);
     collectionimageView.alpha=1.0;
     [self.view addSubview:collectionimageView];
     [collectionimageView setUserInteractionEnabled:YES];
@@ -78,7 +83,7 @@
     //tutorialボタンの画像を入れる
     UIImage *tutorialimage = [UIImage imageNamed:@"tutorialbutton@2x.png"];
     tutorialimageView=[[UIImageView alloc]initWithImage:tutorialimage];
-    tutorialimageView.frame= CGRectMake(88,465, 145, 53);
+    tutorialimageView.frame= CGRectMake((windowsize.size.width-145)/2,windowsize.size.height-50-53, 145, 53);
     tutorialimageView.alpha=1.0;
     [self.view addSubview:tutorialimageView];
     [tutorialimageView setUserInteractionEnabled:YES];

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EB45F1B19BC417200F03297"
-               BuildableName = "DevelopApp1.app"
-               BlueprintName = "DevelopApp1"
-               ReferencedContainer = "container:DevelopApp1.xcodeproj">
+               BuildableName = "DOFF.app"
+               BlueprintName = "DOFF"
+               ReferencedContainer = "container:DOFF.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EB45F3C19BC417200F03297"
-               BuildableName = "DevelopApp1Tests.xctest"
-               BlueprintName = "DevelopApp1Tests"
-               ReferencedContainer = "container:DevelopApp1.xcodeproj">
+               BuildableName = "DOFFTests.xctest"
+               BlueprintName = "DOFFTests"
+               ReferencedContainer = "container:DOFF.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EB45F1B19BC417200F03297"
-            BuildableName = "DevelopApp1.app"
-            BlueprintName = "DevelopApp1"
-            ReferencedContainer = "container:DevelopApp1.xcodeproj">
+            BuildableName = "DOFF.app"
+            BlueprintName = "DOFF"
+            ReferencedContainer = "container:DOFF.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EB45F1B19BC417200F03297"
-            BuildableName = "DevelopApp1.app"
-            BlueprintName = "DevelopApp1"
-            ReferencedContainer = "container:DevelopApp1.xcodeproj">
+            BuildableName = "DOFF.app"
+            BlueprintName = "DOFF"
+            ReferencedContainer = "container:DOFF.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EB45F1B19BC417200F03297"
-            BuildableName = "DevelopApp1.app"
-            BlueprintName = "DevelopApp1"
-            ReferencedContainer = "container:DevelopApp1.xcodeproj">
+            BuildableName = "DOFF.app"
+            BlueprintName = "DOFF"
+            ReferencedContainer = "container:DOFF.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

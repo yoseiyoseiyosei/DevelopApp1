@@ -53,6 +53,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CGRect windowsize = [[UIScreen mainScreen] bounds];
+    
     //壁紙の画像を入れる
     UIImage *titleimage = [UIImage imageNamed:@"camerascien3@2x.png"];
     UIImageView *titleimageView=[[UIImageView alloc]initWithImage:titleimage];
@@ -76,7 +79,12 @@
     //menuボタンの画像を入れる
     UIImage *menuimage = [UIImage imageNamed:@"menubuttonwhite@2x.png"];
     UIImageView *menuimageView=[[UIImageView alloc]initWithImage:menuimage];
-    menuimageView.frame= CGRectMake(6,474, 94.5, 44);
+    if (windowsize.size.height==480) {
+        menuimageView.frame= CGRectMake(6,windowsize.size.height-86, 94.5, 44);
+    }
+    else{
+        menuimageView.frame= CGRectMake(6,windowsize.size.height-94, 94.5, 44);
+    }
     menuimageView.alpha=1.0;
     [self.view addSubview:menuimageView];
     [menuimageView setUserInteractionEnabled:YES];
@@ -88,8 +96,14 @@
     //cameraボタンの画像を入れる
     UIImage *cameraimage = [UIImage imageNamed:@"camerabuttonwhite@2x.png"];
     UIImageView *cameraimageView=[[UIImageView alloc]initWithImage:cameraimage];
-    cameraimageView.frame= CGRectMake(112.5,474,94.5, 44);
+    if (windowsize.size.height==480) {
+        cameraimageView.frame= CGRectMake(112.5,windowsize.size.height-86, 94.5, 44);
+    }
+    else{
+        cameraimageView.frame= CGRectMake(112.5,windowsize.size.height-94, 94.5, 44);
+    }
     cameraimageView.alpha=1.0;
+    
     [self.view addSubview:cameraimageView];
     [cameraimageView setUserInteractionEnabled:YES];
     //tapの動作
@@ -100,7 +114,12 @@
     //libraryボタンの画像を入れる
     UIImage *libraryimage = [UIImage imageNamed:@"librarybuttonwhite@2x.png"];
     UIImageView *libraryimageView=[[UIImageView alloc]initWithImage:libraryimage];
-    libraryimageView.frame= CGRectMake(219,474, 94.5, 44);
+    if (windowsize.size.height==480) {
+        libraryimageView.frame= CGRectMake(219,windowsize.size.height-86, 94.5, 44);
+    }
+    else{
+       libraryimageView.frame= CGRectMake(219,windowsize.size.height-94, 94.5, 44);
+    }
     libraryimageView.alpha=1.0;
     [self.view addSubview:libraryimageView];
     [libraryimageView setUserInteractionEnabled:YES];
@@ -149,7 +168,13 @@
     //decideボタンの画像を入れる
     UIImage *decideimage = [UIImage imageNamed:@"selectbuttonwhite@2x.png"];
     decideimageView=[[UIImageView alloc]initWithImage:decideimage];
-    decideimageView.frame= CGRectMake(112,404, 94.5, 44);
+    
+    if (windowsize.size.height==480) {
+        decideimageView.frame= CGRectMake(112,75, 94.5, 44);
+    }
+    else{
+        decideimageView.frame= CGRectMake(112,404, 94.5, 44);
+    }
     decideimageView.alpha=0;
     [self.view addSubview:decideimageView];
     [decideimageView setUserInteractionEnabled:YES];

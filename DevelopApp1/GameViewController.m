@@ -108,6 +108,7 @@
 {
     
     [super viewDidLoad];
+    CGRect windowsize =[[UIScreen mainScreen]bounds];
     seed =[self randxy:0 :1];
     
     //スワイプのカウンター
@@ -141,7 +142,11 @@
     //スーツのボディーを表示
     UIImage *image = [UIImage imageNamed:@"facenasiman@2x.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = [[UIScreen mainScreen] bounds];
+    if (windowsize.size.height==480) {
+        imageView.frame = CGRectMake(0, 0, 320, 568);
+    }else{
+        imageView.frame = [[UIScreen mainScreen] bounds];
+    }
     [self.view addSubview:imageView];
     //[imageView setUserInteractionEnabled:YES];
     

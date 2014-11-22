@@ -41,6 +41,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CGRect windowsize =[[UIScreen mainScreen]bounds];
+    
     _skyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,self.view.bounds.size.width, self.view.bounds.size.height-self.view.bounds.size.height/11.5)];//x軸（軸沿い） y軸（フルの幅） 箱の位置横幅　位置縦幅
     _skyView.backgroundColor =[UIColor colorWithRed:0.192157 green:0.760978 blue:0.952941 alpha:0];
     
@@ -51,6 +54,8 @@
     //takenPhotoをallocしてサイズを変更する
     UIImage* myimage =[[UIImage alloc] init];
     takenPhoto =[[UIImageView alloc]initWithImage:myimage];
+    
+    
     takenPhoto.frame= CGRectMake(74,3,160, 163);
 //    takenPhoto.layer.cornerRadius = 120 * 0.5f;
 //    takenPhoto.clipsToBounds = YES;
@@ -59,7 +64,11 @@
     //むきむきの画像
     UIImage *resultimage = [UIImage imageNamed:@"facenasiresultman5@2x.png"];
     UIImageView *resultimageView = [[UIImageView alloc] initWithImage:resultimage];
-    resultimageView.frame = [[UIScreen mainScreen] bounds];
+    if (windowsize.size.height==480) {
+        resultimageView.frame = CGRectMake(0, 0, 320, 568);
+    }else{
+        resultimageView.frame = [[UIScreen mainScreen] bounds];
+    }
     [_skyView addSubview:resultimageView];
     
 
@@ -79,8 +88,15 @@
     //シェアボタン
     UIImage *shareimage = [UIImage imageNamed:@"sharebutton2@2x.png"];
     UIImageView *shareimageView=[[UIImageView alloc]initWithImage:shareimage];
-    shareimageView.frame= CGRectMake(6,474, 94.5, 44);
+    if (windowsize.size.height==480) {
+        shareimageView.frame= CGRectMake(6,windowsize.size.height-86, 94.5, 44);
+    }
+    else{
+        shareimageView.frame= CGRectMake(6,windowsize.size.height-94, 94.5, 44);
+    }
+    
     shareimageView.alpha=1.0;
+    
     [self.view addSubview:shareimageView];
     [shareimageView setUserInteractionEnabled:YES];
     //tapの動作
@@ -93,8 +109,14 @@
     //スクリーンショットボタン
     UIImage *shotimage = [UIImage imageNamed:@"screenshotbutto2@2x.png"];
     UIImageView *shotimageView=[[UIImageView alloc]initWithImage:shotimage];
-    shotimageView.frame= CGRectMake(112.5,474, 94.5, 44);
-    shotimageView.alpha=1.0;
+    if (windowsize.size.height==480) {
+        shotimageView.frame= CGRectMake(112.5,windowsize.size.height-86, 94.5, 44);
+    }
+    else{
+        shotimageView.frame= CGRectMake(112.5,windowsize.size.height-94, 94.5, 44);
+    }
+        
+        shotimageView.alpha=1.0;
     [self.view addSubview:shotimageView];
     [shotimageView setUserInteractionEnabled:YES];
     //tapの動作
@@ -106,7 +128,13 @@
     //menuボタンの画像を入れる
     UIImage *restsrtimage = [UIImage imageNamed:@"menubutton@2x.png"];
     UIImageView *restsrtimageView=[[UIImageView alloc]initWithImage:restsrtimage];
-    restsrtimageView.frame= CGRectMake(219,474, 94.5, 44);
+    if (windowsize.size.height==480) {
+        restsrtimageView.frame= CGRectMake(219,windowsize.size.height-86, 94.5, 44);
+    }
+    else{
+        restsrtimageView.frame= CGRectMake(6,windowsize.size.height-94, 94.5, 44);
+    }
+    
     restsrtimageView.alpha=1.0;
     [self.view addSubview:restsrtimageView];
     [restsrtimageView setUserInteractionEnabled:YES];
